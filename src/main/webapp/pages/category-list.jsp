@@ -72,40 +72,37 @@
     <script src="/js/jquery-3.5.1/jquery-3.5.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript">
-        function delUser(userId) {
+        function delCategory(categoryId) {
             if (confirm("您确认要删除吗")) {
-                location.href = "${pageContext.request.contextPath}/user/delById/" + userId;
+                location.href = "${pageContext.request.contextPath}/category/delById/" + categoryId;
             }
         }
 
-        function findUserById(id, method) {
+        function findCategoryById(id, method) {
             console.log(id)
             resetStyle()
             if (method == 'edit') {
-                var url = "${pageContext.request.contextPath}/user/selectById?user_id=" + id;
+                var url = "${pageContext.request.contextPath}/category/selectById?category_id=" + id;
                 $.get(url, function (response) {
                     //如果是编辑图书，将获取的图书信息回显到编辑的窗口中
-                    $("#user_id").val(response.data.user_id);
-                    $("#user_name").val(response.data.user_name);
-                    $("#user_password").val(response.data.user_password);
-                    $("#user_phone").val(response.data.user_phone);
-                    $("#user_email").val(response.data.user_email);
+                    $("#category_id").val(response.data.category_id);
+                    $("#category_name").val(response.data.category_name);
                 })
             }
         }
 
         function addOrEdit() {
             //获取id
-            var id = $("#user_id").val();
+            var id = $("#category_id").val();
             //	如果有id的值，为修改，没有为添加
             if (id > 0) {
 
             } else {
-                var url = "${pageContext.request.contextPath}/user/addUser";
+                var url = "${pageContext.request.contextPath}/category/addCategory";
                 $.post(url, $("#addOrEditUser").serialize(), function (response) {
                     alert(response.message)
                     if (response.success == true) {
-                        window.location.href = "${pageContext.request.contextPath}/user/list";
+                        window.location.href = "${pageContext.request.contextPath}/category/list";
                     }
                 })
             }
@@ -117,7 +114,7 @@
                 name = "";
             }
             console.log(name);
-            location.href = "${pageContext.request.contextPath}/user/selectByName?user_name=" + name;
+            location.href = "${pageContext.request.contextPath}/category/selectByName?category_name=" + name;
         }
 
         function delByIds() {
@@ -128,7 +125,7 @@
                     chk_value.push(obj[k].value)
             }
             console.log(chk_value)
-            location.href = "${pageContext.request.contextPath}/user/delByIds/" + chk_value;
+            location.href = "${pageContext.request.contextPath}/category/delByIds/" + chk_value;
         }
     </script>
 </head>
@@ -145,41 +142,20 @@
     <div class="content-wrapper">
         <%--		添加--%>
         <div id="adddiv" style="display: none">
-            <h2 style="text-align: center;">添加用户</h2>
+            <h2 style="text-align: center;">添加类型</h2>
             <form id="addform" style="align-content: center" class="layui-form"
-                  action="${pageContext.request.contextPath}/user/save" method="post">
+                  action="${pageContext.request.contextPath}/category/save" method="post">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">用户名</label>
+                    <label class="layui-form-label">类型名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="user_name" required lay-verify="required" placeholder="请输入标题"
-                               autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-block">
-                        <input type="password" name="user_password" required lay-verify="required" placeholder="请输入密码"
-                               autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">联系电话</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="user_phone" lay-verify="required" placeholder="请输入电话"
-                               autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="user_email" lay-verify="required" placeholder="请输入邮箱"
+                        <input type="text" name="category_name" required lay-verify="required" placeholder="请输入标题"
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item" style="align-content: center">
                     <div class="layui-input-block">
                         <button type="submit" class="layui-btn">立即提交</button>
-                        <button type="reset" onclick="addUser()" class="layui-btn layui-btn-primary">关闭</button>
+                        <button type="reset" onclick="addCategory()" class="layui-btn layui-btn-primary">关闭</button>
                     </div>
                 </div>
             </form>
@@ -194,7 +170,7 @@
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a
-                        href="${pageContext.request.contextPath}/user/findAll.do">用户管理</a></li>
+                        href="${pageContext.request.contextPath}/category/findAll.do">用户管理</a></li>
                 <li class="active">全部用户</li>
             </ol>
         </section>
@@ -222,12 +198,12 @@
                                         <div class="layui-btn-container" style="float: left">
                                             <button data-type="auto" class="layui-btn layui-btn-normal"><a
                                                     style="color: white"
-                                                    href="${pageContext.request.contextPath}/user/refresh">刷新</a>
+                                                    href="${pageContext.request.contextPath}/category/refresh">刷新</a>
                                             </button>
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
                                             <button type="button" onclick="delByIds()"
-                                                    class="layui-btn layui-btn-normal">新建
+                                                    class="layui-btn layui-btn-normal">批量删除
                                             </button>
                                         </div>
                                         <script src="/layui/layui.js" charset="utf-8"></script>
@@ -258,32 +234,26 @@
                                     <input id="selall" type="checkbox" class="icheckbox_square-blue">
                                 </th>
                                 <th class="sorting_asc">ID</th>
-                                <th class="sorting_desc">用户名</th>
-                                <th class="sorting_asc sorting_asc_disabled">密码</th>
-                                <th class="sorting_desc sorting_desc_disabled">联系电话</th>
-                                <th class="sorting sorting_desc_disabled">邮箱</th>
+                                <th class="sorting_desc">类型名</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${userList}" var="user">
+                            <c:forEach items="${categoryList}" var="category">
                                 <tr>
                                     <th class="" style="padding-right: 0px">
-                                        <input name="ids" id="ids" value="${user.user_id}" type="checkbox"
+                                        <input name="ids" id="ids" value="${category.category_id}" type="checkbox"
                                                class="icheckbox_square-blue">
                                     </th>
-                                    <td>${user.user_id}</td>
-                                    <td>${user.user_name}</td>
-                                    <td>${user.user_password}</td>
-                                    <td>${user.user_phone}</td>
-                                    <td>${user.user_email}</td>
+                                    <td>${category.category_id}</td>
+                                    <td>${category.category_name}</td>
                                     <td class="text-center">
                                         <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
                                                 data-target="#EditModal"
-                                                onclick="findUserById('${user.user_id}','edit')"> 编辑
+                                                onclick="findCategoryById('${category.category_id}','edit')"> 编辑
                                         </button>
                                     </td>
                                     <td class="text-center">
-                                        <a onclick="delUser('${user.user_id}')" class="btn bg-olive btn-xs">删除</a>
+                                        <a onclick="delCategory('${category.category_id}')" class="btn bg-olive btn-xs">删除</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -312,27 +282,14 @@
                 <h3 id="myModalLabel">用户</h3>
             </div>
             <div class="modal-body">
-                <form id="editUser" action="${pageContext.request.contextPath}/user/updateUser" method="post">
+                <form id="editCategory" action="${pageContext.request.contextPath}/category/updateCategory" method="post">
                     <%--用户的id,不展示在页面--%>
-                    <span><input type="hidden" id="user_id" name="user_id"></span>
+                    <span><input type="hidden" id="category_id" name="category_id"></span>
                     <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="user_name"
-                                       id="user_name"></td>
-                        </tr>
-                        <tr>
-                            <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="user_password"
-                                       id="user_password"></td>
-                        </tr>
-                        <tr>
-                            <td>电话</td>
-                            <td><input class="form-control" placeholder="请输入电话" name="user_phone" id="user_phone"></td>
-                        </tr>
-                        <tr>
-                            <td>邮箱</td>
-                            <td><input class="form-control" placeholder="请输入邮箱" name="user_email" id="user_email"></td>
+                            <td><input class="form-control" required placeholder="请输入用户名" name="category_name"
+                                       id="category_name"></td>
                         </tr>
                     </table>
                     <div class="modal-footer">
@@ -358,23 +315,11 @@
                 <h3>用户</h3>
             </div>
             <div class="modal-body">
-                <form id="addUser" action="${pageContext.request.contextPath}/user/save" method="post">
+                <form id="addCategory" action="${pageContext.request.contextPath}/category/save" method="post">
                     <table id="addTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="user_name"></td>
-                        </tr>
-                        <tr>
-                            <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="user_password"></td>
-                        </tr>
-                        <tr>
-                            <td>电话</td>
-                            <td><input class="form-control" placeholder="请输入电话" name="user_phone"></td>
-                        </tr>
-                        <tr>
-                            <td>邮箱</td>
-                            <td><input class="form-control" placeholder="请输入邮箱" name="user_email"></td>
+                            <td><input class="form-control" required placeholder="请输入用户名" name="category_name"></td>
                         </tr>
                     </table>
                     <div class="modal-footer">
