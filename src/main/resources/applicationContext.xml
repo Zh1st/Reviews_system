@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    1、加载jdbc文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+<!--    2、配置数据源对象-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+<!--    3、配置JdbcTemplate对象-->
+    <bean id="JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+<!--    配置AdminDao-->
+    <bean id="adminDao" class="com.reviews_system.dao.impl.AdminDaoImpl">
+        <property name="jdbcTemplate" ref="JdbcTemplate"></property>
+    </bean>
+<!--    配置UserDao-->
+    <bean id="userDao" class="com.reviews_system.dao.impl.UserDaoImpl">
+        <property name="jdbcTemplate" ref="JdbcTemplate"></property>
+    </bean>
+    <!--    配置AdminService-->
+    <bean id="adminService" class="com.reviews_system.service.impl.AdminServiceImpl">
+        <property name="adminDao" ref="adminDao"></property>
+    </bean>
+<!--    配置UserService-->
+    <bean id="userService" class="com.reviews_system.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+<!--    配置PageDao-->
+    <bean id="pageDao" class="com.reviews_system.dao.impl.PageDaoImpl">
+        <property name="jdbcTemplate" ref="JdbcTemplate"></property>
+    </bean>
+<!--    配置PageService-->
+    <bean id="pageService" class="com.reviews_system.service.impl.PageServiceImpl">
+        <property name="pageDao" ref="pageDao"></property>
+    </bean>
+</beans>
