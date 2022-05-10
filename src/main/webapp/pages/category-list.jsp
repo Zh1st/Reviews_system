@@ -164,14 +164,14 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                用户管理 <small>全部用户</small>
+                类型管理 <small>全部类型</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a
-                        href="${pageContext.request.contextPath}/category/findAll.do">用户管理</a></li>
-                <li class="active">全部用户</li>
+                        href="${pageContext.request.contextPath}/category/findAll.do">类型管理</a></li>
+                <li class="active">全部类型</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -215,7 +215,7 @@
                         <div class="box-tools pull-right">
                             <div style="display: flex" class="has-feedback">
                                 <input id="selectByName" style="height: 40px" type="text" class="form-control input-sm"
-                                       placeholder="根据姓名模糊查询"/>
+                                       placeholder="根据类型模糊查询"/>
                                 <button style="height: 40px" type="button" class="layui-btn" onclick="selectByName()">
                                     查询
                                 </button>
@@ -273,22 +273,22 @@
 
 </div>
 
-<!-- 编辑用户的窗口 -->
+<!-- 编辑类型的窗口 -->
 <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="myModalLabel">用户</h3>
+                <h3 id="myModalLabel">类型</h3>
             </div>
             <div class="modal-body">
                 <form id="editCategory" action="${pageContext.request.contextPath}/category/updateCategory" method="post">
-                    <%--用户的id,不展示在页面--%>
+                    <%--类型的id,不展示在页面--%>
                     <span><input type="hidden" id="category_id" name="category_id"></span>
                     <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="category_name"
+                            <td>类型名</td>
+                            <td><input class="form-control" required placeholder="请输入类型名" name="category_name"
                                        id="category_name"></td>
                         </tr>
                     </table>
@@ -306,20 +306,20 @@
     </div>
 </div>
 
-<!-- 添加用户的窗口 -->
+<!-- 添加类型的窗口 -->
 <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>用户</h3>
+                <h3>类型</h3>
             </div>
             <div class="modal-body">
                 <form id="addCategory" action="${pageContext.request.contextPath}/category/save" method="post">
                     <table id="addTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="category_name"></td>
+                            <td>类型名</td>
+                            <td><input class="form-control" required placeholder="请输入类型名" name="category_name"></td>
                         </tr>
                     </table>
                     <div class="modal-footer">
