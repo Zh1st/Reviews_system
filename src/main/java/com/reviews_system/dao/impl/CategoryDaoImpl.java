@@ -70,4 +70,11 @@ public class CategoryDaoImpl implements CategoryDao {
         }
         return i;
     }
+
+    @Override
+    public List<Category> findRoleById(int id) {
+        String sql="SELECT * FROM category ca,film_category fc WHERE ca.category_id=fc.category_id AND fc.film_id=?";
+        List<Category>categoryList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Category>(Category.class),id);
+        return categoryList;
+    }
 }

@@ -53,4 +53,14 @@
     <bean id="pageService" class="com.reviews_system.service.impl.PageServiceImpl">
         <property name="pageDao" ref="pageDao"></property>
     </bean>
+
+    <!--    配置FilmDao-->
+    <bean id="filmDao" class="com.reviews_system.dao.impl.FilmDaoImpl">
+        <property name="jdbcTemplate" ref="JdbcTemplate"></property>
+    </bean>
+    <!--    配置FilmService-->
+    <bean id="filmService" class="com.reviews_system.service.impl.FilmServiceImpl">
+        <property name="categoryDao" ref="categoryDao"></property>
+        <property name="filmDao" ref="filmDao"></property>
+    </bean>
 </beans>

@@ -26,4 +26,6 @@ public interface CategoryDao {
 
     int delByIds(int[]ids);
 
+    List<Category>findRoleById(int id);
+
 }

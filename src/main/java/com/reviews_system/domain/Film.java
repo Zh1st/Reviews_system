@@ -1,11 +1,16 @@
 package com.reviews_system.domain;
 
+import java.util.List;
+
 public class Film {
     private int film_id;
     private String film_name;
     private String brief_introduction;
     private String picture;
     private double price;
+    //  当前电影都有什么类型
+    private List<Category> categories;
+
 
     @Override
     public String toString() {
@@ -16,6 +21,14 @@ public class Film {
                 ", picture='" + picture + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public int getFilm_id() {
