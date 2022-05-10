@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.reviews_system.utils.Pagination" %>
-<%@ page import="com.reviews_system.domain.Admin" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.reviews_system.service.impl.AdminServiceImpl" %>
-<%@ page import="java.util.List" %>
+<%@ page import="com.reviews_system.utils.*" %>
+<%@ page import="javafx.scene.control.Pagination" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -135,16 +132,6 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-<%//分页逻辑开始
-//    AdminServiceImpl adminService=new AdminServiceImpl();
-//    List<Admin> admin = (List) adminService.list();
-    Pagination m_pages = new Pagination();
-    int curPages = m_pages.curPages(m_pages.strPage(request, "page"));//获取当前页码
-    m_pages.setRows(3);//设置每页显示3条
-    int resultconts =7;//取得总的数据数
-    int totalPages = m_pages.getPages(resultconts);//取出总页数
-    List<Admin> adminArrayList = m_pages.getPageSet(adminList, curPages);//获取指针的结果集参数是(结果集，页数)
-//分页逻辑结束 %>
 <div class="wrapper">
     <!-- 页面头部 -->
     <jsp:include page="header.jsp"></jsp:include>
@@ -280,18 +267,6 @@
                                     </td>
                                 </tr>
                             </c:forEach>
-                            <tr align="center">
-                                <td colspan="9"><a href="Users.jsp?page=1">首页</a> <%
-                                    if (curPages > 1) {
-                                %><a href="Users.jsp?page=<%=curPages - 1%>">上一页</a> <%
-                                    }
-                                %> <%
-                                    if (curPages < totalPages) {
-                                %><a href="admin-list.jsp.jsp?page=<%=curPages + 1%>">下一页</a> <%
-                                    }
-                                %> <a href="admin-list.jsp?page=<%=totalPages%>">末页</a>
-                                    <a>第<%=curPages%>页</a></td>
-                            </tr>
                             </tbody>
                         </table>
                         <!--数据列表/-->
@@ -377,7 +352,6 @@
         </div>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
         // 选择框
