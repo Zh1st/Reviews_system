@@ -227,7 +227,7 @@
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
                                             <button type="button" onclick="delByIds()"
-                                                    class="layui-btn layui-btn-normal">新建
+                                                    class="layui-btn layui-btn-normal">批量删除
                                             </button>
                                         </div>
                                         <script src="/layui/layui.js" charset="utf-8"></script>
