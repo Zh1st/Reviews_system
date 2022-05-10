@@ -260,7 +260,7 @@
                                     <td>
                                         <textarea name="desc" readonly class="layui-textarea">${film.brief_introduction}</textarea>
                                     </td>
-                                    <td><img src="${film.picture}" alt="图片"></td>
+                                    <td><img style="width: 100px;height: 100px;" src="${film.picture}" alt="图片"></td>
                                     <td>${film.price}</td>
                                     <td class="text-center">
                                         <c:forEach items="${film.categories}" var="category">
@@ -283,6 +283,7 @@
                     </div>
                     <!-- 数据表格 /-->
                 </div>
+
                 <!-- /.box-body -->
             </div>
         </section>
