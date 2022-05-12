@@ -34,6 +34,9 @@ public class AdminController {
         ModelAndView modelAndView=new ModelAndView();
         List<Admin>adminList=adminService.list();
         modelAndView.addObject("adminList",adminList);
+        int i=adminList.size();
+        System.out.println(i);
+        modelAndView.addObject("total",i);
         modelAndView.setViewName("admin-list");
         return modelAndView;
     }
