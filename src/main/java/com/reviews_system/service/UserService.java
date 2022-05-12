@@ -1,11 +1,15 @@
 package com.reviews_system.service;
 
+import com.reviews_system.domain.Admin;
 import com.reviews_system.domain.User;
 import entity.PageResult;
 
 import java.util.List;
 
 public interface UserService {
+
+    User login(String user_name, String user_password);
+
     List<User> list();
 
     Integer save(User user);
