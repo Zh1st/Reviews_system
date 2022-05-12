@@ -21,4 +21,18 @@ public interface UserService {
     List<User> selectByName(String user_name);
 
     int delByIds(int[]ids);
+
+    /**
+     * 查询所有数据笔数
+     * @return
+     */
+    public Integer selectUserCount();
+
+    /**
+     * 分页查询数据
+     * @param start
+     * @param end
+     * @return
+     */
+    public List<User> listByPage(Integer start,Integer end);
 }

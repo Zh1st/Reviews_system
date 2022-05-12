@@ -65,4 +65,17 @@ public class UserServiceImpl implements UserService {
         int i=userDao.delByIds(ids);
         return i;
     }
+
+    @Override
+    public Integer selectUserCount() {
+        int i=userDao.selectUserCount();
+        return i;
+    }
+
+
+    @Override
+    public List<User> listByPage(Integer start, Integer end) {
+        List<User>userList=userDao.listByPage(start,end);
+        return userList;
+    }
 }

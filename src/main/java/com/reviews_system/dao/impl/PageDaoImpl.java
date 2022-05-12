@@ -27,11 +27,11 @@ public class PageDaoImpl implements PageDao {
     @SuppressWarnings("unchecked")
     @Override
     public Page getPage(int pageNum, Class clazz, String sql, int totalRecord, Object... parameters) {
-        Page page = new Page(pageNum, totalRecord);
-        sql = sql+" limit "+page.getStartIndex()+","+page.getPageSize();
-        List list=jdbcTemplate.query(sql,new BeanPropertyRowMapper<User>(clazz));
-        page.setList(list);
-        return page;
+//        Page page = new Page(pageNum, totalRecord);
+//        sql = sql+" limit "+page.getStartIndex()+","+page.getPageSize();
+//        List list=jdbcTemplate.query(sql,new BeanPropertyRowMapper<User>(clazz));
+//        page.setList(list);
+        return null;
     }
 
 }

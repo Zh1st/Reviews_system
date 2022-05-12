@@ -6,6 +6,7 @@ import com.reviews_system.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 
 import java.sql.Connection;
@@ -88,5 +89,21 @@ public class UserDaoImpl implements UserDao {
         }
         return i;
     }
+
+    @Override
+    public Integer selectUserCount() {
+        String sql="select count(*) from user";
+        int i= jdbcTemplate.queryForObject(sql,Integer.class);
+        return i;
+    }
+
+
+    @Override
+    public List<User> listByPage(Integer start, Integer end) {
+        String sql = "select * from user limit "+start+","+end;
+        List<User> userList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<User>(User.class));
+        return userList;
+    }
+
 
 }

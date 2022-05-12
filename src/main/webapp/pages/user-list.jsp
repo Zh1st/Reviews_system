@@ -130,6 +130,16 @@
             console.log(chk_value)
             location.href = "${pageContext.request.contextPath}/user/delByIds/" + chk_value;
         }
+
+        function nextpage() {
+            var str="next";
+            location.href="${pageContext.request.contextPath}/user/list?methods="+str;
+        }
+
+        function uppage() {
+            var str="up";
+            location.href="${pageContext.request.contextPath}/user/list?methods="+str;
+        }
     </script>
 </head>
 
@@ -179,7 +189,7 @@
                 <div class="layui-form-item" style="align-content: center">
                     <div class="layui-input-block">
                         <button type="submit" class="layui-btn">立即提交</button>
-                        <button type="reset" onclick="addUser()" class="layui-btn layui-btn-primary">关闭</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">关闭</button>
                     </div>
                 </div>
             </form>
@@ -297,6 +307,14 @@
             </div>
         </section>
         <!-- 正文区域 /-->
+
+        <div align="center">
+            <button class="layui-btn" onclick="uppage()">上一页</button>
+            当前第${pagenum}页，总共${pagetotal}页
+            <button class="layui-btn" onclick="nextpage()">下一页</button>
+
+
+        </div>
     </div>
     <!-- @@close -->
     <!-- 内容区域 /-->
