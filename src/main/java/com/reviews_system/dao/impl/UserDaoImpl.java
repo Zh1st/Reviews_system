@@ -2,6 +2,7 @@ package com.reviews_system.dao.impl;
 
 import com.github.pagehelper.Page;
 import com.reviews_system.dao.UserDao;
+import com.reviews_system.domain.Admin;
 import com.reviews_system.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,6 +20,16 @@ public class UserDaoImpl implements UserDao {
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+
+    // 登录
+
+    @Override
+    public User findByUsernameAndPassword(String user_name, String user_password) {
+        User user=jdbcTemplate.queryForObject("select * from user where user_name=? and user_password=?",new BeanPropertyRowMapper<User>(User.class),user_name,user_password);
+        return user;
+    }
+
 
     @Override
     public List<User> findAll() {

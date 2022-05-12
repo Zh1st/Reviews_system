@@ -1,7 +1,9 @@
 package com.reviews_system.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.reviews_system.domain.Admin;
 import com.reviews_system.domain.User;
+import com.reviews_system.service.AdminService;
 import com.reviews_system.service.PageService;
 import com.reviews_system.service.UserService;
 import entity.PageResult;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,17 @@ public class UserController {
     private UserService userService;
     @Autowired
     PageService classifyService;
+
+    //登录
+    @RequestMapping("/login")
+    public String login(String user_name, String user_password, HttpSession session){
+        User user=userService.login(user_name,user_password);
+        if(user!=null){
+            session.setAttribute("user",user);
+            return "redirect:/pages/userTry.jsp";
+        }
+        return "redirect:/fail.jsp";
+    }
 
 ////    分页
 //    @RequestMapping("/list")
@@ -54,6 +68,14 @@ public class UserController {
         modelAndView.addObject("userList",userList);
         modelAndView.setViewName("user-list");
         return modelAndView;
+    }
+
+
+    // 注册
+    @RequestMapping("/register")
+    public String register(User user){
+        int i=userService.save(user);
+        return "redirect:/userLAR.jsp";
     }
 
 //    插入
