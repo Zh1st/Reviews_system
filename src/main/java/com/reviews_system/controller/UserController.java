@@ -26,29 +26,27 @@ public class UserController {
     public static int num=0;
     @Autowired
     private UserService userService;
-//    @Autowired
-//    PageService classifyService;
-//    查询所有
-//    @RequestMapping("/list")
-//    public ModelAndView list(){
-//        ModelAndView modelAndView=new ModelAndView();
-//        List<User>userList=userService.list();
-//        modelAndView.addObject("userList",userList);
-//        modelAndView.setViewName("user-list");
-//        return modelAndView;
-//    }
+
+//    分页查询
     static int count=0;
     @RequestMapping("/list")
     public ModelAndView list(String methods){
-        System.out.println(methods);
         if(methods==null)
         {
             methods="one";
         }
         int size=2;
         int total=userService.selectUserCount();
-        int page=total/size;
-        if(methods.equals("next"))
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size+1;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&count<page)
         {
             count++;
         }
@@ -69,41 +67,7 @@ public class UserController {
         modelAndView.setViewName("user-list");
         return modelAndView;
     }
-    //    查询所有
-//    static int pageCurrent=0;
-//    @RequestMapping("/list/{pageCurrent}")
-//    public ModelAndView listAll(@PathVariable("pageCurrent")String method){
-//        System.out.println(method);
-////        int total=userService.selectUserCount();
-//        int pageSize=2;
-//        List<User>userList=null;
-//        if(method.equals("next"))
-//        {
-//            pageCurrent++;
-//        }
-//        else if (method.equals("one"))
-//        {
-//            pageCurrent=0;
-//        }
-//        else if(method.equals("up"))
-//        {
-//            pageCurrent--;
-//        }
-//        else
-//        {
-//            pageCurrent=0;
-//        }
-//        int start=pageCurrent*pageSize;
-//        System.out.println(start);
-//        int end=start+pageSize;
-//        System.out.println(end);
-//        ModelAndView modelAndView=new ModelAndView();
-//        userList=userService.listByPage(start,start);
-//        modelAndView.addObject("userList",userList);
-////        modelAndView.addObject("total",total);
-//        modelAndView.setViewName("user-list");
-//        return modelAndView;
-//    }
+
 //    根据name查询
 //    @RequestMapping("/selectByName/{user_name}")
     @RequestMapping("/selectByName")
