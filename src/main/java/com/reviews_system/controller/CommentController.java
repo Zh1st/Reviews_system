@@ -20,7 +20,7 @@ public class CommentController {
     private CommentService commentService;
     @Autowired
     PageService classifyService;
-
+    //sb
     //    查询所有
     @RequestMapping("/list")
     public ModelAndView list(){
