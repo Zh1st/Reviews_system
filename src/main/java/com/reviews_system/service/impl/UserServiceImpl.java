@@ -2,10 +2,12 @@ package com.reviews_system.service.impl;
 
 import com.github.pagehelper.Page;
 import com.reviews_system.dao.UserDao;
+import com.reviews_system.domain.Admin;
 import com.reviews_system.domain.User;
 import com.reviews_system.service.UserService;
 import entity.PageResult;
 import com.github.pagehelper.PageHelper;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.List;
 
@@ -14,6 +16,17 @@ public class UserServiceImpl implements UserService {
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+
+    //用户登录
+    @Override
+    public User login(String user_name, String user_password) {
+        try {
+            User user=userDao.findByUsernameAndPassword(user_name,user_password);
+            return user;
+        }catch (EmptyResultDataAccessException e){
+            return null;
+        }
     }
 
     @Override
@@ -64,5 +77,18 @@ public class UserServiceImpl implements UserService {
     public int delByIds(int[] ids) {
         int i=userDao.delByIds(ids);
         return i;
+    }
+
+    @Override
+    public Integer selectUserCount() {
+        int i=userDao.selectUserCount();
+        return i;
+    }
+
+
+    @Override
+    public List<User> listByPage(Integer start, Integer end) {
+        List<User>userList=userDao.listByPage(start,end);
+        return userList;
     }
 }

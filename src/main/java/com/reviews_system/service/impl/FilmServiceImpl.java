@@ -34,4 +34,25 @@ public class FilmServiceImpl implements FilmService {
         }
         return filmList;
     }
+
+    @Override
+    public Film selectById(int film_id) {
+        Film film=filmDao.selectById(film_id);
+        return film;
+    }
+
+    @Override
+    public int deleteById() {
+        return 0;
+    }
+
+    @Override
+    public List<Film> selectByName() {
+        return null;
+    }
+
+    @Override
+    public int addFilm() {
+        return 0;
+    }
 }

@@ -20,4 +20,26 @@ public class FilmDaoImpl implements FilmDao {
         List<Film>filmList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Film>(Film.class));
         return filmList;
     }
+
+    @Override
+    public Film selectById(int film_id) {
+        String sql="select * from film where film_id="+film_id;
+        Film film=jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Film>(Film.class));
+        return film;
+    }
+
+    @Override
+    public int deleteById() {
+        return 0;
+    }
+
+    @Override
+    public List<Film> selectByName() {
+        return null;
+    }
+
+    @Override
+    public int addFilm() {
+        return 0;
+    }
 }

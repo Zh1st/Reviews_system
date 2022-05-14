@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.reviews_system.utils.*" %>
 <%@ page import="javafx.scene.control.Pagination" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +9,7 @@
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
     <link rel="stylesheet" href="/css/mystyle.css">
     <!-- 页面meta -->
     <meta charset="utf-8">
@@ -72,61 +71,63 @@
     <script src="/js/jquery-3.5.1/jquery-3.5.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript">
-        function delAdmin(Id) {
-            if (confirm("您确认要删除吗")) {
-                location.href = "${pageContext.request.contextPath}/admin/delById/" + Id;
+        function delUser(commentid){
+            if(confirm("您确认要删除吗")){
+                location.href="${pageContext.request.contextPath}/comment/delById/"+commentid;
             }
         }
-
-        function findAdminById(id, method) {
+        function findUserById(id,method) {
             console.log(id)
             resetStyle()
-            if (method == 'edit') {
-                var url = "${pageContext.request.contextPath}/admin/selectById?id=" + id;
+            if (method=='edit')
+            {
+                var url ="${pageContext.request.contextPath}/comment/selectById?comment_id="+ id;
                 $.get(url, function (response) {
                     //如果是编辑图书，将获取的图书信息回显到编辑的窗口中
-                    $("#id").val(response.data.id);
-                    $("#admin_name").val(response.data.admin_name);
-                    $("#admin_password").val(response.data.admin_password);
+                    $("#comment_id").val(response.data.comment_id);
+                    $("#comment_time").val(response.data.comment_time);
+                    $("#comment_content").val(response.data.comment_content);
+                    $("#watch").val(response.data.watch);
+                    $("#film_id").val(response.data.film_id);
+                    $("#user_id").val(response.data.user_id);
                 })
             }
         }
-
         function addOrEdit() {
             //获取id
-            var id = $("#admin_id").val();
+            var id=$("#user_id").val();
             //	如果有id的值，为修改，没有为添加
-            if (id > 0) {
+            if (id>0)
+            {
 
-            } else {
-                var url = "${pageContext.request.contextPath}/admin/addAdmin";
-                $.post(url, $("#addOrEditAdmin").serialize(), function (response) {
+            }
+            else{
+                var url="${pageContext.request.contextPath}/user/addUser";
+                $.post(url,$("#addOrEditUser").serialize(),function (response) {
                     alert(response.message)
                     if (response.success == true) {
-                        window.location.href = "${pageContext.request.contextPath}/admin/list";
+                        window.location.href ="${pageContext.request.contextPath}/comment/list";
                     }
                 })
             }
         }
-
         function selectByName() {
-            var name = $("#selectByName").val();
-            if (name == null) {
-                name = "";
+            var content=$("#selectByName").val();
+            if (content==null){
+                content = "";
             }
-            console.log(name);
-            location.href = "${pageContext.request.contextPath}/admin/selectByName?admin_name=" + name;
+            console.log(content);
+            location.href="${pageContext.request.contextPath}/comment/selectByName?comment_content="+content;
         }
-
         function delByIds() {
-            var chk_value = [];
-            obj = document.getElementsByName("ids")
-            for (k in obj) {
+            var chk_value=[];
+            obj=document.getElementsByName("ids")
+            for (k in obj){
                 if (obj[k].checked)
                     chk_value.push(obj[k].value)
             }
             console.log(chk_value)
-            location.href = "${pageContext.request.contextPath}/admin/delByIds/" + chk_value;
+            location.href="${pageContext.request.contextPath}/comment/delByIds/"+chk_value;
         }
     </script>
 </head>
@@ -144,26 +145,35 @@
         <%--		添加--%>
         <div id="adddiv" style="display: none">
             <h2 style="text-align: center;">添加用户</h2>
-            <form id="addform" style="align-content: center" class="layui-form"
-                  action="${pageContext.request.contextPath}/admin/save" method="post">
+            <form id="addform" style="align-content: center" class="layui-form" action="${pageContext.request.contextPath}/user/save" method="post">
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="admin_name" required lay-verify="required" placeholder="请输入标题"
-                               autocomplete="off" class="layui-input">
+                        <input type="text" name="user_name" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">密码</label>
                     <div class="layui-input-block">
-                        <input type="password" name="admin_password" required lay-verify="required" placeholder="请输入密码"
-                               autocomplete="off" class="layui-input">
+                        <input type="password" name="user_password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">联系电话</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="user_phone" lay-verify="required" placeholder="请输入电话" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">邮箱</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="user_email"  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item" style="align-content: center">
-                    <div class="layui-input-block">
+                    <div class="layui-input-block" >
                         <button type="submit" class="layui-btn">立即提交</button>
-                        <button type="reset" onclick="addAdmin()" class="layui-btn layui-btn-primary">关闭</button>
+                        <button type="reset" onclick="addUser()" class="layui-btn layui-btn-primary">关闭</button>
                     </div>
                 </div>
             </form>
@@ -172,14 +182,14 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                管理员管理 <small>全部管理员</small>
+                评论管理 <small>全部评论</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a
-                        href="${pageContext.request.contextPath}/admin/findAll.do">管理员管理</a></li>
-                <li class="active">全部管理员</li>
+                        href="${pageContext.request.contextPath}/comment/findAll.do">评论管理</a></li>
+                <li class="active">全部评论</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -199,20 +209,13 @@
                                     <div id="layerDemo" style="margin-bottom: 0;">
                                         <div class="layui-btn-container" style="float: left">
                                             <button type="button" data-toggle="modal"
-                                                    data-target="#AddModal" onclick="resetFromAdd()"
-                                                    class="layui-btn layui-btn-normal">新建
-                                            </button>
+                                                    data-target="#AddModal" onclick="resetFromAdd()" class="layui-btn layui-btn-normal">新建</button>
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
-                                            <button data-type="auto" class="layui-btn layui-btn-normal"><a
-                                                    style="color: white"
-                                                    href="${pageContext.request.contextPath}/admin/refresh">刷新</a>
-                                            </button>
+                                            <button data-type="auto" class="layui-btn layui-btn-normal"><a style="color: white" href="${pageContext.request.contextPath}/comment/refresh">刷新</a></button>
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
-                                            <button type="button" onclick="delByIds()"
-                                                    class="layui-btn layui-btn-normal">批量删除
-                                            </button>
+                                            <button type="button" onclick="delByIds()" class="layui-btn layui-btn-normal">新建</button>
                                         </div>
                                         <script src="/layui/layui.js" charset="utf-8"></script>
                                         <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
@@ -222,11 +225,8 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div style="display: flex" class="has-feedback">
-                                <input id="selectByName" style="height: 40px" type="text" class="form-control input-sm"
-                                       placeholder="根据管理员姓名模糊查询"/>
-                                <button style="height: 40px" type="button" class="layui-btn" onclick="selectByName()">
-                                    查询
-                                </button>
+                                <input id="selectByName" style="height: 40px" type="text" class="form-control input-sm" placeholder="根据内容模糊查询"/>
+                                <button style="height: 40px" type="button" class="layui-btn" onclick="selectByName()">查询</button>
                             </div>
                         </div>
                         <!--工具栏/-->
@@ -242,28 +242,32 @@
                                     <input id="selall" type="checkbox" class="icheckbox_square-blue">
                                 </th>
                                 <th class="sorting_asc">ID</th>
-                                <th class="sorting_desc">管理员名</th>
-                                <th class="sorting_asc sorting_asc_disabled">密码</th>
+                                <th class="sorting_desc">评论时间</th>
+                                <th class="sorting_asc sorting_asc_disabled">评论内容</th>
+                                <th class="sorting_desc sorting_desc_disabled">观看状态</th>
+                                <th class="sorting sorting_desc_disabled">电影id</th>
+                                <th class="sorting sorting_desc_disabled">用户id</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${adminList}" var="admin">
+                            <c:forEach items="${commentList}" var="comment">
                                 <tr>
                                     <th class="" style="padding-right: 0px">
-                                        <input name="ids" id="ids" value="${admin.id}" type="checkbox"
-                                               class="icheckbox_square-blue">
+                                        <input name="ids" id="ids" value="${comment.comment_id}" type="checkbox" class="icheckbox_square-blue">
                                     </th>
-                                    <td>${admin.id}</td>
-                                    <td>${admin.admin_name}</td>
-                                    <td>${admin.admin_password}</td>
+                                    <td>${comment.comment_id}</td>
+                                    <td>${comment.comment_time}</td>
+                                    <td>${comment.comment_content}</td>
+                                    <td>${comment.watch}</td>
+                                    <td>${comment.film_id}</td>
+                                    <td>${comment.user_id}</td>
                                     <td class="text-center">
                                         <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                                data-target="#EditModal"
-                                                onclick="findAdminById('${admin.id}','edit')"> 编辑
+                                                data-target="#EditModal" onclick="findUserById('${comment.comment_id}','edit')"> 编辑
                                         </button>
                                     </td>
                                     <td class="text-center">
-                                        <a onclick="delAdmin('${admin.id}')" class="btn bg-olive btn-xs">删除</a>
+                                        <a onclick="delUser('${comment.comment_id}')" class="btn bg-olive btn-xs">删除</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -292,27 +296,35 @@
                 <h3 id="myModalLabel">用户</h3>
             </div>
             <div class="modal-body">
-                <form id="editUser" action="${pageContext.request.contextPath}/admin/updateAdmin" method="post">
+                <form id="editUser" action="${pageContext.request.contextPath}/comment/updateComment" method="post">
                     <%--用户的id,不展示在页面--%>
-                    <span><input type="hidden" id="id" name="id"></span>
+                    <span><input type="hidden" id="comment_id" name="comment_id"></span>
                     <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="admin_name"
-                                       id="admin_name"></td>
+                            <td>评论时间</td>
+                            <td><input class="form-control" type="datetime" required placeholder="评论时间" name="comment_time" id="comment_time" disabled></td>
                         </tr>
                         <tr>
-                            <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="admin_password"
-                                       id="admin_password"></td>
+                            <td>评论内容</td>
+                            <td><input class="form-control" required placeholder="评论内容" name="comment_content" id="comment_content"></td>
+                        </tr>
+                        <tr>
+                            <td>观看状态</td>
+                            <td><input class="form-control" placeholder="观看状态" name="watch" id="watch"></td>
+                        </tr>
+                        <tr>
+                            <td>电影id</td>
+                            <td><input class="form-control" placeholder="电影id" name="film_id" id="film_id" ></td>
+                        </tr>
+                        <tr>
+                            <td>用户id</td>
+                            <td><input class="form-control" placeholder="用户id" name="user_id" id="user_id" ></td>
                         </tr>
                     </table>
                     <div class="modal-footer">
                         <div class="modal-footer">
                             <button type="submit" class="layui-btn">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal"
-                                    aria-hidden="true">关闭
-                            </button>
+                            <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
                         </div>
                     </div>
                 </form>
@@ -330,22 +342,32 @@
                 <h3>用户</h3>
             </div>
             <div class="modal-body">
-                <form id="addUser" action="${pageContext.request.contextPath}/admin/save" method="post">
+                <form id="addUser" action="${pageContext.request.contextPath}/comment/save" method="post">
                     <table id="addTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="admin_name"></td>
+<%--                            <td>评论时间</td>--%>
+                            <td><input class="form-control" required placeholder="评论时间" name="comment_time" type="hidden"></td>
                         </tr>
                         <tr>
-                            <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="admin_password"></td>
+                            <td>评论内容</td>
+                            <td><input class="form-control" required placeholder="评论内容" name="comment_content"></td>
+                        </tr>
+                        <tr>
+                            <td>观看状态</td>
+                            <td><input class="form-control" placeholder="观看状态" name="watch"></td>
+                        </tr>
+                        <tr>
+                            <td>电影id</td>
+                            <td><input class="form-control" placeholder="电影id" name="film_id"></td>
+                        </tr>
+                        <tr>
+                            <td>用户id</td>
+                            <td><input class="form-control" placeholder="用户id" name="user_id"></td>
                         </tr>
                     </table>
                     <div class="modal-footer">
                         <button type="submit" class="layui-btn">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal"
-                                aria-hidden="true">关闭
-                        </button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
                     </div>
                 </form>
             </div>
@@ -353,16 +375,15 @@
     </div>
 </div>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // 选择框
         $(".select2").select2();
 
         // WYSIHTML5编辑器
         $(".textarea").wysihtml5({
-            locale: 'zh-CN'
+            locale : 'zh-CN'
         });
     });
-
     // 设置激活菜单
     function setSidebarActive(tagUri) {
         var liObj = $("#" + tagUri);
@@ -371,23 +392,22 @@
             liObj.addClass("active");
         }
     }
-
     $(document)
         .ready(
-            function () {
+            function() {
                 // 激活导航位置
                 setSidebarActive("admin-datalist");
                 // 列表按钮
                 $("#dataList td input[type='checkbox']")
                     .iCheck(
                         {
-                            checkboxClass: 'icheckbox_square-blue',
-                            increaseArea: '20%'
+                            checkboxClass : 'icheckbox_square-blue',
+                            increaseArea : '20%'
                         });
                 // 全选操作
                 $("#selall")
                     .click(
-                        function () {
+                        function() {
                             var clicks = $(this).is(
                                 ':checked');
                             if (!clicks) {
@@ -406,38 +426,39 @@
             });
 </script>
 <script>
-    layui.use('layer', function () { //独立版的layer无需执行这一句
+    layui.use('layer', function(){ //独立版的layer无需执行这一句
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
         //触发事件
         var active = {
-            offset: function (othis) {
+            offset: function(othis){
                 var type = othis.data('type')
-                    , text = othis.text();
+                    ,text = othis.text();
                 layer.open({
                     type: 1
-                    , offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
-                    , id: 'layerDemo' + type //防止重复弹出
-                    , content: '<div style="padding: 20px 100px;">' + text + '</div>'
-                    , btn: '关闭全部'
-                    , btnAlign: 'c' //按钮居中
-                    , shade: 0 //不显示遮罩
-                    , yes: function () {
+                    ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                    ,id: 'layerDemo'+type //防止重复弹出
+                    ,content: '<div style="padding: 20px 100px;">'+ text +'</div>'
+                    ,btn: '关闭全部'
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0 //不显示遮罩
+                    ,yes: function(){
                     }
                 });
             }
         };
-        $('#layerDemo .layui-btn').on('click', function () {
+        $('#layerDemo .layui-btn').on('click', function(){
             var othis = $(this), method = othis.data('method');
             active[method] ? active[method].call(this, othis) : '';
         });
         //多窗口模式 - esc 键
-        $(document).on('keyup', function (e) {
-            if (e.keyCode === 27) {
+        $(document).on('keyup', function(e){
+            if(e.keyCode === 27){
                 layer.close(layer.escIndex ? layer.escIndex[0] : 0);
             }
         });
     });
 </script>
+
 
 
 <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>

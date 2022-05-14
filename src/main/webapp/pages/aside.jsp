@@ -31,7 +31,8 @@
 			</a>
 				<ul class="treeview-menu">
 					<li><a
-						href="${pageContext.request.contextPath}/user/list"> <i
+							onclick="userPage()"
+						> <i
 							class="fa fa-circle-o"></i> 用户管理
 					</a></li>
 
@@ -73,3 +74,9 @@
 	</section>
 	<!-- /.sidebar -->
 </aside>
+<script type="text/javascript">
+	function userPage() {
+		var method="one";
+		location.href="${pageContext.request.contextPath}/user/list?methods="+method;
+	}
+</script>
