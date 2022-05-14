@@ -1,5 +1,6 @@
 package com.reviews_system.controller;
 
+import com.reviews_system.dao.CommentDao;
 import com.reviews_system.domain.Comment;
 import com.reviews_system.service.CommentService;
 import com.reviews_system.service.PageService;
@@ -61,6 +62,7 @@ public class CommentController {
         modelAndView.addObject("commentList",CommentList);
         modelAndView.addObject("pagenum",count+1);
         modelAndView.addObject("pagetotal",page);
+
         modelAndView.setViewName("comment-list");
         return modelAndView;
     }

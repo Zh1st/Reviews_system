@@ -23,7 +23,7 @@ public interface CommentDao {
     List<Comment> selectByName(String comment_tent);
 
     int delByIds(int[] ids);
-
+    User selectUserByUserId(int user_id);
     /**
      * 查询所有数据笔数
      * @return
@@ -37,4 +37,7 @@ public interface CommentDao {
      * @return
      */
     public List<Comment> listByPage(Integer start, Integer end);
+
+    //查询user_id的姓名
+
 }

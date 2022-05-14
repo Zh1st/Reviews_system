@@ -61,6 +61,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public User selectUserByUserId(int user_id) {
+        User user=commentDao.selectUserByUserId(user_id);
+        return user;
+    }
+
+    @Override
     public Integer selectUserCount() {
         int i=commentDao.selectUserCount();
         return i;

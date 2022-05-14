@@ -3,6 +3,7 @@ package com.reviews_system.dao.impl;
 import com.github.pagehelper.Page;
 import com.reviews_system.dao.CommentDao;
 import com.reviews_system.domain.Comment;
+import com.reviews_system.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -78,6 +79,13 @@ public class CommentDaoImpl implements CommentDao {
             i+=j;
         }
         return i;
+    }
+
+    @Override
+    public User selectUserByUserId(int user_id) {
+        User user=jdbcTemplate.queryForObject("select * from user where user_id=?",new BeanPropertyRowMapper<User>(User.class),user_id);
+        user.toString();
+        return user;
     }
 
     @Override

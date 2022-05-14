@@ -23,6 +23,8 @@ public interface CommentService {
 
     int delByIds(int[] ids);
 
+    User selectUserByUserId(int user_id);
+
     /**
      * 查询所有数据笔数
      * @return
