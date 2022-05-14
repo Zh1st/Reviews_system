@@ -1,79 +1,145 @@
 package com.reviews_system.domain;
 
-import javax.persistence.Entity;
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Entity
-public class Page {
-    private int totalRecord;// 表示查询后一共得到多少条结果记录
-    private int pageSize; // 表示页面一次要显示多少条记录
-    private int totalPage;// 表示将所有的记录进行分页后，一共有多少页
-    private int startIndex;// 表示从所有的结果记录中的哪一个编号开始分页查询
-    private int currentPage; // 表示用户想看的页数
+/**
+ * 处理分页
+ * Created by ASUS on 2018/5/7
+ *
+ * @Authod Grey Wolf
+ */
 
-    @SuppressWarnings("unchecked")
-    private List list =null;// list集合是用来装载一个页面中的所有记录的
 
-    public Page(int pageNum, int totalRecord) {
-        this.currentPage = pageNum;
-        this.totalRecord = totalRecord;
 
-        this.pageSize = 5;// 设置一页默认显示10条查询记录
-        this.startIndex = (this.currentPage - 1) * this.pageSize;// 至于为什么this.page要减1，
-        // 是因为mysql数据库对于分页查询时，得到的所有的查询记录，第一条记录的编号是从0开始。
-        if (this.totalRecord % this.pageSize == 0) {
-            this.totalPage = this.totalRecord / this.pageSize;
-        } else {
-            this.totalPage = this.totalRecord / this.pageSize + 1;
-        }
+public class Page implements Serializable {
 
+
+    //当前页
+    private Integer page=1;
+    //页大小
+    private Integer rows=5;
+    // 总记录 数
+    private Integer totalRecord;
+    //总页数
+    private Integer totalPage;
+    //关键字类型
+    private String keyType;
+    //查询关键字
+    private String keyWord;
+    //开始记录位置
+    private Integer start;
+    //用户id
+    private String userid;
+    //其他用户id
+    private String otherid;
+
+    public String getKeyType() {
+        return keyType;
     }
 
-    public int getTotalRecord() {
+    public void setKeyType(String keyType) {
+        this.keyType = keyType;
+    }
+
+    public String getOtherid() {
+        return otherid;
+    }
+
+    public void setOtherid(String otherid) {
+        this.otherid = otherid;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getRows() {
+        return rows;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
+    }
+
+    public Integer getTotalRecord() {
         return totalRecord;
     }
 
-    public void setTotalRecord(int totalRecord) {
+    public void setTotalRecord(Integer totalRecord) {
         this.totalRecord = totalRecord;
     }
 
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getTotalPage() {
+    public Integer getTotalPage() {
+        totalPage=(totalRecord-1)/rows+1;
         return totalPage;
     }
 
-    public void setTotalPage(int totalPage) {
+    public void setTotalPage(Integer totalPage) {
+
         this.totalPage = totalPage;
     }
 
-    public int getStartIndex() {
-        return startIndex;
+    public String getKeyWord() {
+        return keyWord;
     }
 
-    public void setStartIndex(int startIndex) {
-        this.startIndex = startIndex;
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
     }
 
-    public int getCurrentPage() {
-        return currentPage;
+    public Integer getStart() {
+        start=(page-1)*rows;
+        return start;
     }
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
+    public void setStart(Integer start) {
+
+        this.start = start;
     }
 
-    public List getList() {
-        return list;
+
+    public Page() {
     }
 
-    public void setList(List list) {
-        this.list = list;
+    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userid, String otherid) {
+        this.page = page;
+        this.rows = rows;
+        this.totalRecord = totalRecord;
+        this.totalPage = totalPage;
+        this.keyType = keyType;
+        this.keyWord = keyWord;
+        this.start = start;
+        this.userid = userid;
+        this.otherid = otherid;
+    }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "page=" + page +
+                ", rows=" + rows +
+                ", totalRecord=" + totalRecord +
+                ", totalPage=" + totalPage +
+                ", keyType='" + keyType + '\'' +
+                ", keyWord='" + keyWord + '\'' +
+                ", start=" + start +
+                ", userid='" + userid + '\'' +
+                ", otherid='" + otherid + '\'' +
+                '}';
     }
 }

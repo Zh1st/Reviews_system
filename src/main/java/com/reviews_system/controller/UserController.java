@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @RequestMapping("/user")
@@ -139,4 +140,21 @@ public class UserController {
             return null;
     }
 
+    //登录
+    @RequestMapping("/login")
+    public String login(String user_name, String user_password, HttpSession session){
+        User user=userService.login(user_name,user_password);
+        if(user!=null){
+            session.setAttribute("user",user);
+            return "redirect:/pages/userTry.jsp";
+        }
+        return "redirect:/fail.jsp";
+    }
+
+    // 注册
+    @RequestMapping("/register")
+    public String register(User user){
+        int i=userService.save(user);
+        return "redirect:/userLAR.jsp";
+    }
 }
