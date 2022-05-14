@@ -129,6 +129,16 @@
             console.log(chk_value)
             location.href="${pageContext.request.contextPath}/comment/delByIds/"+chk_value;
         }
+
+        function nextpage() {
+            var str="next";
+            location.href="${pageContext.request.contextPath}/comment/list?methods="+str;
+        }
+
+        function uppage() {
+            var str="up";
+            location.href="${pageContext.request.contextPath}/comment/list?methods="+str;
+        }
     </script>
 </head>
 
@@ -215,7 +225,7 @@
                                             <button data-type="auto" class="layui-btn layui-btn-normal"><a style="color: white" href="${pageContext.request.contextPath}/comment/refresh">刷新</a></button>
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
-                                            <button type="button" onclick="delByIds()" class="layui-btn layui-btn-normal">新建</button>
+                                            <button type="button" onclick="delByIds()" class="layui-btn layui-btn-normal">批量删除</button>
                                         </div>
                                         <script src="/layui/layui.js" charset="utf-8"></script>
                                         <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
@@ -281,6 +291,11 @@
             </div>
         </section>
         <!-- 正文区域 /-->
+            <div align="center">
+                <button class="layui-btn" onclick="uppage()">上一页</button>
+                当前第${pagenum}页，总共${pagetotal}页
+                <button class="layui-btn" onclick="nextpage()">下一页</button>
+            </div>
     </div>
     <!-- @@close -->
     <!-- 内容区域 /-->

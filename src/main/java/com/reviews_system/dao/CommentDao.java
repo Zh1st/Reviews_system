@@ -2,6 +2,7 @@ package com.reviews_system.dao;
 
 import com.github.pagehelper.Page;
 import com.reviews_system.domain.Comment;
+import com.reviews_system.domain.User;
 
 import java.util.List;
 
@@ -22,4 +23,18 @@ public interface CommentDao {
     List<Comment> selectByName(String comment_tent);
 
     int delByIds(int[] ids);
+
+    /**
+     * 查询所有数据笔数
+     * @return
+     */
+    public Integer selectUserCount();
+
+    /**
+     * 分页查询数据
+     * @param start
+     * @param end
+     * @return
+     */
+    public List<Comment> listByPage(Integer start, Integer end);
 }

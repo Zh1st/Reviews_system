@@ -79,4 +79,19 @@ public class CommentDaoImpl implements CommentDao {
         }
         return i;
     }
+
+    @Override
+    public Integer selectUserCount() {
+        String sql="select count(*) from comment";
+        int i= jdbcTemplate.queryForObject(sql,Integer.class);
+        return i;
+    }
+
+
+    @Override
+    public List<Comment> listByPage(Integer start, Integer end) {
+        String sql = "select * from comment limit "+start+","+end;
+        List<Comment> commentList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Comment>(Comment.class));
+        return commentList;
+    }
 }

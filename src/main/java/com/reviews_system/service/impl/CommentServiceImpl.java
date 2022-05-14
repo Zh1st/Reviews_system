@@ -2,6 +2,7 @@ package com.reviews_system.service.impl;
 
 import com.reviews_system.dao.CommentDao;
 import com.reviews_system.domain.Comment;
+import com.reviews_system.domain.User;
 import com.reviews_system.service.CommentService;
 import entity.PageResult;
 
@@ -57,5 +58,17 @@ public class CommentServiceImpl implements CommentService {
     public int delByIds(int[] ids) {
         int i=commentDao.delByIds(ids);
         return i;
+    }
+
+    @Override
+    public Integer selectUserCount() {
+        int i=commentDao.selectUserCount();
+        return i;
+    }
+
+    @Override
+    public List<Comment> listByPage(Integer start, Integer end) {
+        List<Comment>commentList=commentDao.listByPage(start,end);
+        return commentList;
     }
 }
