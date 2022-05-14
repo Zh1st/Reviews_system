@@ -10,4 +10,8 @@ public interface FilmDao {
     int deleteById();
     List<Film> selectByName();
     int addFilm();
+
+    int save(Film film);
+
+    void saveFilmCategoryRel(int filmid, int[] catrgoryids);
 }

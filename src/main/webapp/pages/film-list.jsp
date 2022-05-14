@@ -77,20 +77,19 @@
                 location.href="${pageContext.request.contextPath}/user/delById/"+userId;
             }
         }
-        function findUserById(id,method) {
-            console.log(id)
-            resetStyle()
+        function findFilmById(id,method) {
+            console.log(id);
+            resetStyle();
             if (method=='edit')
             {
-                var url ="${pageContext.request.contextPath}/user/selectById?user_id="+ id;
-                $.get(url, function (response) {
-                    //如果是编辑图书，将获取的图书信息回显到编辑的窗口中
-                    $("#user_id").val(response.data.user_id);
-                    $("#user_name").val(response.data.user_name);
-                    $("#user_password").val(response.data.user_password);
-                    $("#user_phone").val(response.data.user_phone);
-                    $("#user_email").val(response.data.user_email);
-                })
+                location.href="${pageContext.request.contextPath}/film/selectById?film_id="+ id;
+                // $.get(url, function (response) {
+                //     $("#film_id").val(response.data.film_id);
+                //     $("#film_name").val(response.data.film_name);
+                //     $("#brief_introduction").val(response.data.brief_introduction);
+                //     $("#picture").attr("src",response.data.picture);
+                //     $("#price").val(response.data.price);
+                // })
             }
         }
         function addOrEdit() {
@@ -208,8 +207,7 @@
                                 <div class="btn-group">
                                     <div id="layerDemo" style="margin-bottom: 0;">
                                         <div class="layui-btn-container" style="float: left">
-                                            <button type="button" data-toggle="modal"
-                                                    data-target="#AddModal" onclick="resetFromAdd()" class="layui-btn layui-btn-normal">新建</button>
+                                            <a type="button" class="layui-btn layui-btn-normal" href="${pageContext.request.contextPath}/film/saveUI">新建</a>
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
                                             <button data-type="auto" class="layui-btn layui-btn-normal"><a style="color: white" href="${pageContext.request.contextPath}/user/refresh">刷新</a></button>
@@ -268,8 +266,7 @@
                                         </c:forEach>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                                data-target="#EditModal" onclick="findUserById('${user.user_id}','edit')"> 编辑
+                                        <button type="button" class="btn bg-olive btn-xs" onclick="findFilmById('${film.film_id}','edit')"> 编辑
                                         </button>
                                     </td>
                                     <td class="text-center">
@@ -303,25 +300,25 @@
                 <h3 id="myModalLabel">用户</h3>
             </div>
             <div class="modal-body">
-                <form id="editUser" action="${pageContext.request.contextPath}/user/updateUser" method="post">
+                <form id="editUser" action="${pageContext.request.contextPath}/film/updateFilm" method="post">
                     <%--用户的id,不展示在页面--%>
-                    <span><input type="hidden" id="user_id" name="user_id"></span>
+                    <span><input type="hidden" id="film_id" name="film_id"></span>
                     <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="user_name" id="user_name"></td>
+                            <td>电影名称</td>
+                            <td><input class="form-control" required placeholder="请输入用户名" name="film_name" id="film_name"></td>
                         </tr>
                         <tr>
-                            <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="user_password" id="user_password"></td>
+                            <td>简介</td>
+                            <td><textarea class="form-control" required placeholder="请输入密码" name="brief_introduction" id="brief_introduction"></textarea></td>
                         </tr>
                         <tr>
-                            <td>电话</td>
-                            <td><input class="form-control" placeholder="请输入电话" name="user_phone" id="user_phone"></td>
+                            <td>图片</td>
+                            <td><img style="width: 50px;height: 50px;" id="picture"alt=""></td>
                         </tr>
                         <tr>
-                            <td>邮箱</td>
-                            <td><input class="form-control" placeholder="请输入邮箱" name="user_email" id="user_email"></td>
+                            <td>价格</td>
+                            <td><input class="form-control" placeholder="请输入邮箱" name="price" id="price"></td>
                         </tr>
                     </table>
                     <div class="modal-footer">

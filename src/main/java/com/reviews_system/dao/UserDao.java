@@ -40,4 +40,6 @@ public interface UserDao {
      * @return
      */
     public List<User> listByPage(Integer start,Integer end);
+
+
 }

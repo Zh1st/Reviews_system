@@ -10,4 +10,6 @@ public interface FilmService {
     int deleteById();
     List<Film> selectByName();
     int addFilm();
+
+    void save(Film film, int[] catrgoryids);
 }

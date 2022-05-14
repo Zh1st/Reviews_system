@@ -18,13 +18,14 @@ public class FileUploadController {
     @Autowired
     private FilmService filmService;
 
-    private static final String BASEDIR = "H:\\fileUpload\\";
+    private static final String BASEDIR = "E:\\a\\";
 
     @RequestMapping(value = "singleFileUpload")
     @ResponseBody
     public String singleFileUpload(Film film, MultipartFile pictureFile) throws IOException {
         if (pictureFile != null) {
             String newFileName = saveFile(pictureFile);
+            System.out.println(newFileName);
             film.setPicture(newFileName);
         }
         // 电影修改
