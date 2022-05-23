@@ -1,9 +1,9 @@
 package com.reviews_system.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.reviews_system.domain.Admin;
+import com.google.protobuf.Enum;
+import com.reviews_system.domain.Page;
 import com.reviews_system.domain.User;
-import com.reviews_system.service.AdminService;
 import com.reviews_system.service.PageService;
 import com.reviews_system.service.UserService;
 import entity.PageResult;
@@ -19,45 +19,56 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @RequestMapping("/user")
 @Controller
 public class UserController {
+    public static int num=0;
     @Autowired
     private UserService userService;
-    @Autowired
-    PageService classifyService;
 
-    //登录
-    @RequestMapping("/login")
-    public String login(String user_name, String user_password, HttpSession session){
-        User user=userService.login(user_name,user_password);
-        if(user!=null){
-            session.setAttribute("user",user);
-            return "redirect:/pages/userTry.jsp";
-        }
-        return "redirect:/fail.jsp";
-    }
-
-////    分页
-//    @RequestMapping("/list")
-//    public String list(HttpServletRequest request) {
-//        String pageNum=request.getParameter("p")==null?"1":request.getParameter("p");//获取页码，默认1
-//        request.setAttribute("page", classifyService.getClassifyPage(Integer.valueOf(pageNum)));
-//        return "redirect:/user/list";
-//    }
-
-//    查询所有
+//    分页查询
+    static int count=0;
     @RequestMapping("/list")
-    public ModelAndView list(){
+    public ModelAndView list(String methods){
+        if(methods==null)
+        {
+            methods="one";
+        }
+        int size=2;
+        int total=userService.selectUserCount();
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size+1;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&count<page)
+        {
+            count++;
+        }
+        else if(methods.equals("up")&&count!=0)
+        {
+            count--;
+        }
+        else
+        {
+            count=0;
+        }
+        int start=size*count;
         ModelAndView modelAndView=new ModelAndView();
-        List<User>userList=userService.list();
+        List<User>userList=userService.listByPage(start,size);
         modelAndView.addObject("userList",userList);
+        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagetotal",page);
         modelAndView.setViewName("user-list");
         return modelAndView;
     }
+
 //    根据name查询
 //    @RequestMapping("/selectByName/{user_name}")
     @RequestMapping("/selectByName")
@@ -68,14 +79,6 @@ public class UserController {
         modelAndView.addObject("userList",userList);
         modelAndView.setViewName("user-list");
         return modelAndView;
-    }
-
-
-    // 注册
-    @RequestMapping("/register")
-    public String register(User user){
-        int i=userService.save(user);
-        return "redirect:/userLAR.jsp";
     }
 
 //    插入
@@ -135,5 +138,23 @@ public class UserController {
         }
         else
             return null;
+    }
+
+    //登录
+    @RequestMapping("/login")
+    public String login(String user_name, String user_password, HttpSession session){
+        User user=userService.login(user_name,user_password);
+        if(user!=null){
+            session.setAttribute("user",user);
+            return "redirect:/pages/userTry.jsp";
+        }
+        return "redirect:/fail.jsp";
+    }
+
+    // 注册
+    @RequestMapping("/register")
+    public String register(User user){
+        int i=userService.save(user);
+        return "redirect:/userLAR.jsp";
     }
 }

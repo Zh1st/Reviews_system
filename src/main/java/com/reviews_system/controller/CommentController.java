@@ -1,5 +1,6 @@
 package com.reviews_system.controller;
 
+import com.reviews_system.dao.CommentDao;
 import com.reviews_system.domain.Comment;
 import com.reviews_system.service.CommentService;
 import com.reviews_system.service.PageService;
@@ -20,13 +21,48 @@ public class CommentController {
     private CommentService commentService;
     @Autowired
     PageService classifyService;
-
+    //sb
     //    查询所有
+    //    分页查询
+    static int count=0;
     @RequestMapping("/list")
-    public ModelAndView list(){
+    public ModelAndView list(String methods){
+        if(methods==null)
+        {
+            methods="one";
+        }
+        int size=2;
+        int total=commentService.selectUserCount();
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size+1;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&count<page-1)
+        {
+            count++;
+        }else if(methods.equals("next")&&count==page-1){
+            count=page-1;
+        }
+        else if(methods.equals("up")&&count!=0)
+        {
+            count--;
+        }
+        else
+        {
+            count=0;
+        }
+        int start=size*count;
         ModelAndView modelAndView=new ModelAndView();
-        List<Comment> CommentList=commentService.list();
+        List<Comment> CommentList=commentService.listByPage(start,size);
         modelAndView.addObject("commentList",CommentList);
+        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagetotal",page);
+
         modelAndView.setViewName("comment-list");
         return modelAndView;
     }

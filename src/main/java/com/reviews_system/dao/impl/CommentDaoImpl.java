@@ -3,6 +3,7 @@ package com.reviews_system.dao.impl;
 import com.github.pagehelper.Page;
 import com.reviews_system.dao.CommentDao;
 import com.reviews_system.domain.Comment;
+import com.reviews_system.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -78,5 +79,27 @@ public class CommentDaoImpl implements CommentDao {
             i+=j;
         }
         return i;
+    }
+
+    @Override
+    public User selectUserByUserId(int user_id) {
+        User user=jdbcTemplate.queryForObject("select * from user where user_id=?",new BeanPropertyRowMapper<User>(User.class),user_id);
+        user.toString();
+        return user;
+    }
+
+    @Override
+    public Integer selectUserCount() {
+        String sql="select count(*) from comment";
+        int i= jdbcTemplate.queryForObject(sql,Integer.class);
+        return i;
+    }
+
+
+    @Override
+    public List<Comment> listByPage(Integer start, Integer end) {
+        String sql = "select * from comment limit "+start+","+end;
+        List<Comment> commentList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Comment>(Comment.class));
+        return commentList;
     }
 }

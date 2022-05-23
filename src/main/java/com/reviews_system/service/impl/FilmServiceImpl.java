@@ -34,4 +34,33 @@ public class FilmServiceImpl implements FilmService {
         }
         return filmList;
     }
+
+    @Override
+    public Film selectById(int film_id) {
+        Film film=filmDao.selectById(film_id);
+        return film;
+    }
+
+    @Override
+    public int deleteById() {
+        return 0;
+    }
+
+    @Override
+    public List<Film> selectByName() {
+        return null;
+    }
+
+    @Override
+    public int addFilm() {
+        return 0;
+    }
+
+    @Override
+    public void save(Film film, int[] catrgoryids) {
+//        先向film表中存储数据
+        int filmid=filmDao.save(film);
+//        然后向film_category表中存储数据
+        filmDao.saveFilmCategoryRel(filmid,catrgoryids);
+    }
 }
