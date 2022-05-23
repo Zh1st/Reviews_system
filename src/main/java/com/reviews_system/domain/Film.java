@@ -10,7 +10,7 @@ public class Film {
     private double price;
     //  当前电影都有什么类型
     private List<Category> categories;
-
+    private double score;
 
     @Override
     public String toString() {
@@ -20,7 +20,17 @@ public class Film {
                 ", brief_introduction='" + brief_introduction + '\'' +
                 ", picture='" + picture + '\'' +
                 ", price=" + price +
+                ", categories=" + categories +
+                ", score=" + score +
                 '}';
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public List<Category> getCategories() {

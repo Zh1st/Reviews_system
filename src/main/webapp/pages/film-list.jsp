@@ -74,7 +74,7 @@
     <script type="text/javascript">
         function delUser(userId){
             if(confirm("您确认要删除吗")){
-                location.href="${pageContext.request.contextPath}/user/delById/"+userId;
+                location.href="${pageContext.request.contextPath}/film/delById/"+userId;
             }
         }
         function findFilmById(id,method) {
@@ -83,40 +83,15 @@
             if (method=='edit')
             {
                 location.href="${pageContext.request.contextPath}/film/selectById?film_id="+ id;
-                // $.get(url, function (response) {
-                //     $("#film_id").val(response.data.film_id);
-                //     $("#film_name").val(response.data.film_name);
-                //     $("#brief_introduction").val(response.data.brief_introduction);
-                //     $("#picture").attr("src",response.data.picture);
-                //     $("#price").val(response.data.price);
-                // })
-            }
-        }
-        function addOrEdit() {
-            //获取id
-            var id=$("#user_id").val();
-            //	如果有id的值，为修改，没有为添加
-            if (id>0)
-            {
-
-            }
-            else{
-                var url="${pageContext.request.contextPath}/user/addUser";
-                $.post(url,$("#addOrEditUser").serialize(),function (response) {
-                    alert(response.message)
-                    if (response.success == true) {
-                        window.location.href ="${pageContext.request.contextPath}/user/list";
-                    }
-                })
             }
         }
         function selectByName() {
-            var name=$("#selectByName").val();
-            if (name==null){
+            var name = $("#selectByName").val();
+            if (name == null) {
                 name = "";
             }
             console.log(name);
-            location.href="${pageContext.request.contextPath}/user/selectByName?user_name="+name;
+            location.href = "${pageContext.request.contextPath}/film/selectByName?film_name="+name;
         }
         function delByIds() {
             var chk_value=[];
@@ -127,6 +102,15 @@
             }
             console.log(chk_value)
             location.href="${pageContext.request.contextPath}/user/delByIds/"+chk_value;
+        }
+        function nextpage() {
+            var str="next";
+            location.href="${pageContext.request.contextPath}/film/list?methods="+str;
+        }
+
+        function uppage() {
+            var str="up";
+            location.href="${pageContext.request.contextPath}/film/list?methods="+str;
         }
     </script>
 </head>
@@ -141,43 +125,6 @@
     <!-- 导航侧栏 /-->
     <!-- 内容区域 -->
     <div class="content-wrapper">
-        <%--		添加--%>
-        <div id="adddiv" style="display: none">
-            <h2 style="text-align: center;">添加用户</h2>
-            <form id="addform" style="align-content: center" class="layui-form" action="${pageContext.request.contextPath}/user/save" method="post">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">用户名</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="user_name" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-block">
-                        <input type="password" name="user_password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">联系电话</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="user_phone" lay-verify="required" placeholder="请输入电话" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="user_email"  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item" style="align-content: center">
-                    <div class="layui-input-block" >
-                        <button type="submit" class="layui-btn">立即提交</button>
-                        <button type="reset" onclick="addUser()" class="layui-btn layui-btn-primary">关闭</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
@@ -223,8 +170,11 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div style="display: flex" class="has-feedback">
-                                <input id="selectByName" style="height: 40px" type="text" class="form-control input-sm" placeholder="根据姓名模糊查询"/>
-                                <button style="height: 40px" type="button" class="layui-btn" onclick="selectByName()">查询</button>
+                                <input id="selectByName" style="height: 40px" type="text" class="form-control input-sm"
+                                       placeholder="根据电影名称模糊查询"/>
+                                <button style="height: 40px" type="button" class="layui-btn" onclick="selectByName()">
+                                    查询
+                                </button>
                             </div>
                         </div>
                         <!--工具栏/-->
@@ -245,6 +195,7 @@
                                 <th class="sorting_desc sorting_desc_disabled">图片</th>
                                 <th class="sorting sorting_desc_disabled">价格</th>
                                 <th class="sorting sorting_desc_disabled">类型</th>
+                                <th class="sorting sorting_desc_disabled">类型</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -258,13 +209,14 @@
                                     <td>
                                         <textarea name="desc" readonly class="layui-textarea">${film.brief_introduction}</textarea>
                                     </td>
-                                    <td><img style="width: 100px;height: 100px;" src="${film.picture}" alt="图片"></td>
+                                    <td><img style="width: 100px;height: 100px;" src="../images/${film.picture}" alt="图片"></td>
                                     <td>${film.price}</td>
                                     <td class="text-center">
                                         <c:forEach items="${film.categories}" var="category">
                                             &nbsp;&nbsp;${category.category_name}
                                         </c:forEach>
                                     </td>
+                                    <td>${film.score}</td>
                                     <td class="text-center">
                                         <button type="button" class="btn bg-olive btn-xs" onclick="findFilmById('${film.film_id}','edit')"> 编辑
                                         </button>
@@ -285,6 +237,11 @@
             </div>
         </section>
         <!-- 正文区域 /-->
+        <div align="center">
+            <button class="layui-btn" onclick="uppage()">上一页</button>
+            当前第${pagenum}页，总共${pagetotal}页
+            <button class="layui-btn" onclick="nextpage()">下一页</button>
+        </div>
     </div>
     <!-- @@close -->
     <!-- 内容区域 /-->
