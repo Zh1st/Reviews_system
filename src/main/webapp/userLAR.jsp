@@ -78,14 +78,13 @@
 
 
 <div class="poster" style="background-image:url(img/login_background.jpg)" ></div>
-<div class="" style="background-image:url(img/login_background.jpg)" ></div>
 
-
-<div class="canvas-wrap">
+<div class="canvas-wrap" id="canvas-wrap">
     <canvas></canvas>
 </div>
 
-
+<div class="poster-login" id ="poster-login" style="background-image:url(img/login_background.jpg)" >
+</div>
 
 
 <script type="text/javascript">
@@ -109,11 +108,15 @@
                 /*console.log("展开",$('#secondMenu').is(':hidden'))*/
                 $("#login").fadeIn();
                 $("#register").fadeOut();
+                $('#canvas-wrap').css('opacity','0.1');
+                $('#poster-login').css('opacit','100');
 
             }else{
                 /*console.log("收起",$('#secondMenu').is(':hidden'))*/
                 $("#login").fadeOut();
                 $("#register").fadeIn();
+                $('#canvas-wrap').css('opacity','100');
+                $('#poster-login').css('opacit','0');
 
             }
         });
@@ -124,11 +127,15 @@
                 /*register.log("展开",$('#secondMenu').is(':hidden'))*/
                 $("#register").fadeIn();
                 $("#login").fadeOut();
+                $('#canvas-wrap').css('opacity','100');
+                $('#poster-login').css('opacit','0');
 
             }else{
                 /*console.log("收起",$('#secondMenu').is(':hidden'))*/
                 $("#register").fadeOut();
                 $("#login").fadeIn();
+                $('#canvas-wrap').css('opacity','0.1');
+                $('#poster-login').css('opacit','100');
 
             }
         });
