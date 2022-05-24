@@ -98,10 +98,19 @@ public class FilmController {
 
 //    更新
     @RequestMapping("/updateFilm")
-    public String updateFilm(Film film, MultipartFile pictureFile, int [] catrgoryIds) throws IOException{
+    public String updateFilm(Film film, MultipartFile pictureFile, int [] catrgoryIds,String oldicture) throws IOException{
+
         String newFileName = saveFile(pictureFile);
-        film.setPicture(newFileName);
-        System.out.println(film);
+        System.out.println(newFileName);
+        if(newFileName!=null)
+        {
+            film.setPicture(newFileName);
+        }
+        else
+        {
+            film.setPicture(oldicture);
+        }
+        System.out.println(oldicture);
         int i=filmService.updateFilm(film,catrgoryIds);
         System.out.println(i);
         return "redirect:/film/list";
