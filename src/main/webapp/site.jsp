@@ -64,8 +64,6 @@
         %>
     </center>
 </form>
-<script>
 
-</script>
 </body>
 </html>
