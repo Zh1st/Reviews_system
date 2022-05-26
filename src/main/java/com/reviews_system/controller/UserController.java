@@ -36,12 +36,13 @@ public class UserController {
         {
             methods="one";
         }
-        int size=2;
+        int size=5;
         int total=userService.selectUserCount();
         int page=0;
         if(total%size!=0)
         {
-            page=total/size+1;
+            page=total/size;
+            page++;
         }
         else
         {
@@ -70,7 +71,6 @@ public class UserController {
     }
 
 //    根据name查询
-//    @RequestMapping("/selectByName/{user_name}")
     @RequestMapping("/selectByName")
     public ModelAndView selectByName(String user_name){
         System.out.println(user_name);

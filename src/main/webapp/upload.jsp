@@ -11,8 +11,7 @@
 <body>
 <!-- 上传图片是需要指定属性 enctype="multipart/form-data" -->
 <!-- <form id="itemForm" action="" method="post" enctype="multipart/form-data"> -->
-<form id="itemForm"
-      action="${pageContext.request.contextPath }/upload/singleFileUpload"
+<form id="itemForm" action="${pageContext.request.contextPath }/upload/singleFileUpload"
       method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${film.id }"/> 修改商品信息：
     <table width="100%" border=1>

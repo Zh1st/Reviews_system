@@ -45,7 +45,7 @@
 							class="fa fa-circle-o"></i> 类型管理
 					</a></li>
                     <li><a
-                            href="${pageContext.request.contextPath}/film/list"> <i
+							onclick="filmPage()"> <i
                             class="fa fa-circle-o"></i> 影片管理
                     </a></li>
 					<li><a
@@ -78,5 +78,9 @@
 	function userPage() {
 		var method="one";
 		location.href="${pageContext.request.contextPath}/user/list?methods="+method;
+	}
+	function filmPage() {
+		var method="one";
+		location.href="${pageContext.request.contextPath}/film/list?methods="+method;
 	}
 </script>
