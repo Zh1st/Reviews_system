@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+.PfZong{width: 700px;
+		height: 600px;
+		align-content: center;
+	    margin: 0 auto;
+		position: relative;
+
+/*		background: #000000;*/
+}
+
+.Pftitle{
+		width:100%;
+		height: 60px;
+		margin-top: 20px;
+		font-family:"微软雅黑";
+		font-size: 25px;
+/*		background: #E9B6B6;*/
+		position: absolute;
+		
+}
+
+.Pfimg{
+		margin-top: 80px;
+		margin-left: 20px;
+		position: absolute;
+/*		background: #FFFFFF;*/
+		
+		
+}
+
+.pinfo{
+		width:540px;
+		height: 160px;
+		margin-top: 90px;
+		margin-left: 160px;
+		font-family:"思源黑体 CN Light";
+		font-size: 16px;
+/*		background:#D85759;*/
+		position: absolute;
+	
+}
+
+.pjieshao{
+		width:700px;
+		height: 190px;
+		margin-top: 20px;
+		margin-left: 20px;
+		font-family:"思源黑体 CN Light";
+		font-size: 16px;
+/*		background:#D85759;*/
+		position: absolute;
+}
+
+.pltan{
+	width:700px;
+	height: 300px;
+	margin: 0 auto;
+	top:-1000px;
+	left:15px;
+	align-content: center;
+	display: none;
+	border: double 10px #B8B8B8;
+	background:#FFFFFF;
+	position: relative;
+}
+
+.pltantop{
+	width:682px;
+	height: 30px;
+	background:#C1F4DA;
+	position: relative;
+}
+
+.pltanbot{
+	width:682px;
+	height: 33px;
+	top: 11px;
+	background:#DBDBDB;
+	position: relative;
+}
+
+.pltank{
+	margin-top: 5px;
+	margin-left: 21px;
+	overflow-y:scroll;
+	border: solid 3px #ADA0A0;
+}
+
+.btn-close {
+  color: #aaa;
+  font-size: 30px;
+  text-decoration: none;
+  position: absolute;
+  right: 5px;
+  top: -7px;
+}
+
+.question-info{
+    text-align: center;
+}
+
+.comment-group-title{
+    margin-top: 20px;
+}
+
+.form-container{
+    width: 500px;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.comment-group{
+    list-style: none;
+    padding-left: 0;
+}
+
+.comment-group li{
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+}
+
+.comment-group li .usr-info{
+    height: 40px;
+    line-height: 40px;
+    color:#9b9b9b;
+    font-size: 16px;
+}
+
+
+.user-info .avatar{
+    height: 40px;
+    width: 40px;
+    float: left;
+    border-radius: 50%;
+}
+
+.user-info .username{
+    margin-left: 10px;
+}
+
+.user-info .create-time{
+    float: right;
+	margin-top: -10px;
+}
+
+.comment-content{
+    margin-left: 50px;
+}

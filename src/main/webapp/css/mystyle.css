@@ -20,3 +20,40 @@
 #addform label{
     width: 100px;
 }
+
+
+.star{
+    display: block;
+    position: relative;
+    width: 150px;
+    height: 60px;
+    padding: 0;
+    border: none;
+}
+
+.star > input{
+    position: absolute;
+    margin-right: -100%;
+    opacity: 0;
+}
+
+.star > label{
+    position: relative;
+    display: inline-block;
+    float: right;
+    width: 30px;
+    height: 30px;
+    color: transparent;
+    background-image: url("../images/start.png");
+    background-repeat: no-repeat;
+}
+
+.star > input:focus + label{
+    outline: none;
+}
+
+.star > input:checked~label,
+.star > input:focus~label,
+.star > input:hover~label{
+    background-position: 0 -30px;
+}
