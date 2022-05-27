@@ -17,14 +17,14 @@
         /*复选框样式重写*/
         input[type='checkbox']{
             -webkit-appearance:none;
-            background:#fff url("./images/green.png");
+            background:#fff url("./images/site1.png");
             background-size:cover;
             height: 50px;
             width:50px;
             vertical-align:middle;
         }
         input[type='checkbox']:checked{
-            background: #fff url('./images/red.png');
+            background: #fff url('./images/site2.png');
             background-size: cover;
         }
         .site{
@@ -56,7 +56,7 @@
     </style>
 </head>
 <body>
-<form action="">
+<form action="www.baidu.com" method="get">
     <center>
         <div class="left">大门</div>
         <div class="right">大门</div>
@@ -70,7 +70,7 @@
             for (int y = 1; y <= 9; y++){
         %>
         <div style="display: inline-block">
-            <input type="checkbox" id="site" class="site" value="<%=x%>+<%=y%>">
+            <input type="checkbox" id="site" class="site" value="<%=x%><%=y%>" name="sites">
         <br>
             <%=x%><%=y%>
         </div>
@@ -82,7 +82,7 @@
             }
         %>
     </center>
-    <input type="submit" value="购买" style="background-color: #ff2e0a;width:100px;height:50px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
+    <input type="submit" value="购买" style="background-color: red;width:100px;height:50px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
 </form>
 
 </body>
