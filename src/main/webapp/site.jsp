@@ -62,17 +62,20 @@
         <div class="right">大门</div>
         <div class="dapi">电影大屏幕</div>
         <%
-            for (int x = 1; x <= 9; x++){
+            for (int x = 0; x < 10; x++){
         %>
 <%--        显示第几列--%>
 <%--        <%=x%>--%>
         <%
-            for (int y = 1; y <= 9; y++){
+            for (int y = 0; y < 10; y++){
         %>
         <div style="display: inline-block">
             <input type="checkbox" id="site" class="site" value="<%=x%><%=y%>" name="sites">
         <br>
-            <%=x%><%=y%>
+            <%
+            int c = x*10+y+1;
+            %>
+            <%=c%>
         </div>
         <%
             }
@@ -82,7 +85,7 @@
             }
         %>
     </center>
-    <input type="submit" value="购买" style="background-color: red;width:100px;height:50px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
+    <input type="submit" value="购买" style="width:200px;height:50px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
 </form>
 
 </body>
