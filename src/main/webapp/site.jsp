@@ -14,6 +14,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /*复选框样式重写*/
+        input[type='checkbox']{
+            -webkit-appearance:none;
+            background:#fff url("./images/green.png");
+            background-size:cover;
+            height: 50px;
+            width:50px;
+            vertical-align:middle;
+        }
+        input[type='checkbox']:checked{
+            background: #fff url('./images/red.png');
+            background-size: cover;
+        }
         .site{
             background-color: aquamarine;
             width:50px;
@@ -26,6 +39,7 @@
             width:300px;
             height:100px;
             background: #00acd6;
+            margin-bottom: 100px;
         }
         .left{
             width:100px;
@@ -48,13 +62,18 @@
         <div class="right">大门</div>
         <div class="dapi">电影大屏幕</div>
         <%
-            for (int x = 1; x <= 10; x++){
+            for (int x = 1; x <= 9; x++){
         %>
-        <%=x%>
+<%--        显示第几列--%>
+<%--        <%=x%>--%>
         <%
-            for (int y = 1; y <= 10; y++){
+            for (int y = 1; y <= 9; y++){
         %>
-        <input type="checkbox" id="site" class="site" value="<%=x%>+<%=y%>">
+        <div style="display: inline-block">
+            <input type="checkbox" id="site" class="site" value="<%=x%>+<%=y%>">
+        <br>
+            <%=x%><%=y%>
+        </div>
         <%
             }
         %>
@@ -63,6 +82,7 @@
             }
         %>
     </center>
+    <input type="submit" value="购买" style="background-color: #ff2e0a;width:100px;height:50px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
 </form>
 
 </body>
