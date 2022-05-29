@@ -7,10 +7,10 @@ public class Film {
     private String film_name;
     private String brief_introduction;
     private String picture;
-    private double price;
+    private float price;
     //  当前电影都有什么类型
     private List<Category> categories;
-    private double score;
+    private float score;
 
     @Override
     public String toString() {
@@ -23,22 +23,6 @@ public class Film {
                 ", categories=" + categories +
                 ", score=" + score +
                 '}';
-    }
-
-    public double getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
     }
 
     public int getFilm_id() {
@@ -73,11 +57,27 @@ public class Film {
         this.picture = picture;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
     }
 }

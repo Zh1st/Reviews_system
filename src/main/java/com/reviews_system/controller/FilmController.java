@@ -2,6 +2,7 @@ package com.reviews_system.controller;
 
 import com.reviews_system.domain.Category;
 import com.reviews_system.domain.Film;
+import com.reviews_system.domain.Film_category;
 import com.reviews_system.domain.User;
 import com.reviews_system.service.CategoryService;
 import com.reviews_system.service.FilmService;
@@ -153,5 +154,16 @@ public class FilmController {
             }
         }
         return newFileName;
+    }
+
+    @RequestMapping("weblist")
+    public ModelAndView weblist(){
+        ModelAndView modelAndView=new ModelAndView();
+        List<Film>filmList=filmService.findAll();
+        modelAndView.addObject("filmList",filmList);
+        List<Category>categoryList=categoryService.list();
+        modelAndView.addObject("categoryList",categoryList);
+        modelAndView.setViewName("home");
+        return modelAndView;
     }
 }

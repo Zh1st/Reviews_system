@@ -1,7 +1,7 @@
 <html>
 <body>
 <%
-    response.sendRedirect(request.getContextPath()+"/login.jsp");
+    response.sendRedirect(request.getContextPath()+"/userLAR.jsp");
 %>
 </body>
 </html>

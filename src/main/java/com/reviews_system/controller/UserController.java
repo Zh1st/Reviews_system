@@ -146,7 +146,8 @@ public class UserController {
         User user=userService.login(user_name,user_password);
         if(user!=null){
             session.setAttribute("user",user);
-            return "redirect:/pages/userTry.jsp";
+            System.out.println(user);
+            return "redirect:/film/weblist";
         }
         return "redirect:/fail.jsp";
     }
