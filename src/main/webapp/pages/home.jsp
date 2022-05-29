@@ -26,15 +26,18 @@
 <body style="width: 100%">
 <!-- header部分 -->
 <div class="header_up">
-    <h1><a href="http://www.douban.com">豆瓣</a></h1>
+    <a href="${pageContext.request.contextPath}/userInfo" class="time_a">个人信息</a>
+    <h1><a href="http://www.douban.com">影评</a></h1>
     <form action="https://www.douban.com/search" method="get">
             <span class="input">
                 <input type="text" name="search" placeholder="书籍、电影、音乐、小站、成员">
             </span>
+
         <span class="search_button">
                 <input type="submit" name="submit">
             </span>
     </form>
+
     <ul>
         <li><a href="https://book.douban.com" target="_blank" class="link_book">读书</a></li>
         <li><a href="https://movie.douban.com" target="_blank" class="link_movie">电影</a></li>
@@ -45,6 +48,7 @@
         <li><a href="#" class="link_time">时间</a></li>
         <li><a href="#" class="link_market">市集</a></li>
     </ul>
+
 </div>
 <!-- header部分结束 -->
 <!-- 横幅部分 -->

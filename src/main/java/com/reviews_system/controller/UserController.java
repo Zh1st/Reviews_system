@@ -145,9 +145,11 @@ public class UserController {
     public String login(String user_name, String user_password, HttpSession session){
         User user=userService.login(user_name,user_password);
         if(user!=null){
-            session.setAttribute("user",user);
-            System.out.println(user);
-            return "redirect:/film/weblist";
+            String user_id=String.valueOf(user.getUser_id());
+            session.setAttribute("userid",user_id);
+            String info=(String)session.getAttribute("userid");
+            System.out.println(info);
+            return "redirect:/pages/home.jsp";
         }
         return "redirect:/fail.jsp";
     }
