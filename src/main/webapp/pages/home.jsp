@@ -84,7 +84,7 @@
                 <h2>
                     影片分类&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
                     (&nbsp;
-                    <a href="#" class="time_a">更多</a>
+                    <a href="${pageContext.request.contextPath}/category/weblist" class="time_a">更多</a>
                     &nbsp;)
                 </h2>
             </div>
