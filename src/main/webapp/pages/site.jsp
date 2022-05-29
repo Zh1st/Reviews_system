@@ -58,7 +58,7 @@
 <body>
 <form action="${pageContext.request.contextPath}/order/save" method="get">
     <input type="hidden" value="${filmid}" name="film_id"/>
-    <input type="text" value="<%=session.getAttribute("userid")%>"/>
+    <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
     <center>
         <div class="left">大门</div>
         <div class="right">大门</div>
@@ -72,11 +72,12 @@
             for (int y = 0; y < 10; y++){
         %>
         <div style="display: inline-block">
-            <input type="checkbox" id="site_id" class="site" value="<%=x%><%=y%>" name="sites">
-        <br>
             <%
-            int c = x*10+y+1;
+                int c = x*10+y+1;
             %>
+            <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_id">
+        <br>
+
             <%=c%>
         </div>
         <%
