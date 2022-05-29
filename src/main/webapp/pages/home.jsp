@@ -20,6 +20,11 @@
         function testcategory(id) {
             console.log(id);
         }
+        function tosite(filmid){
+            // if(confirm("购买成功")){
+                location.href="${pageContext.request.contextPath}/order/site?filmid="+filmid;
+            // }
+        }
     </script>
 </head>
 
@@ -76,7 +81,8 @@
                         </div>
                         <div class="title"><a href="#">${film.film_name}</a></div>
                         <div class="rating" style="background: url('../images/ic_rating_s.png') no-repeat 0 -33px;height: 11px;margin-left:20px;"><span style="margin-left: 60px;color: orange;">9</span></div>
-                        <a href="#" class="purcharse">选座购票</a>
+                        <a onclick="tosite(${film.film_id})"  class="purcharse">选座购票</a>
+
                     </li>
                 </c:forEach>
             </ul>

@@ -36,6 +36,10 @@
     <bean id="commentDao" class="com.reviews_system.dao.impl.CommentDaoImpl">
         <property name="jdbcTemplate" ref="JdbcTemplate"></property>
     </bean>
+<!--    配置orderdao-->
+    <bean id="orderdao" class="com.reviews_system.dao.impl.OrderDaolmpl">
+        <property name="jdbcTemplate" ref="JdbcTemplate"></property>
+    </bean>
     <!--    UserInfoDao-->
     <bean id="userInfoDao" class="com.reviews_system.dao.impl.UserInfoDaoImpl">
         <property name="jdbcTemplate" ref="JdbcTemplate"></property>
@@ -59,6 +63,10 @@
     <!--    配置commentService-->
     <bean id="commentService" class="com.reviews_system.service.impl.CommentServiceImpl">
         <property name="commentDao" ref="commentDao"></property>
+    </bean>
+    <!--    orderservice-->
+    <bean id="orderService" class="com.reviews_system.service.impl.OrderServiceImpl">
+        <property name="orderDao" ref="orderdao"></property>
     </bean>
 <!--    配置PageDao-->
     <bean id="pageDao" class="com.reviews_system.dao.impl.PageDaoImpl">
