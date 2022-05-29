@@ -149,7 +149,7 @@ public class UserController {
             session.setAttribute("userid",user_id);
             String info=(String)session.getAttribute("userid");
             System.out.println(info);
-            return "redirect:/pages/home.jsp";
+            return "redirect:/film/weblist";
         }
         return "redirect:/fail.jsp";
     }
