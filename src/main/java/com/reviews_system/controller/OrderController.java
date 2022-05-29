@@ -2,6 +2,7 @@ package com.reviews_system.controller;
 
 import com.reviews_system.domain.Comment;
 import com.reviews_system.domain.Order;
+import com.reviews_system.domain.Orders;
 import com.reviews_system.service.CommentService;
 import com.reviews_system.service.OrderService;
 import com.reviews_system.service.PageService;
@@ -29,8 +30,9 @@ public ModelAndView site(int filmid){
 }
 //    添加订单
 @RequestMapping("/save")
-public String save(Order order){
+public String save(Orders order){
     int i=orderService.save(order);
+    System.out.println(order);
     return "redirect:/order/list";
 }
 //#提交订单后转入界面

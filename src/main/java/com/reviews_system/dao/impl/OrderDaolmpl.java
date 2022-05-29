@@ -2,6 +2,7 @@ package com.reviews_system.dao.impl;
 
 import com.reviews_system.dao.OrderDao;
 import com.reviews_system.domain.Order;
+import com.reviews_system.domain.Orders;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.text.SimpleDateFormat;
@@ -14,12 +15,11 @@ public class OrderDaolmpl implements OrderDao {
         this.jdbcTemplate = jdbcTemplate;
     }
     @Override
-    public int save(Order order) {
-        Integer i = jdbcTemplate.update("insert into order values (?,?,?,?)",null
-        ,order.getUser_id()
-        ,order.getSite_id()
-        ,order.getFilm_id()
-        ,order.getSite_id());
+    public int save(Orders orders) {
+        Integer i = jdbcTemplate.update("insert into orders values (?,?,?,?)", null
+        ,orders.getUser_id()
+        ,orders.getFilm_id()
+        ,orders.getSite_id());
         return i;
     }
 }

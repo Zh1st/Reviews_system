@@ -4,6 +4,7 @@ import com.reviews_system.dao.CommentDao;
 import com.reviews_system.dao.OrderDao;
 import com.reviews_system.domain.Comment;
 import com.reviews_system.domain.Order;
+import com.reviews_system.domain.Orders;
 import com.reviews_system.domain.User;
 import com.reviews_system.service.CommentService;
 import com.reviews_system.service.OrderService;
@@ -22,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
         this.orderDao = orderDao;
     }
     @Override
-    public Integer save(Order order) {
-        return orderDao.save(order);
+    public Integer save(Orders orders) {
+        return orderDao.save(orders);
     }
 }
