@@ -156,7 +156,7 @@ public class FilmController {
         return newFileName;
     }
 
-    @RequestMapping("weblist")
+    @RequestMapping("/weblist")
     public ModelAndView weblist(){
         ModelAndView modelAndView=new ModelAndView();
         List<Film>filmList=filmService.findAll();
