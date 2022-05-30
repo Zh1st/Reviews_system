@@ -98,9 +98,9 @@
 							</span>
 							<img src="../images/${film.picture}" alt="movie" >
 							<span class="name2">${film.film_name}</span>
-							<span onclick="tosite(${film.film_id})"  class="name3">选座购票</span>
 						</a>
 					</div>
+					<a onclick="tosite(${film.film_id})"  class="name3" style="margin-top:285px; margin-left:-115px;position: absolute">选座购票</a>
 				</div>
 				</c:forEach>
 				<div class="cl">&nbsp;</div>

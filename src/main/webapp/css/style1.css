@@ -75,7 +75,7 @@ h1#logo a { float:left; width:239px; height:49px;  font-size: 0; color:green; li
 .play { position: absolute; top: 0; left: 0; width:152px; height:214px; background: url('images/image-hover.png'); display:block; z-index: 5; cursor:pointer; display:none; }
 .movie span.name { font-weight:bold; color:#fff; font-size:14px; text-align:center; padding-top:160px; display:block; }
 .movie span.name2 { font-weight:bold; color:black; font-size:14px; text-align:center; display:block; }
-.movie span.name3 { background-color: #8fdf82;color: white;text-align: center;margin-left: 40px;font-size: 20px}
+.movie a.name3 { background-color: #8fdf82;color: white;text-align: center;margin-left: 40px;font-size: 20px}
 
 .box .last { padding:0; }
 
