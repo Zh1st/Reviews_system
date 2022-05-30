@@ -1,6 +1,7 @@
 package com.reviews_system.service;
 
 import com.reviews_system.domain.Category;
+import com.reviews_system.domain.Film;
 import com.reviews_system.domain.User;
 import entity.PageResult;
 
@@ -23,5 +24,5 @@ public interface CategoryService {
     List<Category> selectByName(String category_name);
 
     int delByIds(int[]ids);
-
+    List<Film> findFilm(int category_id);
 }
