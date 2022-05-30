@@ -3,6 +3,7 @@ package com.reviews_system.dao.impl;
 import com.github.pagehelper.Page;
 import com.reviews_system.dao.CategoryDao;
 import com.reviews_system.domain.Category;
+import com.reviews_system.domain.Film;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -21,6 +22,11 @@ public class CategoryDaoImpl implements CategoryDao {
     public List<Category> findAll() {
         List<Category>categoryList=jdbcTemplate.query("select * from category",new BeanPropertyRowMapper<Category>(Category.class));
         return categoryList;
+    }
+    @Override
+    public List<Film> findFilm(int category_id) {
+        List<Film>FilmList=jdbcTemplate.query("SELECT film.film_id,film.film_name,film.picture,film.price,film.score FROM film_category,film,category WHERE film.film_id=film_category.film_id and category.category_id=film_category.category_id and film_category.category_id=?",new BeanPropertyRowMapper<Film>(Film.class),category_id);
+        return FilmList;
     }
 
     @Override

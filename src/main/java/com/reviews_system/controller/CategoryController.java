@@ -1,7 +1,7 @@
 package com.reviews_system.controller;
 
 import com.reviews_system.domain.Category;
-import com.reviews_system.domain.User;
+import com.reviews_system.domain.Film;
 import com.reviews_system.service.CategoryService;
 import com.reviews_system.service.PageService;
 import entity.Result;
@@ -17,7 +17,6 @@ import java.util.List;
 @RequestMapping("/category")
 @Controller
 public class CategoryController {
-
     @Autowired
     private CategoryService categoryService;
     @Autowired
@@ -100,6 +99,17 @@ public class CategoryController {
         }
         else
             return null;
+    }
+    @RequestMapping("/weblist")
+    public ModelAndView weblist(int category_id){
+        ModelAndView modelAndView=new ModelAndView();
+        List<Category>categoryList=categoryService.list();
+        modelAndView.addObject("categoryList",categoryList);
+        List<Film>filmList=categoryService.findFilm(category_id);
+        modelAndView.addObject("filmList",filmList);
+        System.out.println(filmList);
+        modelAndView.setViewName("category_info");
+        return modelAndView;
     }
 
 }
