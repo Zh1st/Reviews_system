@@ -52,7 +52,7 @@ h1#logo a { float:left; width:239px; height:49px;  font-size: 0; color:green; li
 #sub-navigation { display:block; clear:right; border-top:1px dashed #666 ; border-bottom:1px dashed #666; padding:27px 0;  }
 #sub-navigation ul { list-style:none; }
 #sub-navigation ul li { float:left; display:inline; padding-right:23px; margin-top: 10px}
-#sub-navigation ul li a { font-size:14px; font-weight:bold; color:black; line-height:14px; text-decoration:none; }
+#sub-navigation ul li a { font-size:20px; font-weight:bold; color:black; line-height:14px; text-decoration:none; }
 #sub-navigation ul li a:hover { text-decoration:underline; }
 
 #search { width:346px; margin:0 0 0 auto; }
