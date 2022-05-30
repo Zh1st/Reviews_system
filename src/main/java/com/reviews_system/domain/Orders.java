@@ -1,19 +1,31 @@
 package com.reviews_system.domain;
 
+import java.util.Arrays;
+
 public class Orders {
     private int order_id;
     private int user_id;
     private int film_id;
     private int site_id;
+    private String time;
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Orders{" +
                 "order_id=" + order_id +
                 ", user_id=" + user_id +
                 ", film_id=" + film_id +
                 ", site_id=" + site_id +
+                ", time='" + time + '\'' +
                 '}';
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public int getOrder_id() {

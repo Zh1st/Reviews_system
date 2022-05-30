@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: fyc
@@ -57,7 +58,9 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/order/save" method="get">
+<%--    ${sites}--%>
     <input type="hidden" value="${filmid}" name="film_id"/>
+    <input type="hidden"  name="time"/>
     <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
     <center>
         <div class="left">大门</div>
@@ -75,7 +78,16 @@
             <%
                 int c = x*10+y+1;
             %>
-            <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_id">
+<%--    <c:forEach items="${sites}" var="site">--%>
+<%--        ${site}--%>
+<%--    <c:forEach begin="0" end="${sites.size()-1}" var="i">--%>
+<%--                ${sites.charAt(i)}--%>
+
+<%--                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_id" checked>--%>
+
+                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids">
+
+<%--    </c:forEach>--%>
         <br>
 
             <%=c%>

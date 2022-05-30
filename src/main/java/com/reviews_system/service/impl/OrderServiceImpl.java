@@ -2,10 +2,7 @@ package com.reviews_system.service.impl;
 
 import com.reviews_system.dao.CommentDao;
 import com.reviews_system.dao.OrderDao;
-import com.reviews_system.domain.Comment;
-import com.reviews_system.domain.Order;
-import com.reviews_system.domain.Orders;
-import com.reviews_system.domain.User;
+import com.reviews_system.domain.*;
 import com.reviews_system.service.CommentService;
 import com.reviews_system.service.OrderService;
 import entity.PageResult;
@@ -23,7 +20,13 @@ public class OrderServiceImpl implements OrderService {
         this.orderDao = orderDao;
     }
     @Override
-    public Integer save(Orders orders) {
-        return orderDao.save(orders);
+    public Integer save(Orders orders,int[]site_ids) {
+        return orderDao.save(orders,site_ids);
+    }
+
+    @Override
+    public List<Orders> selectOrder() {
+        List<Orders>ordersList=orderDao.selectOrder();
+        return ordersList;
     }
 }
