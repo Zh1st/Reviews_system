@@ -85,21 +85,26 @@
             <ul>
                 <c:forEach items="${filmList}" var="film">
                     <li>
-                        <div class="pic"><a href="#"><img src="../images/${film.picture}" alt="film"></a>
+                        <div class="pic"><a href="#"><img src="../images/${film.picture}" alt="film">
+
+                        </a>
                         </div>
                         <div class="title"><a href="#">${film.film_name}</a></div>
 <%--                        <div id="test9" style="position: absolute;margin-left:20px;" ></div>${film.score}--%>
 
-                        <div class="rating" style="height: 11px;margin-left:20px;">
-                            <span style="margin-left: 60px;color: orange;">${film.score}</span>
+                         <div class="rating" style="height: 11px;margin-left:20px;">
+                            <span style="margin-left: 60px;color: orange;">
+                                <p style="margin-left: 100px;margin-top: -60px;font-size:20px;position: absolute">${film.score}</p>
+                            </span>
                         </div>
 
-                        <a onclick="tosite(${film.film_id})"  class="purcharse">选座购票</a>
+                        <a onclick="tosite(${film.film_id})"  class="purcharse" style="margin-left:87px;top: 50px;">选座购票</a>
 
                     </li>
                 </c:forEach>
             </ul>
         </div>
+
     </div>
     <div class="wrapper_right">
         <div class="movie_right">
@@ -144,6 +149,21 @@
     </div>
 </div>
 
+<%--<%--%>
+<%--    int i =0;--%>
+<%--    String s=${film.score};--%>
+<%--%>--%>
+
+<%--<script language="JavaScript">--%>
+<%--        var a="<%=s%>";--%>
+<%--</script>--%>
+
+<%--<script language="JavaScript">--%>
+<%--    function test() {--%>
+<%--        var str=a;--%>
+<%--        console.log("aaa"+str);--%>
+<%--    }--%>
+<%--</script>--%>
 
 
 
@@ -151,6 +171,10 @@
 <script src="../js/jquery-3.5.1/jquery-3.5.1.js"></script>
 
 <script>
+
+    // var str=a;
+    // console.log("aaa"+str);
+    <%--console.log("参数11：",${film});--%>
     layui.use(['rate'], function(){
 
         var rate = layui.rate;
