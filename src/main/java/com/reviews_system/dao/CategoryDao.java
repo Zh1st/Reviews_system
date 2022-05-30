@@ -2,6 +2,7 @@ package com.reviews_system.dao;
 
 import com.github.pagehelper.Page;
 import com.reviews_system.domain.Category;
+import com.reviews_system.domain.Film;
 import com.reviews_system.domain.User;
 
 
@@ -21,7 +22,7 @@ public interface CategoryDao {
 
     Page<Category> search(Category category);
 
-
+    List<Film> findFilm(int category_id);
     List<Category> selectByName(String category_name);
 
     int delByIds(int[]ids);
