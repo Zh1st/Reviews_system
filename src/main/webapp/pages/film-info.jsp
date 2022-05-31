@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 41388
@@ -20,16 +21,20 @@
 <div class="PfZong">
 
     <div class="Pftitle">
-        <p style="margin-left: 20px;">误杀瞒天记 Drishyam (2015) </p>
+        <p style="margin-left: 20px;">${film.film_name} </p>
     </div>
 
     <img src="../img/haibao.jpg" class="Pfimg" height="30%">
 
     <div class="pinfo">
         <p style="color: gray">导演：</p>
-        <p style="margin-left:50px;margin-top: -25px">xxxx</p>
+        <p style="margin-left:50px;margin-top: -25px">${film.film_name}</p>
         <p style="color: gray;margin-top: 10px;">类型：</p>
-        <p style="margin-left:50px;margin-top: -24px;">剧情</p>
+        <p style="margin-left:50px;margin-top: -24px;">
+                <c:forEach items="${film.categories}" var="category">
+                    ${category.category_name}&nbsp;
+                </c:forEach>
+        </p>
         <p style="margin-top: 12px;margin-left: 0px;">当前评分：</p>
     </div>
 
@@ -41,10 +46,8 @@
 
 
     <div class="pjieshao">
-        <p style="color: green;">误杀满天记</p>
-        <p style="color: green;margin-top: -23.5px;margin-left:81px;">的剧情介绍……</p>
-        <p>维杰（阿贾耶·德乌干 Ajay Devgan 饰）和妻子娜蒂尼（施芮娅·萨兰 Shreya 饰）结婚多年，将两个女儿安久（伊西塔·杜塔 Ishita Dutta 饰）和安努（莫伦诺·贾达夫 Mrunal Jadhav 饰）抚养长大，一家人过着宁静的生活，平淡之中自有真味 。某日，安久去参加野营，结识了名为萨姆（Rishabh Chaddha 饰）的男生，此时的她并不知道的是，这位看上去文质彬彬的男孩，会彻底粉碎她的生活。
-            　　撕下了伪善面具的萨姆竟然想要强暴安久，在激烈的挣扎反抗之中，安久失手杀死萨姆。维杰决定挺身而出保护他无辜的家人，自小热爱看电影的他利用从电影里学到的知识对萨姆的尸体进行了处理和掩埋，但警察的来访让这个家庭再一次陷入了危机之中。</p>
+        <p style="color: green;margin-top: -23.5px;margin-left:81px;">${film.film_name}的剧情介绍……</p>
+        <p>${film.brief_introduction}</p>
     </div>
 
     <!--当前评分-->
@@ -59,41 +62,23 @@
 <div class="row" style="margin-top: 30px;">
     <div class="col"></div>
     <div class="" style="background-color:#BBBBBB;padding: 20px;width: 700px;margin-left: 35px;">
-
-
-
-
         <ul class="comment-group" >
-
-
             <!--在这插入循环-->
-            <li >
-                <div class="user-info" >
-                    <img class="avatar" src="">
-                    <span class="username">这里是名字</span>
-                    <span class="create-time">这里是日期</span>
-                </div>
-                <p class="comment-content">这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容</p>
-            </li>
-            <li >
-                <div class="user-info" >
-                    <img class="avatar" src="">
-                    <span class="username">aaaaaa</span>
-                    <span class="create-time">12156-163-485</span>
-                </div>
-                <p class="comment-content">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
-            </li>
-            <li >
-                <div class="user-info" >
-                    <img class="avatar" src="">
-                    <span class="username">aaaaaa</span>
-                    <span class="create-time">12156-163-485</span>
-                </div>
-                <p class="comment-content">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
-            </li>
-
-
-
+            <c:forEach items="${commentlist}" var="comment">
+                <li>
+                    <div class="user-info" >
+                        <img class="avatar" src="">
+                        <c:if test="${comment.watch==1}">
+                            <span class="username" style="color: yellow;">${comment.user_id}</span>
+                        </c:if>
+                        <c:if test="${comment.watch!=1}">
+                            <span class="username" style="color: black;">${comment.user_id}</span>
+                        </c:if>
+                        <span class="create-time">${comment.comment_time}</span>
+                    </div>
+                    <p class="comment-content">${comment.comment_content}</p>
+                </li>
+            </c:forEach>
         </ul>
     </div>
     <div class="col"></div>
@@ -128,12 +113,12 @@
 <script>
     layui.use(['rate'], function(){
         var rate = layui.rate;
-
+        var score=${film.score}
         //自定义文本
         //只读
         rate.render({
             elem: '#test9'
-            ,value: 3.5
+            ,value: score
             ,readonly: true
             ,half:true
             ,text: true
