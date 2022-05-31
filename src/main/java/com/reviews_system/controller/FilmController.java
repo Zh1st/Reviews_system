@@ -1,10 +1,8 @@
 package com.reviews_system.controller;
 
-import com.reviews_system.domain.Category;
-import com.reviews_system.domain.Film;
-import com.reviews_system.domain.Film_category;
-import com.reviews_system.domain.User;
+import com.reviews_system.domain.*;
 import com.reviews_system.service.CategoryService;
+import com.reviews_system.service.CommentService;
 import com.reviews_system.service.FilmService;
 import entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,8 @@ public class FilmController {
     private FilmService filmService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private CommentService commentService;
 
     //    查询所有
     //    分页查询
@@ -117,6 +117,12 @@ public class FilmController {
         return "redirect:/film/list";
     }
 
+    @RequestMapping("/delById")
+    public String delById(int film_id){
+        int i=filmService.deleteById(film_id);
+        return "redirect:/film/list";
+    }
+
     @RequestMapping("/saveUI")
     public ModelAndView saveUI(){
         ModelAndView modelAndView=new ModelAndView();
@@ -164,6 +170,18 @@ public class FilmController {
         List<Category>categoryList=categoryService.list();
         modelAndView.addObject("categoryList",categoryList);
         modelAndView.setViewName("home");
+        return modelAndView;
+    }
+
+//    点击电影跳转详情页
+    @RequestMapping("/filmDetails")
+    public ModelAndView filmDetails(int film_id){
+        ModelAndView modelAndView=new ModelAndView();
+        Film film=filmService.selectById(film_id);
+        List<Comment>comments=commentService.selectByFilmId(film_id);
+        modelAndView.addObject("commentlist",comments);
+        modelAndView.addObject("film",film);
+        modelAndView.setViewName("film-info");
         return modelAndView;
     }
 }

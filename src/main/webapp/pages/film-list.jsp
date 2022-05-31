@@ -72,9 +72,10 @@
     <script src="/js/jquery-3.5.1/jquery-3.5.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript">
-        function delUser(userId){
+        function delUser(film_id){
+            console.log(film_id)
             if(confirm("您确认要删除吗")){
-                location.href="${pageContext.request.contextPath}/film/delById/"+userId;
+                location.href="${pageContext.request.contextPath}/film/delById/?film_id="+film_id;
             }
         }
         function findFilmById(id,method) {
@@ -222,7 +223,7 @@
                                         </button>
                                     </td>
                                     <td class="text-center">
-                                        <a onclick="delUser('${user.user_id}')" class="btn bg-olive btn-xs">删除</a>
+                                        <a onclick="delUser('${film.film_id}')" class="btn bg-olive btn-xs">删除</a>
                                     </td>
                                 </tr>
                             </c:forEach>

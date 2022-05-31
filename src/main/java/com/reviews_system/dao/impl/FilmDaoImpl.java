@@ -35,8 +35,13 @@ public class FilmDaoImpl implements FilmDao {
     }
 
     @Override
-    public int deleteById() {
-        return 0;
+    public int deleteById(int film_id) {
+        String sql="delete from film where film_id="+film_id;
+        int i=jdbcTemplate.update(sql);
+//        删除电影类型表中电影对应的数据
+        String sqlCatrgory="delete from film_category where film_id="+film_id;
+        int j=jdbcTemplate.update(sqlCatrgory);
+        return i;
     }
 
     @Override

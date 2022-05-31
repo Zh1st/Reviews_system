@@ -83,8 +83,9 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public int deleteById() {
-        return 0;
+    public int deleteById(int film_id) {
+        int i=filmDao.deleteById(film_id);
+        return i;
     }
 
     @Override
