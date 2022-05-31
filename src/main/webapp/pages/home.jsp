@@ -11,7 +11,6 @@
 <%@ page import="com.reviews_system.utils.*" %>
 <%@ page import="javafx.scene.control.Pagination" %>
 <html>
-
 <head>
     <title>影评</title>
     <meta charset="utf-8">
@@ -28,20 +27,20 @@
                 location.href="${pageContext.request.contextPath}/order/site?filmid="+filmid;
             // }
         }
+        function film_detail(film_id) {
+            console.log(film_id);
+            location.href="${pageContext.request.contextPath}/film/filmDetails?film_id="+film_id;
+        }
     </script>
 </head>
-
-<body >
-
+<body>
 <!-- 导航条 -->
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CDE4DA;height: 65px;">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color: #CDE4DA;">
-            <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: black;">主页</li></a>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: black;">主页</a></li>
         </ol>
     </nav>
-
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 670px;font-family:'幼圆'">
             <li class="nav-item active" >
@@ -63,7 +62,6 @@
         </form>
     </div>
 </nav>
-
 <!-- 横幅部分 -->
 <div class="banner_ad" style="margin-top: -10px;">
 </div>
@@ -86,19 +84,17 @@
                 <c:forEach items="${filmList}" var="film">
                     <li>
                         <div class="pic"><a href="#"><img src="../images/${film.picture}" alt="film">
-
                         </a>
                         </div>
-                        <div class="title"><a href="#">${film.film_name}</a></div>
+                        <div class="title" style="margin-left: 40px;"><a onclick="film_detail('${film.film_id}')" href="#">${film.film_name}</a></div>
 <%--                        <div id="test9" style="position: absolute;margin-left:20px;" ></div>${film.score}--%>
-
                          <div class="rating" style="height: 11px;margin-left:20px;">
                             <span style="margin-left: 60px;color: orange;">
                                 <p style="margin-left: 100px;margin-top: -60px;font-size:20px;position: absolute">${film.score}</p>
                             </span>
                         </div>
 
-                        <a onclick="tosite(${film.film_id})"  class="purcharse" style="margin-left:87px;top: 50px;">选座购票</a>
+                        <a onclick="tosite(${film.film_id})"  class="purcharse" href="#" style="margin-left:87px;top: 50px;">选座购票</a>
 
                     </li>
                 </c:forEach>
