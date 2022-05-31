@@ -17,6 +17,7 @@ public interface UserDao {
 
     void delById(int user_id);
 
+//    根据id查询
     User selectById(int user_id);
 
     int updateUser(User user);
@@ -40,6 +41,5 @@ public interface UserDao {
      * @return
      */
     public List<User> listByPage(Integer start,Integer end);
-
 
 }

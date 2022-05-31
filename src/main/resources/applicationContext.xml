@@ -35,6 +35,7 @@
     <!--    配置commentdao-->
     <bean id="commentDao" class="com.reviews_system.dao.impl.CommentDaoImpl">
         <property name="jdbcTemplate" ref="JdbcTemplate"></property>
+        <property name="userDao" ref="userDao"></property>
     </bean>
 <!--    配置orderdao-->
     <bean id="orderdao" class="com.reviews_system.dao.impl.OrderDaolmpl">

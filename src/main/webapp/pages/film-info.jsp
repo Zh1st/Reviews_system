@@ -66,13 +66,12 @@
             <!--在这插入循环-->
             <c:forEach items="${commentlist}" var="comment">
                 <li>
-                    <div class="user-info" >
-                        <img class="avatar" src="">
+                    <div class="user-info">
                         <c:if test="${comment.watch==1}">
-                            <span class="username" style="color: yellow;">${comment.user_id}</span>
+                            <span class="username" style="color: yellow;">${comment.user_name}</span>
                         </c:if>
                         <c:if test="${comment.watch!=1}">
-                            <span class="username" style="color: black;">${comment.user_id}</span>
+                            <span class="username" style="color: black;">${comment.user_name}</span>
                         </c:if>
                         <span class="create-time">${comment.comment_time}</span>
                     </div>

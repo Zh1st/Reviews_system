@@ -662,7 +662,18 @@ h1 a{
 }
 .film_center .title{
     margin-bottom: 5px;
+    width: 150px;
+    /* 强制不换行 */
+    white-space: nowrap;
+    /* 文字用省略号代替超出的部分 */
+    text-overflow: ellipsis;
+    /* 匀速溢出内容，隐藏 */
+    overflow: hidden;
 }
+.film_center .title a{
+    align-content: center;
+}
+
 .wrapper_right{
     position: absolute;
     left: 1200px;

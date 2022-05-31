@@ -67,7 +67,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User selectById(int user_id) {
         User user=jdbcTemplate.queryForObject("select * from user where user_id=?",new BeanPropertyRowMapper<User>(User.class),user_id);
-        user.toString();
         return user;
     }
 
@@ -115,6 +114,7 @@ public class UserDaoImpl implements UserDao {
         List<User> userList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<User>(User.class));
         return userList;
     }
+
 
 
 }

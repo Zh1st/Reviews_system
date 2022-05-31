@@ -2,6 +2,7 @@ package com.reviews_system.dao.impl;
 
 import com.github.pagehelper.Page;
 import com.reviews_system.dao.CommentDao;
+import com.reviews_system.dao.UserDao;
 import com.reviews_system.domain.Comment;
 import com.reviews_system.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -16,6 +17,12 @@ public class CommentDaoImpl implements CommentDao {
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    private UserDao userDao;
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
@@ -107,6 +114,10 @@ public class CommentDaoImpl implements CommentDao {
     public List<Comment> selectByFilmId(int film_id) {
         String sql="SELECT * FROM comment WHERE film_id="+film_id;
         List<Comment>comments=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Comment>(Comment.class));
+        for (Comment comment:comments) {
+            User user=userDao.selectById(comment.getUser_id());
+            comment.setUser_name(user.getUser_name());
+        }
         return comments;
     }
 }
