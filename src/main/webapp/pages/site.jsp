@@ -1,5 +1,7 @@
 <%@ page import="com.reviews_system.domain.Orders" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%--
   Created by IntelliJ IDEA.
   User: fyc
@@ -79,24 +81,14 @@
             <%
                 int c = x*10+y+1;
             %>
-
-        <c:choose>
-                <c:forEach items="${sites}" var="site">
-            <c:when test="<%=c%>==${site.site_id}">
-<%--                    <c:if test="<%=c%>">--%>
-<%--                        ${result}--%>
-                        <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_id" checked>
-<%--                    </c:if>--%>
-
-            </c:when>
-                </c:forEach>
-            <c:otherwise>
-                <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids">
-            </c:otherwise>
-        </c:choose>
-
-        <br>
-
+            <c:forEach items="${sites}" var="site">
+               <c:set value="<%=c%>" var="siteq"/>
+                <c:if test="${siteq==site.site_id}">
+                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids" checked disabled/>
+                </c:if>
+            </c:forEach>
+            <input type="checkbox" id="site_ids" class="site" value="<%=c%>" onclick="checkzuo()" name="site_ids"/>
+                 <br>
             <%=c%>
         </div>
         <%
@@ -109,6 +101,12 @@
     </center>
     <input type="submit" value="购买" style="width:200px;height:50px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
 </form>
+    <script>
+        function checkzuo() {
+                document.getElementsByName("site_ids").style.display="none";
 
+        }
+        window.onload=checkzuo;
+    </script>
 </body>
 </html>
