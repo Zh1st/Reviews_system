@@ -38,4 +38,9 @@ public interface CommentService {
      * @return
      */
     public List<Comment> listByPage(Integer start, Integer end);
+
+    /**
+     * 根据电影id查询对应的评论
+     */
+    public List<Comment> selectByFilmId(int film_id);
 }

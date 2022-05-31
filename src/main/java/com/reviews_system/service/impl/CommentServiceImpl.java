@@ -88,4 +88,12 @@ public class CommentServiceImpl implements CommentService {
         }
         return commentList;
     }
+
+    @Override
+    public List<Comment> selectByFilmId(int film_id) {
+        List<Comment>comments=commentDao.selectByFilmId(film_id);
+        return comments;
+    }
+
+
 }

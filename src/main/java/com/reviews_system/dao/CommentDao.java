@@ -39,5 +39,5 @@ public interface CommentDao {
     public List<Comment> listByPage(Integer start, Integer end);
 
     //查询user_id的姓名
-
+    public List<Comment> selectByFilmId(int film_id);
 }

@@ -102,4 +102,11 @@ public class CommentDaoImpl implements CommentDao {
         List<Comment> commentList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Comment>(Comment.class));
         return commentList;
     }
+
+    @Override
+    public List<Comment> selectByFilmId(int film_id) {
+        String sql="SELECT * FROM comment WHERE film_id="+film_id;
+        List<Comment>comments=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Comment>(Comment.class));
+        return comments;
+    }
 }
