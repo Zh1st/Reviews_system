@@ -1,3 +1,4 @@
+<%@ page import="com.reviews_system.domain.Orders" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -78,16 +79,22 @@
             <%
                 int c = x*10+y+1;
             %>
-<%--    <c:forEach items="${sites}" var="site">--%>
-<%--        ${site}--%>
-<%--    <c:forEach begin="0" end="${sites.size()-1}" var="i">--%>
-<%--                ${sites.charAt(i)}--%>
 
-<%--                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_id" checked>--%>
+        <c:choose>
+                <c:forEach items="${sites}" var="site">
+            <c:when test="<%=c%>==${site.site_id}">
+<%--                    <c:if test="<%=c%>">--%>
+<%--                        ${result}--%>
+                        <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_id" checked>
+<%--                    </c:if>--%>
 
-                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids">
+            </c:when>
+                </c:forEach>
+            <c:otherwise>
+                <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids">
+            </c:otherwise>
+        </c:choose>
 
-<%--    </c:forEach>--%>
         <br>
 
             <%=c%>
