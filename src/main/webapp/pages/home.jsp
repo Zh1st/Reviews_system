@@ -43,15 +43,15 @@
     </nav>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 670px;font-family:'幼圆'">
-            <li class="nav-item active" >
+            <li class="nav-item " >
                 <a class="nav-link" href="#"
                    style="margin-left: 20px;">主页</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="#"
                    style="margin-left: 20px;">分类</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
                    style="margin-left: 20px;">个人中心</a>
             </li>
