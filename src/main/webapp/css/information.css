@@ -56,13 +56,13 @@
 	width:700px;
 	height: 300px;
 	margin: 0 auto;
-	top:-1000px;
-	left:15px;
+	top:70px;
+	left:545px;
 	align-content: center;
 	display: none;
 	border: double 10px #B8B8B8;
 	background:#FFFFFF;
-	position: relative;
+	position: absolute;
 }
 
 .pltantop{
