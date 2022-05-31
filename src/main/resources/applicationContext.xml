@@ -63,6 +63,7 @@
     <!--    配置commentService-->
     <bean id="commentService" class="com.reviews_system.service.impl.CommentServiceImpl">
         <property name="commentDao" ref="commentDao"></property>
+        <property name="filmDao" ref="filmDao"></property>
     </bean>
     <!--    orderservice-->
     <bean id="orderService" class="com.reviews_system.service.impl.OrderServiceImpl">

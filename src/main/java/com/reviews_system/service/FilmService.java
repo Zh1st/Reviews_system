@@ -26,7 +26,7 @@ public interface FilmService {
 
     List<Film> findAll();
     Film selectById(int film_id);
-    int deleteById();
+    int deleteById(int film_id);
     List<Film> selectByName();
     int addFilm();
 

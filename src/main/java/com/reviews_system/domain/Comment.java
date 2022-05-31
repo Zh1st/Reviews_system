@@ -11,6 +11,7 @@ public class Comment {
     private int watch;
     private int film_id;
     private int user_id;
+    private String film_name;
 
     @Override
     public String toString() {
@@ -22,6 +23,14 @@ public class Comment {
                 ", film_id=" + film_id +
                 ", user_id=" + user_id +
                 '}';
+    }
+
+    public String getFilm_name() {
+        return film_name;
+    }
+
+    public void setFilm_name(String film_name) {
+        this.film_name = film_name;
     }
 
     public int getComment_id() {

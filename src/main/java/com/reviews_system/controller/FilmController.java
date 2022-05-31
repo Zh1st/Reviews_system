@@ -117,6 +117,12 @@ public class FilmController {
         return "redirect:/film/list";
     }
 
+    @RequestMapping("/delById")
+    public String delById(int film_id){
+        int i=filmService.deleteById(film_id);
+        return "redirect:/film/list";
+    }
+
     @RequestMapping("/saveUI")
     public ModelAndView saveUI(){
         ModelAndView modelAndView=new ModelAndView();

@@ -1,7 +1,9 @@
 package com.reviews_system.service.impl;
 
 import com.reviews_system.dao.CommentDao;
+import com.reviews_system.dao.FilmDao;
 import com.reviews_system.domain.Comment;
+import com.reviews_system.domain.Film;
 import com.reviews_system.domain.User;
 import com.reviews_system.service.CommentService;
 import entity.PageResult;
@@ -10,6 +12,11 @@ import java.util.List;
 
 public class CommentServiceImpl implements CommentService {
     private CommentDao commentDao;
+    private FilmDao filmDao;
+
+    public void setFilmDao(FilmDao filmDao) {
+        this.filmDao = filmDao;
+    }
 
     public void setCommentDao(CommentDao commentDao) {
         this.commentDao = commentDao;
@@ -75,6 +82,10 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> listByPage(Integer start, Integer end) {
         List<Comment>commentList=commentDao.listByPage(start,end);
+        for (Comment c:commentList) {
+            Film film=filmDao.selectById(c.getFilm_id());
+            c.setFilm_name(film.getFilm_name());
+        }
         return commentList;
     }
 }
