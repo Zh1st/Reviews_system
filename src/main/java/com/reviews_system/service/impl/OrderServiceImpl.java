@@ -29,4 +29,41 @@ public class OrderServiceImpl implements OrderService {
         List<Orders>ordersList=orderDao.selectOrder();
         return ordersList;
     }
+
+
+    @Override
+    public List<Orders> findAll() {
+        List<Orders> ordersList= orderDao.findAll();
+        return ordersList;
+    }
+
+    @Override
+    public void delById(int orders_id) {
+        orderDao.delById(orders_id);
+    }
+
+    @Override
+    public int delByIds(int[] ids) {
+        int i=orderDao.delByIds(ids);
+        return i;
+    }
+
+    @Override
+    public List<Orders> findByFilmId(int film_id) {
+        List<Orders>ordersList= getOrderDao().findByFilmId(film_id);
+        return ordersList;
+    }
+
+    @Override
+    public String findUserNameById(int user_id) {
+        String userName=orderDao.findUserNameById(user_id);
+        return userName;
+    }
+
+
+    @Override
+    public List<Orders> findOrderByName(String film_name) {
+        List<Orders> ordersList=orderDao.findOrderByName(film_name);
+        return ordersList;
+    }
 }

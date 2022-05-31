@@ -52,6 +52,10 @@
 							href="${pageContext.request.contextPath}/comment/list"> <i
 							class="fa fa-circle-o"></i> 评论管理
 					</a></li>
+					<li><a
+							href="${pageContext.request.contextPath}/order/list"> <i
+							class="fa fa-circle-o"></i> 订单管理
+					</a></li>
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-cube"></i>
 					<span>基础数据</span> <span class="pull-right-container"> <i
