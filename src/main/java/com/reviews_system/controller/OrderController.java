@@ -31,7 +31,7 @@ public class OrderController {
 public ModelAndView site(int filmid){
     ModelAndView modelAndView=new ModelAndView();
     modelAndView.addObject("filmid",filmid);
-//    System.out.println("电影id是"+filmid);
+//    System.out.println("获得电影id是"+filmid);
     List<Orders> sites=orderService.selectOrder(filmid);
     System.out.println("座位是"+sites);
     System.out.println(sites);

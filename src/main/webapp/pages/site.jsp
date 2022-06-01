@@ -114,14 +114,11 @@
             }
         %>
     </center>
+    <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:200px;height:50px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;left: 0px "/>
     <input type="submit" value="购买" style="width:200px;height:50px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
-    <button style="width:200px;height:50px;background-color:ghostwhite;border-color:#28ff86;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;left: 0px " onclick="fanhu()">返回</button>
 </form>
-    <script>
-        // function fanhu() {
-        //
-        //     window.history.back();
-        // }
-    </script>
+<script>
+
+</script>
 </body>
 </html>
