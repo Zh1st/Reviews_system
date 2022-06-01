@@ -112,7 +112,7 @@ public class CommentDaoImpl implements CommentDao {
 
     @Override
     public List<Comment> selectByFilmId(int film_id) {
-        String sql="SELECT * FROM comment WHERE film_id="+film_id;
+        String sql="SELECT * FROM comment WHERE film_id="+film_id+" ORDER BY comment_time DESC";
         List<Comment>comments=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Comment>(Comment.class));
         for (Comment comment:comments) {
             User user=userDao.selectById(comment.getUser_id());

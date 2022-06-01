@@ -81,11 +81,11 @@
 		
 		<!-- Sub-menu -->
 		<div id="sub-navigation" >
-			<c:forEach items="${categoryList}" var="category">
 			<ul style="margin-top: -30px">
-				<li><a onclick="category_id(${category.category_id})">${category.category_name}</a></li>
+				<c:forEach items="${categoryList}" var="category">
+					<li><a onclick="category_id(${category.category_id})">${category.category_name}</a></li>
+				</c:forEach>
 			</ul>
-			</c:forEach>
 		</div>
 		<!-- end Sub-Menu -->
 

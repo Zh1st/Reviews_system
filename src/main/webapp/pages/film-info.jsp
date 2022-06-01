@@ -28,7 +28,7 @@
     </nav>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 640px;font-family:'幼圆'">
+        <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 640px;font-family:'幼圆';">
             <li class="nav-item " >
                 <a class="nav-link" href="#"
                    style="margin-left: 20px;">主页</a>
@@ -61,13 +61,13 @@
         <p style="margin-left: 20px;">${film.film_name} </p>
     </div>
 
-    <img src="../img/haibao.jpg" class="Pfimg" height="30%">
+    <img src="../images/${film.picture}" class="Pfimg" style="width: 150px;height:200px;">
 
     <div class="pinfo">
         <p style="color: gray">导演：</p>
-        <p style="margin-left:50px;margin-top: -25px">${film.film_name}</p>
-        <p style="color: gray;margin-top: 10px;">类型：</p>
-        <p style="margin-left:50px;margin-top: -24px;">
+        <p style="margin-left:50px;margin-top: -22px">${film.film_name}</p>
+        <p style="color: gray;margin-top: 15px;">类型：</p>
+        <p style="margin-left:50px;margin-top: -22px;">
                 <c:forEach items="${film.categories}" var="category">
                     ${category.category_name}&nbsp;
                 </c:forEach>
@@ -80,17 +80,12 @@
         <div id="test5" style="margin-top: 290px;margin-left: 20px;"></div>
         <hr style="border: 5px solid red;"/>
     </div>
-
-
     <div class="pjieshao">
-        <p style="color: green;margin-top: -23.5px;margin-left:81px;">${film.film_name}的剧情介绍……</p>
-        <p>${film.brief_introduction}</p>
+        <p style="color: green;margin-top: -23.5px;margin-left:27px;">${film.film_name}的剧情介绍……</p>
+        <p style="margin-top: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${film.brief_introduction}</p>
     </div>
-
     <!--当前评分-->
-    <div id="test9" style="position: absolute;margin-left: 160px;margin-top: -170px;"></div>
-
-
+    <div id="test9" style="position: absolute;margin-left: 200px;margin-top: -180px;"></div>
 </div>
 
 
@@ -132,16 +127,14 @@
         <p style="margin-left: 22px;margin-top: 10px; font-family:'思源黑体 CN Light';font-size: 16px">给个评价吧：</p>
         <div id="test6" style="margin-left: 20px;"></div>
         <from style="margin-left: 50px;margin-top: 5px;">
-            <label><input type="radio" name="ornot">看过</label>
-            <label><input type="radio" name="ornot">没看过</label>
+            <label><input type="radio" name="watch" value="1">看过</label>
+            <label><input type="radio" name="watch" value="0">没看过</label>
         </from>
         <hr style="border: 5px solid red;"/>
         <p style="margin-left: 22px;font-family: '黑体';color: gray">简短评论:</p>
         <textarea rows="4" cols="72" placeholder="点此评论" class="pltank"></textarea>
-
         <div class="pltanbot">
             <button  type="submit" class="btn btn-outline-secondary btn-sm" style="float:right;margin-top: 2px;margin-right:5px;">确认</button>
-            <button type="reset" onclick="addComment()">ff</button>
         </div>
     </form>
 </div>
@@ -214,10 +207,7 @@
             }
         });
     });
-    function addComment() {
-        $("#startscores").attr("value",scorestart);
-        console.log(scorestart);
-    }
+
 </script>
 
 </body>
