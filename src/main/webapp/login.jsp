@@ -57,7 +57,7 @@
 		<!-- /.login-logo -->
 		<div class="login-box-body">
             <video id="v1" autoplay loop muted>
-                <source src="https://www.w3school.com.cn/example/html5/mov_bbb.ogg" type="video/ogg"  />
+                <source src="http://highlight-video.cdn.bcebos.com//video//6s//419c4ebe-9172-11ec-9e54-6c92bf3a2c78.mp4" type="video/ogg"  />
             </video>
 			<p class="login-box-msg">登录系统</p>
 			<form action="${pageContext.request.contextPath}/admin/login"

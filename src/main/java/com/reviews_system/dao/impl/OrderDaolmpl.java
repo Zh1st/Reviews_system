@@ -36,12 +36,13 @@ public class OrderDaolmpl implements OrderDao {
     }
 
     @Override
-    public List<Orders> selectOrder() {
+    public List<Orders> selectOrder(int film_id) {
         SimpleDateFormat   formatter   =   new   SimpleDateFormat   ("yyyy-MM-dd");
         Date   curDate   =   new   Date(System.currentTimeMillis());//获取当前时间
         String   nowtime   =   formatter.format(curDate);
         nowtime = "'"+nowtime+"'";
-        String sql = "select * from orders where time="+nowtime;
+        System.out.println(nowtime);
+        String sql = "select * from orders where time="+nowtime+" and film_id ="+ film_id;
         List<Orders>ordersList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Orders>(Orders.class));
         return ordersList;
     }

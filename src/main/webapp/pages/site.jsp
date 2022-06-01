@@ -1,4 +1,5 @@
 <%@ page import="com.reviews_system.domain.Orders" %>
+<%@ page import="com.sun.org.apache.xpath.internal.operations.Bool" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -80,14 +81,28 @@
         <div style="display: inline-block">
             <%
                 int c = x*10+y+1;
+                String flag = "check";
+                String flag1 = "checked";
+                String disable = "d";
             %>
-            <c:forEach items="${sites}" var="site">
+<%--            做判断是否是已选中座位，是的话flag= checked不是的话flag= check--%>
+            <c:set var="isDoing" value="0"/>
+            <c:forEach items="${sites}" var="site" varStatus="i">
                <c:set value="<%=c%>" var="siteq"/>
                 <c:if test="${siteq==site.site_id}">
-                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids" checked disabled/>
+                <%
+                    flag = "checked";
+                    disable = "disabled";
+                %>
+<%--                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids" checked disabled/>--%>
+                </c:if>
+                <c:set var="flag" value="<%=flag%>"/>
+                <c:set var="disable" value="<%=disable%>"/>
+                <c:if test="${flag==flag1}">
+                    <c:set var="isDoing" value="1"/>
                 </c:if>
             </c:forEach>
-            <input type="checkbox" id="site_ids" class="site" value="<%=c%>" onclick="checkzuo()" name="site_ids"/>
+            <input type="checkbox" id="site_ids" class="site" value="<%=c%>"  name="site_ids" ${flag}  ${disable}/>
                  <br>
             <%=c%>
         </div>
@@ -100,13 +115,13 @@
         %>
     </center>
     <input type="submit" value="购买" style="width:200px;height:50px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
+    <button style="width:200px;height:50px;background-color:ghostwhite;border-color:#28ff86;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;left: 0px " onclick="fanhu()">返回</button>
 </form>
     <script>
-        function checkzuo() {
-                document.getElementsByName("site_ids").style.display="none";
-
-        }
-        window.onload=checkzuo;
+        // function fanhu() {
+        //
+        //     window.history.back();
+        // }
     </script>
 </body>
 </html>

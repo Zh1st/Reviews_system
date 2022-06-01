@@ -58,6 +58,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> selectByName(String commenr_content) {
         List<Comment>commentList=commentDao.selectByName(commenr_content);
+
         return commentList;
     }
 

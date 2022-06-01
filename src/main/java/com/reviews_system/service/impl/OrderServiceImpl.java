@@ -25,8 +25,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Orders> selectOrder() {
-        List<Orders>ordersList=orderDao.selectOrder();
+    public List<Orders> selectOrder(int film_id) {
+        List<Orders>ordersList=orderDao.selectOrder(film_id);
         return ordersList;
     }
 
