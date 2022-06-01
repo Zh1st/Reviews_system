@@ -11,6 +11,7 @@ public class Comment {
     private int watch;
     private int film_id;
     private int user_id;
+    private float film_score;
     private String film_name;
     private String user_name;
 
@@ -18,11 +19,12 @@ public class Comment {
     public String toString() {
         return "Comment{" +
                 "comment_id=" + comment_id +
-                ", comment_time=" + comment_time +
+                ", comment_time='" + comment_time + '\'' +
                 ", comment_content='" + comment_content + '\'' +
                 ", watch=" + watch +
                 ", film_id=" + film_id +
                 ", user_id=" + user_id +
+                ", film_score=" + film_score +
                 '}';
     }
 
@@ -90,7 +92,15 @@ public class Comment {
         this.user_id = user_id;
     }
 
-//    public static void main(String[] args) throws ParseException {
+    public float getFilm_score() {
+        return film_score;
+    }
+
+    public void setFilm_score(float film_score) {
+        this.film_score = film_score;
+    }
+
+    //    public static void main(String[] args) throws ParseException {
 //        Date date=new Date();
 //        System.out.println(date);
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

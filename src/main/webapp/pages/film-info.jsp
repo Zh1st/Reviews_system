@@ -91,7 +91,7 @@
         <a href="" class="btn-close" >×</a>
     </div>
     <form>
-        <input id="startscore" name="startscore">
+        <input hidden id="startscores" name="startscores">
         <p style="margin-left: 22px;margin-top: 10px; font-family:'思源黑体 CN Light';font-size: 16px">给个评价吧：</p>
         <div id="test6" style="margin-left: 20px;"></div>
         <hr style="border: 5px solid red;"/>
@@ -168,17 +168,13 @@
                if (value>0)
                {
                    scorestart=value;
-                   alert(scorestart);
+                   $("#startscores").attr("value",scorestart);
                }
             }
         });
-        console.log('11');
-        console.log(scorestart)
     });
     function addComment() {
-        var x=document.getElementsByClassName("startscore");
-        x.value(scorestart);
-        console.log(x)
+        $("#startscores").attr("value",scorestart);
         console.log(scorestart);
     }
 </script>
