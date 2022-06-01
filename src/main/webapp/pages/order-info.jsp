@@ -53,9 +53,13 @@
 
 <div class="row" style="margin-top: 30px;">
     <div class="col"></div>
+    <div class="jianju">订单id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电影名
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间</div>
     <div class="beijing">
         <ul class="comment-group">
-            <!--在这插入循环-->
 
                         <c:forEach begin="0" end="${ordersList.size()-1}" var="i">
                         <li>
