@@ -91,6 +91,7 @@
         <a href="" class="btn-close" >×</a>
     </div>
     <form>
+        <input id="startscore" name="startscore">
         <p style="margin-left: 22px;margin-top: 10px; font-family:'思源黑体 CN Light';font-size: 16px">给个评价吧：</p>
         <div id="test6" style="margin-left: 20px;"></div>
         <hr style="border: 5px solid red;"/>
@@ -98,11 +99,10 @@
         <textarea rows="4" cols="72" placeholder="点此评论" class="pltank"></textarea>
 
         <div class="pltanbot">
-            <button type="submit" class="btn btn-outline-secondary btn-sm" style="float:right;margin-top: 2px;margin-right:5px;">确认</button>
+            <button  type="submit" class="btn btn-outline-secondary btn-sm" style="float:right;margin-top: 2px;margin-right:5px;">确认</button>
+            <button type="reset" onclick="addComment()">ff</button>
         </div>
     </form>
-
-
 </div>
 
 
@@ -110,6 +110,7 @@
 <script src="../js/jquery-3.5.1/jquery-3.5.1.js"></script>
 
 <script>
+    var scorestart;
     layui.use(['rate'], function(){
         var rate = layui.rate;
         var score=${film.score}
@@ -147,12 +148,8 @@
                     }else{
                     }
                 });
-
-
-
             }
-        })
-
+        });
         rate.render({
             elem: '#test6'
             ,value: 3
@@ -167,10 +164,23 @@
                     ,'5': '极好'
                 };
                 this.span.text(arrs[value] || ( value + "星"));
+            },choose:function (value) {
+               if (value>0)
+               {
+                   scorestart=value;
+                   alert(scorestart);
+               }
             }
-        })
-
+        });
+        console.log('11');
+        console.log(scorestart)
     });
+    function addComment() {
+        var x=document.getElementsByClassName("startscore");
+        x.value(scorestart);
+        console.log(x)
+        console.log(scorestart);
+    }
 </script>
 
 </body>
