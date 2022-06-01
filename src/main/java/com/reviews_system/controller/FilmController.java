@@ -161,12 +161,44 @@ public class FilmController {
         }
         return newFileName;
     }
-
+    static int film_count=0;
     @RequestMapping("/weblist")
-    public ModelAndView weblist(){
+    public ModelAndView weblist(String methods){
+        if(methods==null)
+        {
+            methods="one";
+        }
+        int size=8;
+        int total=filmService.selectFilmCount();
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size;
+            page++;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&film_count<page)
+        {
+            film_count++;
+        }
+        else if(methods.equals("up")&&film_count!=0)
+        {
+            film_count--;
+        }
+        else
+        {
+            film_count=0;
+        }
+        int start=size*film_count;
         ModelAndView modelAndView=new ModelAndView();
-        List<Film>filmList=filmService.findAll();
+//        List<Film>filmList=filmService.findAll();
+        List<Film>filmList=filmService.listByPage(start,size);
         modelAndView.addObject("filmList",filmList);
+        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagetotal",page);
         List<Category>categoryList=categoryService.list();
         modelAndView.addObject("categoryList",categoryList);
         modelAndView.setViewName("home");

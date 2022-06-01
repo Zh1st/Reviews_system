@@ -31,6 +31,14 @@
             console.log(film_id);
             location.href="${pageContext.request.contextPath}/film/filmDetails?film_id="+film_id;
         }
+        function nextpage() {
+            var str="next";
+            location.href="${pageContext.request.contextPath}/film/weblist?methods="+str;
+        };
+        function uppage() {
+            var str="up";
+            location.href="${pageContext.request.contextPath}/film/weblist?methods="+str;
+        };
     </script>
 </head>
 <body>
@@ -99,6 +107,11 @@
                     </li>
                 </c:forEach>
             </ul>
+            <div align="center">
+                <button class="layui-btn" onclick="uppage()">上一页</button>
+                当前第${pagenum}页，总共${pagetotal}页
+                <button class="layui-btn" onclick="nextpage()">下一页</button>
+            </div>
         </div>
 
     </div>
