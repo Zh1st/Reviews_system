@@ -13,6 +13,7 @@
 	<link href="../css/bootstrap@4.6.min.css" rel="stylesheet"  >
 	<link rel="stylesheet" href="../css/style1.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="../css/ie6.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="../css/style2.css" type="text/css" media="all" />
 
 
 
@@ -37,26 +38,33 @@
 	<script type="text/javascript" src="../js/jquery-func.js"></script>
 </head>
 <body>
+<!-- 导航条 -->
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CDE4DA;height: 65px;">
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb" style="background-color: #CDE4DA;">
-			<li class="breadcrumb-item active" ><a href="#" style="color: gray;">主页</li></a>
-			<li class="breadcrumb-item"><a href="#" style="color: black;">电影分类</a></li>
+			<li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: gray;">主页</a></li>
+			<li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: black;">电影分类</a></li>
+
+		</ol>
 		</ol>
 	</nav>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 620px;font-family:'幼圆'">
-			<li class="nav-item active" >
+		<ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 640px;font-family:'幼圆'">
+			<li class="nav-item " >
 				<a class="nav-link" href="#"
 				   style="margin-left: 20px;">主页</a>
 			</li>
-			<li class="nav-item active">
+			<li class="nav-item ">
 				<a class="nav-link" href="#"
 				   style="margin-left: 20px;">分类</a>
 			</li>
-			<li class="nav-item active">
+			<li class="nav-item ">
 				<a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
 				   style="margin-left: 20px;">个人中心</a>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+				   style="margin-left: 20px;">订单中心</a>
 			</li>
 		</ul>
 		<form class="form-inline my-2 my-lg-0">

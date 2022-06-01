@@ -41,6 +41,10 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
                    style="margin-left: 20px;">个人中心</a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+                   style="margin-left: 20px;">订单中心</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="点此搜索" aria-label="Search">

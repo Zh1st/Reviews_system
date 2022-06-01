@@ -13,10 +13,47 @@
     <title>示例演示</title>
 
     <link href="../css/bootstrap@4.6.min.css" rel="stylesheet">
+    <link href="../css/style2.css" rel="stylesheet" type="text/css">
     <link href="../layui/css/layui.css" rel="stylesheet">
     <link href="../css/information.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CDE4DA;height: 65px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #CDE4DA;">
+            <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: gray;">主页</a></li>
+            <li class="breadcrumb-item">${film.film_name} <a href="#" style="color: black;">
+            </a></li>
+        </ol>
+    </nav>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 640px;font-family:'幼圆'">
+            <li class="nav-item " >
+                <a class="nav-link" href="#"
+                   style="margin-left: 20px;">主页</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#"
+                   style="margin-left: 20px;">分类</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+                   style="margin-left: 20px;">个人中心</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+                   style="margin-left: 20px;">订单中心</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="点此搜索" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+        </form>
+    </div>
+</nav>
+
+
 
 <div class="PfZong">
 
@@ -61,17 +98,17 @@
 <!--	评论-->
 <div class="row" style="margin-top: 30px;">
     <div class="col"></div>
-    <div class="" style="background-color:#BBBBBB;padding: 20px;width: 700px;margin-left: 35px;">
+    <div class="beijing" >
         <ul class="comment-group" >
             <!--在这插入循环-->
             <c:forEach items="${commentlist}" var="comment">
                 <li>
                     <div class="user-info">
                         <c:if test="${comment.watch==1}">
-                            <span class="username" style="color: yellow;">${comment.user_name}</span>
+                            <span class="username" style="color: black;">${comment.user_name}</span>
                         </c:if>
                         <c:if test="${comment.watch!=1}">
-                            <span class="username" style="color: black;">${comment.user_name}</span>
+                            <span class="username" style="color: gray;">${comment.user_name}</span>
                         </c:if>
                         <span class="create-time">${comment.comment_time}</span>
                     </div>
@@ -94,6 +131,10 @@
         <input hidden id="startscores" name="startscores">
         <p style="margin-left: 22px;margin-top: 10px; font-family:'思源黑体 CN Light';font-size: 16px">给个评价吧：</p>
         <div id="test6" style="margin-left: 20px;"></div>
+        <from style="margin-left: 50px;margin-top: 5px;">
+            <label><input type="radio" name="ornot">看过</label>
+            <label><input type="radio" name="ornot">没看过</label>
+        </from>
         <hr style="border: 5px solid red;"/>
         <p style="margin-left: 22px;font-family: '黑体';color: gray">简短评论:</p>
         <textarea rows="4" cols="72" placeholder="点此评论" class="pltank"></textarea>

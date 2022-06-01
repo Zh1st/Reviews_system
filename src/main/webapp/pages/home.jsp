@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../css/bootstrap@4.6.min.css" >
     <link href="../layui/css/layui.css" rel="stylesheet">
     <link href="../css/information.css" rel="stylesheet" type="text/css">
+    <link href="../css/style2.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         function testcategory(id) {
             console.log(id);
@@ -62,6 +63,10 @@
             <li class="nav-item ">
                 <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
                    style="margin-left: 20px;">个人中心</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="../pages/order-info.jsp"
+                   style="margin-left: 20px;">订单界面</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
