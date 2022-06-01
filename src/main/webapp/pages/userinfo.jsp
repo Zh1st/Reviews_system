@@ -11,6 +11,9 @@
 <head>
     <title>个人中心</title>
     <link rel="stylesheet" href="../css/bootstrap@4.6.min.css" >
+    <link rel="stylesheet" href="../css/style2.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../css/userinfo.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../css/information.css" rel="stylesheet" type="text/css">
     <style>
     </style>
 </head>
@@ -20,11 +23,10 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color: #CDE4DA;">
             <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: gray;">主页</li></a>
-            <li class="breadcrumb-item"><a href="#" style="color: black;">个人中心</a></li>
+            <li class="breadcrumb-item"><a href="#" style="color: black;">
+                <c:out value="${user.user_name}" default="<string>" escapeXml="<true|false>"/>的个人中心</a></li>
         </ol>
     </nav>
-
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 620px;font-family:'幼圆'">
             <li class="nav-item active" >
@@ -47,33 +49,45 @@
     </div>
 </nav>
 
-<div>
-    <div >
-        id:
-        <c:out value="${user.user_id}" default="<string>" escapeXml="<true|false>"/><br/>
-        名字：
+
+<div class="zong">
+    <div class="name" >欢迎您：</div>
+    <img src="../images/xiaolian.png" class="nametu"  height="16%">
+    <div class="name1">
         <c:out value="${user.user_name}" default="<string>" escapeXml="<true|false>"/><br/>
-        密码：
-        <c:out value="${user.user_password}" default="<string>" escapeXml="<true|false>"/><br/>
-        电话：
-        <c:out value="${user.user_phone}" default="<string>" escapeXml="<true|false>"/><br/>
-        邮箱：
-        <c:out value="${user.user_email}" default="<string>" escapeXml="<true|false>"/><br/>
     </div>
-    <div>
-        <c:forEach begin="0" end="${commentList.size()-1}" var="i">
-            电影：${commentList[i].comment_content}<br/>
-            评论：${filmList[i]}<br/>
-        </c:forEach>
-        <br/>
-<%--        <c:forEach items="${commentList}" var="comment">--%>
-<%--            <td>${comment.comment_content}</td><br/>--%>
-<%--            <td>${comment.comment_content}</td><br/>--%>
-<%--        </c:forEach>--%>
+    <div class="dianhua">电话：<br/></div>
+    <img src="../images/dianhua.png" class="dianhuatu"  height="12%">
+    <div class="dianhua1">
+        <c:out value="${user.user_phone}" default="<string>" escapeXml="<true|false>"/></div>
+    <div class="youxiang" >绑定邮箱：<br/></div>
+    <img src="../images/youjian.png" class="youxiangtu"  height="12%">
+    <div class="youxiang1">
+        <c:out value="${user.user_email}" default="<string>" escapeXml="<true|false>"/>
     </div>
+<%--    <img class="tu" src="{{ url_for('static',filename='images/cool-background.png')}}"></a>--%>
 </div>
 
 
+<div class="row" style="margin-top: 30px;">
+    <div class="col"></div>
+    <div class="beijing" >
+        <ul class="comment-group" >
+
+
+            <!--			在这插入循环-->
+            <c:forEach begin="0" end="${commentList.size()-1}" var="i">
+            <li >
+                <div class="user-info" >
+                    <span class="username">${filmList[i]}</span>
+                </div>
+                <p class="comment-content">${commentList[i].comment_content}</p>
+            </li>
+            </c:forEach>
+        </ul>
+    </div>
+    <div class="col"></div>
+</div>
 
 </body>
 </html>

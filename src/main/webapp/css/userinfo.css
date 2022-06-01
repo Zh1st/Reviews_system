@@ -1,0 +1,108 @@
+
+.zong{
+    width: 600px;
+    height: 360px;
+    /*margin-left: 200px;*/
+    top: 50px;
+    font-family:'幼圆';
+    border-style:double;
+    border-width: 5px;
+    border-radius:50%;
+    /*background-color: #0b2e13;*/
+    position: relative;
+    margin:auto;
+}
+
+.tu{
+    width: 1000px;
+    left:-140px;
+    position: absolute;
+    z-index: -1;
+}
+
+
+.name{
+    top: 20px;
+    /*right: 110px;*/
+    font-size: 38px;
+    color: red;
+    text-align: center;
+    position: relative;
+}
+
+.nametu{
+    bottom: 32px;
+    left: 160px;
+    position: relative;
+    /*background: url('../images/xiaolian.png');*/
+}
+
+.name1{
+    bottom: 20px;
+    font-size: 30px;
+    color: gray;
+    text-align: center;
+    position: relative;
+}
+
+.dianhua{
+    top: 0px;
+    font-size: 20px;
+    color:darkgreen;
+    text-align: center;
+    position: relative;
+}
+
+.dianhuatu{
+    bottom: 36px;
+    left: 200px;
+    position: relative;
+}
+
+
+.dianhua1{
+    bottom: 25px;
+    font-size: 20px;
+    color:darksalmon;
+    text-align: center;
+    position: relative;
+}
+
+.youxiang{
+    top: 0px;
+    font-size: 20px;
+    color:darkgreen;
+    text-align: center;
+    position: relative;
+}
+
+.youxiangtu{
+    bottom: 36px;
+    left: 200px;
+    position: relative;
+}
+
+.youxiang1{
+    bottom: 25px;
+    font-size: 20px;
+    color:darksalmon;
+    text-align: center;
+    position: relative;
+}
+
+.kuozhan{
+    top: 125px;
+    left: 330px;
+    float: left;
+    font-size: 20px;
+    color:darksalmon;
+    position: relative;
+}
+
+.neiro{
+    top:550px;
+    left: 600px;
+    font-size: 20px;
+    position: absolute;
+}
+
