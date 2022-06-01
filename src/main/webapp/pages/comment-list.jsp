@@ -91,6 +91,7 @@
                     $("#watch").val(response.data.watch);
                     $("#film_id").val(response.data.film_id);
                     $("#user_id").val(response.data.user_id);
+                    $("#film_score").val(response.data.film_score);
                 })
             }
         }

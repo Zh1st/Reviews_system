@@ -61,7 +61,7 @@ public class CommentDaoImpl implements CommentDao {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd   HH:mm:ss");
         Date curDate = new Date(System.currentTimeMillis());//获取当前时间
         String time = formatter.format(curDate);
-        int i=jdbcTemplate.update("update comment set comment_time=?,comment_content=?,watch=?,film_id=?,user_id=?,film_score where comment_id=?",time,comment.getComment_content(),comment.getWatch(),comment.getFilm_id(),comment.getUser_id(),comment.getFilm_score(),comment.getComment_id());
+        int i=jdbcTemplate.update("update comment set comment_time=?,comment_content=?,watch=?,film_id=?,user_id=?,film_score=? where comment_id=?",time,comment.getComment_content(),comment.getWatch(),comment.getFilm_id(),comment.getUser_id(),comment.getFilm_score(),comment.getComment_id());
         return i;
     }
 
