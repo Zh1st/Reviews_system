@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -122,6 +123,24 @@ public ModelAndView site(int filmid){
         modelAndView.addObject("filmList", filmList);
         modelAndView.addObject("userList", userList);
         modelAndView.setViewName("orders-list");
+        return modelAndView;
+    }
+
+    @RequestMapping("/findOrderByUserId")
+    public ModelAndView findOrderByUserId(HttpSession httpSession){
+        String id=(String) httpSession.getAttribute("userid");
+        int userid=Integer.parseInt(id);
+        ModelAndView modelAndView = new ModelAndView();
+        List<Orders> ordersList=orderService.findOrderByUserId(userid);
+        List<String> filmList = new ArrayList<String>();
+        for (Orders o:ordersList
+        ) {
+            String filmName=userInfoService.findFilmNameById(o.getFilm_id());
+            filmList.add(filmName);
+        }
+        modelAndView.addObject("ordersList", ordersList);
+        modelAndView.addObject("filmList", filmList);
+        modelAndView.setViewName("order-info");
         return modelAndView;
     }
 

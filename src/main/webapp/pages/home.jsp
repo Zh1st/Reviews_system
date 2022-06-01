@@ -65,7 +65,7 @@
                    style="margin-left: 20px;">个人中心</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="../pages/order-info.jsp"
+                <a class="nav-link" href="${pageContext.request.contextPath}/order/findOrderByUserId"
                    style="margin-left: 20px;">订单界面</a>
             </li>
         </ul>

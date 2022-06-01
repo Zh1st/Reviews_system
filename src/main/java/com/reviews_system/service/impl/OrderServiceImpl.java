@@ -67,4 +67,10 @@ public class OrderServiceImpl implements OrderService {
         List<Orders> ordersList=orderDao.findOrderByName(film_name);
         return ordersList;
     }
+
+    @Override
+    public List<Orders> findOrderByUserId(int user_id) {
+        List<Orders> ordersList=orderDao.findOrderByUserId(user_id);
+        return ordersList;
+    }
 }

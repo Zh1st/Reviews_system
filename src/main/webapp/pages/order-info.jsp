@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>订单详情</title>
@@ -25,7 +26,7 @@
     </nav>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 640px;font-family:'幼圆'">
-            <li class="nav-item " >
+            <li class="nav-item ">
                 <a class="nav-link" href="#"
                    style="margin-left: 20px;">主页</a>
             </li>
@@ -38,7 +39,7 @@
                    style="margin-left: 20px;">个人中心</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+                <a class="nav-link" href="${pageContext.request.contextPath}/order/findOrderByUserId"
                    style="margin-left: 20px;">订单中心</a>
             </li>
         </ul>
@@ -50,40 +51,24 @@
 </nav>
 
 
-
-
-
-
 <div class="row" style="margin-top: 30px;">
     <div class="col"></div>
-    <div class="beijing" >
-        <ul class="comment-group" >
+    <div class="beijing">
+        <ul class="comment-group">
             <!--在这插入循环-->
-            <li>
-                <div class="user-info">
-                    <span class="avatar">订单号</span>
-                    <span class="username" >这里是电影名</span>
-                    <span class="create-time">这里是时间</span>
-                </div>
-                <p class="comment-content">这里是座位号</p>
-            </li>
-            <li>
-                <div class="user-info">
-                    <span class="avatar">订单号</span>
-                    <span class="username" >这里是电影名</span>
-                    <span class="create-time">这里是时间</span>
-                </div>
-                <p class="comment-content">>这里是座位号</p>
-            </li>
-            <li>
-                <div class="user-info">
 
-                    <span class="avatar">订单号</span>
-                    <span class="username" >这里是电影名</span>
-                    <span class="create-time">这里是时间</span>
-                </div>
-                <p class="comment-content">>这里是座位号</p>
-            </li>
+                        <c:forEach begin="0" end="${ordersList.size()-1}" var="i">
+                        <li>
+                            <div class="user-info">
+                                <span class="avatar">${ordersList[i].order_id}</span>
+                                <span class="username">${filmList[i]}</span>
+                                <span class="create-time">${ordersList[i].time}</span>
+                            </div>
+                            <p class="comment-content">${ordersList[i].site_id}</p>
+
+                        </li>
+                        </c:forEach>
+
         </ul>
     </div>
     <div class="col"></div>

@@ -92,4 +92,11 @@ public class OrderDaolmpl implements OrderDao {
         List<Orders> ordersList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Orders>(Orders.class));
         return ordersList;
     }
+
+    @Override
+    public List<Orders> findOrderByUserId(int user_id) {
+        String sql="select * from orders where user_id=?";
+        List<Orders> ordersList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Orders>(Orders.class),user_id);
+        return ordersList;
+    }
 }
