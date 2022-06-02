@@ -37,14 +37,14 @@
             width:50px;
             height:50px;
             list-style-type: none;
-            margin: 30px;
+            margin: 5px;
 
         }
         .dapi{
             width:300px;
             height:100px;
             background: #00acd6;
-            margin-bottom: 100px;
+            margin-bottom: 70px;
         }
         .left{
             width:100px;
@@ -58,65 +58,72 @@
             float: right;
             background: #0f74a8;
         }
+        .centent{
+            width:50%;
+            height: 50%;
+            margin-left: 70px;
+        }
     </style>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/order/save" method="get">
-<%--    ${sites}--%>
-    <input type="hidden" value="${filmid}" name="film_id"/>
-    <input type="hidden"  name="time"/>
-    <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
-    <center>
-        <div class="left">大门</div>
-        <div class="right">大门</div>
-        <div class="dapi">电影大屏幕</div>
-        <%
-            for (int x = 0; x < 10; x++){
-        %>
-<%--        显示第几列--%>
-<%--        <%=x%>--%>
-        <%
-            for (int y = 0; y < 10; y++){
-        %>
-        <div style="display: inline-block">
+<div class="centent">
+    <form action="${pageContext.request.contextPath}/order/save" method="get">
+        <%--    ${sites}--%>
+        <input type="hidden" value="${filmid}" name="film_id"/>
+        <input type="hidden"  name="time"/>
+        <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
+        <center>
+            <div class="left">大门</div>
+            <div class="right">大门</div>
+            <div class="dapi">电影大屏幕</div>
             <%
-                int c = x*10+y+1;
-                String flag = "check";
-                String flag1 = "checked";
-                String disable = "d";
+                for (int x = 0; x < 6; x++){
             %>
-<%--            做判断是否是已选中座位，是的话flag= checked不是的话flag= check--%>
-            <c:set var="isDoing" value="0"/>
-            <c:forEach items="${sites}" var="site" varStatus="i">
-               <c:set value="<%=c%>" var="siteq"/>
-                <c:if test="${siteq==site.site_id}">
+            <%--        显示第几列--%>
+            <%--        <%=x%>--%>
+            <%
+                for (int y = 0; y < 10; y++){
+            %>
+            <div style="display: inline-block">
                 <%
-                    flag = "checked";
-                    disable = "disabled";
+                    int c = x*10+y+1;
+                    String flag = "check";
+                    String flag1 = "checked";
+                    String disable = "d";
                 %>
-<%--                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids" checked disabled/>--%>
-                </c:if>
-                <c:set var="flag" value="<%=flag%>"/>
-                <c:set var="disable" value="<%=disable%>"/>
-                <c:if test="${flag==flag1}">
-                    <c:set var="isDoing" value="1"/>
-                </c:if>
-            </c:forEach>
-            <input type="checkbox" id="site_ids" class="site" value="<%=c%>"  name="site_ids" ${flag}  ${disable}/>
-                 <br>
-            <%=c%>
-        </div>
-        <%
-            }
-        %>
-        <br/>
-        <%
-            }
-        %>
-    </center>
-    <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:200px;height:50px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;left: 0px "/>
-    <input type="submit" value="购买" style="width:200px;height:50px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:fixed;bottom: 0px;right: 0px "/>
-</form>
+                <%--            做判断是否是已选中座位，是的话flag= checked不是的话flag= check--%>
+                <c:set var="isDoing" value="0"/>
+                <c:forEach items="${sites}" var="site" varStatus="i">
+                    <c:set value="<%=c%>" var="siteq"/>
+                    <c:if test="${siteq==site.site_id}">
+                        <%
+                            flag = "checked";
+                            disable = "disabled";
+                        %>
+                        <%--                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids" checked disabled/>--%>
+                    </c:if>
+                    <c:set var="flag" value="<%=flag%>"/>
+                    <c:set var="disable" value="<%=disable%>"/>
+                    <c:if test="${flag==flag1}">
+                        <c:set var="isDoing" value="1"/>
+                    </c:if>
+                </c:forEach>
+                <input type="checkbox" id="site_ids" class="site" value="<%=c%>"  name="site_ids" ${flag}  ${disable}/>
+                <br>
+                <%=c%>
+            </div>
+            <%
+                }
+            %>
+            <br/>
+            <%
+                }
+            %>
+        </center>
+        <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:150px;height:35px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:relative;bottom: 0px;left: 60px "/>
+        <input type="submit" value="购买" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;left: 400px "/>
+    </form>
+</div>
 <script>
 
 </script>
