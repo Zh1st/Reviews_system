@@ -76,10 +76,10 @@
         <input type="hidden"  name="time"/>
         <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
         <center>
+            <div class="cententbody">
             <div class="left">大门</div>
             <div class="right">大门</div>
             <div class="dapi">电影大屏幕</div>
-     <div class="cententbody">
             <%
                 for (int x = 0; x < 6; x++){
             %>
@@ -124,13 +124,15 @@
                 }
             %>
             <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:150px;height:35px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-right: 150px "/>
-            <input type="submit" value="购买" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-left: 150px "/>
+                <input type="submit" value="购买" onclick="show()" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-left: 150px "/>
         </center>
     </div>
     </form>
 </div>
 <script>
-
+    function show() {
+        alert("购买成功")
+    }
 </script>
 </body>
 </html>
