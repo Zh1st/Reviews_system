@@ -131,7 +131,9 @@
 </div>
 <script>
     function show() {
-        alert("购买成功")
+        if(confirm("确定购买")){
+            alert("购买成功")
+        }
     }
 </script>
 </body>
