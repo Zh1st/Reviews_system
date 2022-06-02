@@ -2,6 +2,7 @@ package com.reviews_system.service.impl;
 
 import com.reviews_system.dao.CommentDao;
 import com.reviews_system.dao.FilmDao;
+import com.reviews_system.dao.UserDao;
 import com.reviews_system.domain.Comment;
 import com.reviews_system.domain.Film;
 import com.reviews_system.domain.User;
@@ -86,6 +87,7 @@ public class CommentServiceImpl implements CommentService {
         for (Comment c:commentList) {
             Film film=filmDao.selectById(c.getFilm_id());
             c.setFilm_name(film.getFilm_name());
+
         }
         return commentList;
     }
