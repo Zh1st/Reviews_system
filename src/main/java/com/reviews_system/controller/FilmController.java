@@ -197,7 +197,7 @@ public class FilmController {
 //        List<Film>filmList=filmService.findAll();
         List<Film>filmList=filmService.listByPage(start,size);
         modelAndView.addObject("filmList",filmList);
-        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagenum",film_count+1);
         modelAndView.addObject("pagetotal",page);
         List<Category>categoryList=categoryService.list();
         modelAndView.addObject("categoryList",categoryList);

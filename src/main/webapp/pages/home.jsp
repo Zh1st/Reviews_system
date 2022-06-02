@@ -101,15 +101,17 @@
                         <div class="pic"><a href="#"><img src="../images/${film.picture}" alt="film">
                         </a>
                         </div>
-                        <div class="title" style="margin-left: 40px;"><a onclick="film_detail('${film.film_id}')" href="#">${film.film_name}</a></div>
+                        <div class="title" style="margin-left: 40px;"><a style="font-size: 18px;" onclick="film_detail('${film.film_id}')" href="#">${film.film_name}</a></div>
 <%--                        <div id="test9" style="position: absolute;margin-left:20px;" ></div>${film.score}--%>
                          <div class="rating" style="height: 11px;margin-left:20px;">
                             <span style="margin-left: 60px;color: orange;">
-                                <p style="margin-left: 100px;margin-top: -60px;font-size:20px;position: absolute">${film.score}</p>
+                                <p style="margin-left: 95px;margin-top: -65px;font-size:25px;position: absolute">${film.score}</p>
                             </span>
                         </div>
+                        <button onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='lightslategray'" style="margin-left:13px;width: 200px;height: 50px;text-align: center;font-size: 20px;background-color:lightslategray;-webkit-border-radius: 10px;border: 0px;" onclick="tosite(${film.film_id})">
+                            选座购票
+                        </button>
 
-                        <a onclick="tosite(${film.film_id})"  class="purcharse" href="#" style="margin-left:87px;top: 50px;">选座购票</a>
 
                     </li>
                 </c:forEach>

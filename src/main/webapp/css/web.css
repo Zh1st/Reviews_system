@@ -645,8 +645,10 @@ h1 a{
     margin-bottom: 30px;
 }
 .film_center ul li .purcharse{
-    background-color: #8fdf82;
     color: white;
+    width: 200px;
+    height: 50px;
+    background-color: grey;
     text-align: center;
     margin-left:80px;
 }
@@ -1117,4 +1119,11 @@ a.music_left_logo2{
 .footer_right_pic a img{
     position: relative;
     top: 10px;
+}
+.purcharse_film{
+    margin-left:13px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
 }
