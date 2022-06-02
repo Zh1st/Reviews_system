@@ -73,7 +73,7 @@
                 </c:forEach>
         </p>
         <p style="color: gray;margin-top: 10px;">时长：</p>
-        <p style="margin-left:50px;margin-top: -21px">${film.film_time}分钟</p>
+        <p style="margin-left:50px;margin-top: -21px">${film.film_time}</p>
         <p style="margin-top: 12px;margin-left: 0px;">当前评分：</p>
     </div>
 
