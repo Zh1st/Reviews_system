@@ -47,9 +47,8 @@
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CDE4DA;height: 65px;">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color: #CDE4DA;">
-            <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: gray;">主页</a></li>
-            <li class="breadcrumb-item"><a href="#" style="color: black;">
-            </a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: black;">主页</a></li>
+<%--            <li class="breadcrumb-item"><a href="#" style="color: black;"></a></li>--%>
         </ol>
     </nav>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
