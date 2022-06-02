@@ -61,13 +61,15 @@ public class FilmDaoImpl implements FilmDao {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
 //                使用原始jdbc完成PreparedStatement的组建
-                PreparedStatement preparedStatement=connection.prepareStatement("insert into film values (?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement=connection.prepareStatement("insert into film values (?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
                 preparedStatement.setObject(1,null);
                 preparedStatement.setObject(2,film.getFilm_name());
                 preparedStatement.setObject(3,film.getBrief_introduction());
                 preparedStatement.setObject(4,film.getPicture());
                 preparedStatement.setObject(5,film.getPrice());
                 preparedStatement.setObject(6,film.getScore());
+                preparedStatement.setObject(7,film.getFilm_time());
+                preparedStatement.setObject(8,film.getFilm_director());
                 return preparedStatement;
             }
         };
@@ -112,7 +114,7 @@ public class FilmDaoImpl implements FilmDao {
 
     @Override
     public int updateFilm(Film film) {
-        int i=jdbcTemplate.update("update film set film_name=?,brief_introduction=?,picture=?,price=?,score=? where film_id=?",film.getFilm_name(),film.getBrief_introduction(),film.getPicture(),film.getPrice(),film.getScore(),film.getFilm_id());
+        int i=jdbcTemplate.update("update film set film_name=?,brief_introduction=?,picture=?,price=?,score=?,film_time=?,film_director=? where film_id=?",film.getFilm_name(),film.getBrief_introduction(),film.getPicture(),film.getPrice(),film.getScore(),film.getFilm_time(),film.getFilm_director(),film.getFilm_id());
         return i;
     }
 

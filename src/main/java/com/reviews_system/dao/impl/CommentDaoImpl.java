@@ -120,4 +120,20 @@ public class CommentDaoImpl implements CommentDao {
         }
         return comments;
     }
+
+    @Override
+    public int addComment(Comment comment) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd   HH:mm:ss");
+        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+        String time = formatter.format(curDate);
+        Integer i=jdbcTemplate.update("insert into comment values (?,?,?,?,?,?,?)",
+                null,
+                time,
+                comment.getComment_content(),
+                comment.getWatch(),
+                comment.getFilm_id(),
+                comment.getUser_id(),
+                comment.getFilm_score());
+        return i;
+    }
 }

@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/comment")
@@ -136,7 +140,13 @@ public class CommentController {
     }
 
 //    用户添加评论
-//    @ResponseBody
-//    @RequestMapping("/addComment")
-//    public String
+    @RequestMapping("/addComment")
+    public String addComment(Comment comment,HttpSession session)
+    {
+        String id=(String) session.getAttribute("userid");
+        int userId=Integer.parseInt(id);
+        comment.setUser_id(userId);
+        int i=commentService.addComment(comment);
+        return "redirect:/film/filmDetails?film_id="+comment.getFilm_id();
+    }
 }

@@ -98,5 +98,11 @@ public class CommentServiceImpl implements CommentService {
         return comments;
     }
 
+    @Override
+    public int addComment(Comment comment) {
+        int i=commentDao.addComment(comment);
+        return i;
+    }
+
 
 }

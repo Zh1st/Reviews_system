@@ -41,8 +41,6 @@ public class UserInfoController {
              ) {
             System.out.println(f);
         }
-
-        System.out.println("2222222222222222");
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.addObject("user",user);
         modelAndView.addObject("commentList",commentList);

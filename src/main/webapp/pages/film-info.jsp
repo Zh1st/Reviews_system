@@ -65,19 +65,21 @@
 
     <div class="pinfo">
         <p style="color: gray">导演：</p>
-        <p style="margin-left:50px;margin-top: -22px">${film.film_name}</p>
+        <p style="margin-left:50px;margin-top: -22px">${film.film_director}</p>
         <p style="color: gray;margin-top: 15px;">类型：</p>
         <p style="margin-left:50px;margin-top: -22px;">
                 <c:forEach items="${film.categories}" var="category">
                     ${category.category_name}&nbsp;
                 </c:forEach>
         </p>
+        <p style="color: gray;margin-top: 10px;">时长：</p>
+        <p style="margin-left:50px;margin-top: -21px">${film.film_time}分钟</p>
         <p style="margin-top: 12px;margin-left: 0px;">当前评分：</p>
     </div>
 
     <!--评分-->
     <div id="p">
-        <div id="test5" style="margin-top: 290px;margin-left: 20px;"></div>
+        <div id="test5" style="margin-top: 320px;margin-left: 20px;"></div>
         <hr style="border: 5px solid red;"/>
     </div>
     <div class="pjieshao">
@@ -115,15 +117,14 @@
     <div class="col"></div>
 </div>
 
-
-
 <!--	弹窗评论-->
 <div class="pltan" id="tan">
     <div class="pltantop">
         <a href="" class="btn-close" >×</a>
     </div>
-    <form>
-        <input hidden id="startscores" name="startscores">
+    <form action="${pageContext.request.contextPath}/comment/addComment" method="post">
+        <input hidden id="film_score" name="film_score">
+        <input hidden name="film_id" value="${film.film_id}">
         <p style="margin-left: 22px;margin-top: 10px; font-family:'思源黑体 CN Light';font-size: 16px">给个评价吧：</p>
         <div id="test6" style="margin-left: 20px;"></div>
         <from style="margin-left: 50px;margin-top: 5px;">
@@ -132,7 +133,7 @@
         </from>
         <hr style="border: 5px solid red;"/>
         <p style="margin-left: 22px;font-family: '黑体';color: gray">简短评论:</p>
-        <textarea rows="4" cols="72" placeholder="点此评论" class="pltank"></textarea>
+        <textarea rows="4" cols="72" placeholder="点此评论" class="pltank" name="comment_content"></textarea>
         <div class="pltanbot">
             <button  type="submit" class="btn btn-outline-secondary btn-sm" style="float:right;margin-top: 2px;margin-right:5px;">确认</button>
         </div>
@@ -202,7 +203,7 @@
                if (value>0)
                {
                    scorestart=value;
-                   $("#startscores").attr("value",scorestart);
+                   $("#film_score").attr("value",scorestart);
                }
             }
         });

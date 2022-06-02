@@ -40,4 +40,7 @@ public interface CommentDao {
 
     //查询user_id的姓名
     public List<Comment> selectByFilmId(int film_id);
+
+//    添加用户评论
+    public int addComment(Comment comment);
 }

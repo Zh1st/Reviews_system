@@ -43,4 +43,7 @@ public interface CommentService {
      * 根据电影id查询对应的评论
      */
     public List<Comment> selectByFilmId(int film_id);
+
+//    用户发表评论
+    public int addComment(Comment comment);
 }

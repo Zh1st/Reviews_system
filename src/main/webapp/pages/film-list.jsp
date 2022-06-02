@@ -196,7 +196,9 @@
                                 <th class="sorting_desc sorting_desc_disabled">图片</th>
                                 <th class="sorting sorting_desc_disabled">价格</th>
                                 <th class="sorting sorting_desc_disabled">类型</th>
-                                <th class="sorting sorting_desc_disabled">类型</th>
+                                <th class="sorting sorting_desc_disabled">评分</th>
+                                <th class="sorting sorting_desc_disabled">时长</th>
+                                <th class="sorting sorting_desc_disabled">导演</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -218,6 +220,8 @@
                                         </c:forEach>
                                     </td>
                                     <td>${film.score}</td>
+                                    <td>${film.film_time}</td>
+                                    <td>${film.film_director}</td>
                                     <td class="text-center">
                                         <button type="button" class="btn bg-olive btn-xs" onclick="findFilmById('${film.film_id}','edit')"> 编辑
                                         </button>
@@ -246,87 +250,6 @@
     </div>
     <!-- @@close -->
     <!-- 内容区域 /-->
-
-</div>
-
-<!-- 编辑用户的窗口 -->
-<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="myModalLabel">用户</h3>
-            </div>
-            <div class="modal-body">
-                <form id="editUser" action="${pageContext.request.contextPath}/film/updateFilm" method="post">
-                    <%--用户的id,不展示在页面--%>
-                    <span><input type="hidden" id="film_id" name="film_id"></span>
-                    <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
-                        <tr>
-                            <td>电影名称</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="film_name" id="film_name"></td>
-                        </tr>
-                        <tr>
-                            <td>简介</td>
-                            <td><textarea class="form-control" required placeholder="请输入密码" name="brief_introduction" id="brief_introduction"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>图片</td>
-                            <td><img style="width: 50px;height: 50px;" id="picture"alt=""></td>
-                        </tr>
-                        <tr>
-                            <td>价格</td>
-                            <td><input class="form-control" placeholder="请输入邮箱" name="price" id="price"></td>
-                        </tr>
-                    </table>
-                    <div class="modal-footer">
-                        <div class="modal-footer">
-                            <button type="submit" class="layui-btn">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 添加用户的窗口 -->
-<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>用户</h3>
-            </div>
-            <div class="modal-body">
-                <form id="addUser" action="${pageContext.request.contextPath}/user/save" method="post">
-                    <table id="addTab" class="table table-bordered table-striped" width="800px">
-                        <tr>
-                            <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="user_name"></td>
-                        </tr>
-                        <tr>
-                            <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="user_password"></td>
-                        </tr>
-                        <tr>
-                            <td>电话</td>
-                            <td><input class="form-control" placeholder="请输入电话" name="user_phone"></td>
-                        </tr>
-                        <tr>
-                            <td>邮箱</td>
-                            <td><input class="form-control" placeholder="请输入邮箱" name="user_email"></td>
-                        </tr>
-                    </table>
-                    <div class="modal-footer">
-                        <button type="submit" class="layui-btn">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 <script>
     $(document).ready(function() {

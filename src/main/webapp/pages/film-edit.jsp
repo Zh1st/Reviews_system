@@ -97,7 +97,7 @@
             <section class="content"> <!--产品信息-->
                 <div class="panel panel-default">
                     <input name="film_id" value="${film.film_id}" hidden="true">
-                    <input name="oldicture" value="${film.picture}">
+                    <input hidden name="oldicture" value="${film.picture}">
                     <div class="panel-heading">电影信息</div>
                     <div class="row data-type">
                         <div class="col-md-2 title">电影名称</div>
@@ -122,6 +122,14 @@
                         <div class="col-md-9 data">
                             <input type="text" class="form-control" name="score" placeholder="电影评分 " value="${film.score}">
                         </div>
+                        <div class="col-md-2 title">时长</div>
+                        <div class="col-md-9 data">
+                            <input type="text" class="form-control" name="film_time" placeholder="电影时长 " value="${film.film_time}">
+                        </div>
+                        <div class="col-md-2 title">导演</div>
+                        <div class="col-md-9 data">
+                            <input type="text" class="form-control" name="film_director" placeholder="电影导演 " value="${film.film_director}">
+                        </div>
                         <div style="" class="col-md-2 title">图片</div>
                         <div style="height: 200px" class="col-md-10 data">
                             <input type="file" id="pictureFile" name="pictureFile" onchange="selectAvatar()">
@@ -142,19 +150,12 @@
     <!-- 内容区域 /-->
 
     <!-- 底部导航 -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.8
-        </div>
-        <strong>Copyright &copy; 2014-2017 <a
-                href="http://www.itcast.cn">研究院研发部</a>.
-        </strong> All rights reserved. </footer>
     <!-- 底部导航 /-->
 
 </div>
 <script type="text/javascript">
-    var avatar = document.getElementById('pictureFile')
-    var preview = document.getElementById('uploadImg')
+    var avatar = document.getElementById('pictureFile');
+    var preview = document.getElementById('uploadImg');
     function selectAvatar () {
         // .files 拿到的是用户选中的图片的一个数组
         const file = avatar.files[0]

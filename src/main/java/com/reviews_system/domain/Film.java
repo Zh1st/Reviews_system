@@ -11,6 +11,8 @@ public class Film {
     //  当前电影都有什么类型
     private List<Category> categories;
     private float score;
+    private String film_time;
+    private String film_director;
 
     @Override
     public String toString() {
@@ -20,8 +22,9 @@ public class Film {
                 ", brief_introduction='" + brief_introduction + '\'' +
                 ", picture='" + picture + '\'' +
                 ", price=" + price +
-                ", categories=" + categories +
                 ", score=" + score +
+                ", film_time='" + film_time + '\'' +
+                ", film_director='" + film_director + '\'' +
                 '}';
     }
 
@@ -79,5 +82,21 @@ public class Film {
 
     public void setScore(float score) {
         this.score = score;
+    }
+
+    public String getFilm_time() {
+        return film_time;
+    }
+
+    public void setFilm_time(String film_time) {
+        this.film_time = film_time;
+    }
+
+    public String getFilm_director() {
+        return film_director;
+    }
+
+    public void setFilm_director(String film_director) {
+        this.film_director = film_director;
     }
 }
