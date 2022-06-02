@@ -63,6 +63,9 @@
             height: 50%;
             margin-left: 70px;
         }
+        .cententbody{
+            border: 3px #ffed12 solid;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +79,7 @@
             <div class="left">大门</div>
             <div class="right">大门</div>
             <div class="dapi">电影大屏幕</div>
+     <div class="cententbody">
             <%
                 for (int x = 0; x < 6; x++){
             %>
@@ -84,7 +88,7 @@
             <%
                 for (int y = 0; y < 10; y++){
             %>
-            <div style="display: inline-block">
+            <div style="display: inline-block;">
                 <%
                     int c = x*10+y+1;
                     String flag = "check";
@@ -119,9 +123,10 @@
             <%
                 }
             %>
+            <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:150px;height:35px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-right: 150px "/>
+            <input type="submit" value="购买" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-left: 150px "/>
         </center>
-        <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:150px;height:35px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:relative;bottom: 0px;left: 60px "/>
-        <input type="submit" value="购买" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;left: 400px "/>
+    </div>
     </form>
 </div>
 <script>
