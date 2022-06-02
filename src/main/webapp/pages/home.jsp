@@ -47,34 +47,36 @@
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CDE4DA;height: 65px;">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color: #CDE4DA;">
-            <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: black;">主页</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#" style="color: gray;">主页</a></li>
+            <li class="breadcrumb-item"><a href="#" style="color: black;">
+            </a></li>
         </ol>
     </nav>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" style="font-size: 26px; margin-left: 670px;font-family:'幼圆'">
-            <li class="nav-item " >
-                <a class="nav-link" href="#"
-                   style="margin-left: 20px;">主页</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="#"
-                   style="margin-left: 20px;">分类</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
-                   style="margin-left: 20px;">个人中心</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="${pageContext.request.contextPath}/order/findOrderByUserId"
-                   style="margin-left: 20px;">订单界面</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="点此搜索" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-        </form>
+        <div style="width: 100%;position:absolute;display: flex;align-items: center;justify-content: center;z-index: 0;left: 0px;">
+            <ul class="navbar-nav mr-auto" style="width: max-content; font-size: 26px; margin-left: 640px;font-family:'幼圆'">
+                <li class="nav-item " >
+                    <a class="nav-link" href="#"
+                       style="margin-left: 20px;">主页</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#"
+                       style="margin-left: 20px;">分类</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+                       style="margin-left: 20px;">个人中心</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+                       style="margin-left: 20px;">订单中心</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
+
+
 <!-- 横幅部分 -->
 <div class="banner_ad" style="margin-top: -10px;">
 </div>
