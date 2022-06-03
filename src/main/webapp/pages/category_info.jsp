@@ -11,6 +11,7 @@
 
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<link href="../css/bootstrap@4.6.min.css" rel="stylesheet"  >
+	<link href="../layui/css/layui.css" rel="stylesheet">
 	<link rel="stylesheet" href="../css/style1.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="../css/ie6.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="../css/style2.css" type="text/css" media="all" />
@@ -117,14 +118,16 @@
 							<span class="name2">${film.film_name}</span>
 						</a>
 					</div>
-					<a onclick="tosite(${film.film_id})"  class="name3" style="margin-top:285px; margin-left:-115px;position: absolute">选座购票</a>
+					<button onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='lightslategray'" style="margin-top:270px; margin-left:-110px;position: absolute;width: 70px;height: 30px;text-align: center;font-size: 10px;background-color:lightslategray;-webkit-border-radius: 10px;border: 0px;" onclick="tosite(${film.film_id})">
+						选座购票
+					</button>
 				</div>
 				</c:forEach>
 				<div class="cl">&nbsp;</div>
 			</div>
 			<!-- end Box -->
 		</div>
-        <div align="center"style="margin-top:80px; margin-left:350px;position: absolute">
+        <div align="center" style="margin-top:40px; margin-left:310px;position: absolute">
             <button class="layui-btn" onclick="uppage(${category_id})">上一页</button>
             当前第${pagenum}页，总共${pagetotal}页
             <button class="layui-btn" onclick="nextpage(${category_id})">下一页</button>

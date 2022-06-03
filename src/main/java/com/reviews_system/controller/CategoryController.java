@@ -103,7 +103,7 @@ public class CategoryController {
     static int film_count=0;
     @RequestMapping("/weblist")
     public ModelAndView weblist(int category_id,String methods){
-        int size=10;
+        int size=12;
         int total=categoryService.selectFilmCount(category_id);
         int page=0;
         if(methods==null)
