@@ -29,13 +29,13 @@
 		function testcategory(id) {
 			console.log(id);
 		}
-		function tosite(filmid){
+		function tosite(film_id){
 			// if(confirm("购买成功")){
-			location.href="${pageContext.request.contextPath}/order/site?filmid="+filmid;
+			location.href="${pageContext.request.contextPath}/cinema/weblist?film_id="+film_id;
 			// }
 		}
 		function tofilm(filmid){
-			location.href="${pageContext.request.contextPath}/film/filmDetails?filmid="+filmid;
+			location.href="${pageContext.request.contextPath}/film/filmDetails?film_id="+filmid;
 		}
         function nextpage(id) {
             var str="next";
@@ -65,11 +65,11 @@
 		<div style="width: 100%;position:absolute;display: flex;align-items: center;justify-content: center;z-index: 0;left: 0px;">
 			<ul class="navbar-nav mr-auto" style="width: max-content; font-size: 26px; margin-left: 640px;font-family:'幼圆'">
 				<li class="nav-item " >
-					<a class="nav-link" href="#"
+					<a class="nav-link" href="${pageContext.request.contextPath}/film/weblist"
 					   style="margin-left: 20px;">主页</a>
 				</li>
 				<li class="nav-item ">
-					<a class="nav-link" href="#"
+					<a class="nav-link" href="${pageContext.request.contextPath}/category/weblist?category_id=1&&methods=one"
 					   style="margin-left: 20px;">分类</a>
 				</li>
 				<li class="nav-item ">
@@ -77,7 +77,7 @@
 					   style="margin-left: 20px;">个人中心</a>
 				</li>
 				<li class="nav-item ">
-					<a class="nav-link" href="${pageContext.request.contextPath}/userInfo"
+					<a class="nav-link" href="${pageContext.request.contextPath}/order/findOrderByUserId"
 					   style="margin-left: 20px;">订单中心</a>
 				</li>
 			</ul>
@@ -118,7 +118,7 @@
 							<span class="name2">${film.film_name}</span>
 						</a>
 					</div>
-					<button onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='lightslategray'" style="margin-top:270px; margin-left:-110px;position: absolute;width: 70px;height: 30px;text-align: center;font-size: 10px;background-color:lightslategray;-webkit-border-radius: 10px;border: 0px;" onclick="tosite(${film.film_id})">
+					<button onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='lightslategray'" style="margin-left:25px;margin-top: 25px; width: 100px;height: 30px;text-align: center;font-size: 10px;background-color:lightslategray;-webkit-border-radius: 10px;border: 0px;" onclick="tosite(${film.film_id})">
 						选座购票
 					</button>
 				</div>

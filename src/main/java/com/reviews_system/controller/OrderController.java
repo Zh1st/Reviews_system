@@ -1,13 +1,7 @@
 package com.reviews_system.controller;
 
-import com.reviews_system.domain.Category;
-import com.reviews_system.domain.Cinema;
-import com.reviews_system.domain.Comment;
-import com.reviews_system.domain.Orders;
-import com.reviews_system.service.CommentService;
-import com.reviews_system.service.OrderService;
-import com.reviews_system.service.PageService;
-import com.reviews_system.service.UserInfoService;
+import com.reviews_system.domain.*;
+import com.reviews_system.service.*;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/order")
@@ -28,20 +24,31 @@ public class OrderController {
     @Autowired
     private UserInfoService userInfoService;
     @Autowired
+    private CinemaService cinemaService;
+    @Autowired
+    private FilmService filmService;
+    @Autowired
     PageService classifyService;
 //获取电影id
 @RequestMapping("/site")
-public ModelAndView site(int filmid){
+public ModelAndView site(int film_id,int cinema_id){
     ModelAndView modelAndView=new ModelAndView();
-    modelAndView.addObject("filmid",filmid);
-//    System.out.println("获得电影id是"+filmid);
-    List<Orders> sites=orderService.selectOrder(filmid);
+    Film film=filmService.selectById(film_id);
+    Cinema cinema=cinemaService.findById(cinema_id);
+    modelAndView.addObject("film",film);
+    modelAndView.addObject("cinema",cinema);
+    Date date=new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String createTime = dateFormat.format(date);
+    modelAndView.addObject("time",createTime);
+    List<Orders> sites=orderService.selectOrder(film_id,cinema_id);
     System.out.println("座位是"+sites);
     System.out.println(sites);
     modelAndView.addObject("sites", sites);
     modelAndView.setViewName("site");
     return modelAndView;
 }
+
     //    添加订单
     @RequestMapping("save")
     public String save(Orders order,int[]site_ids) {
@@ -165,7 +172,6 @@ public ModelAndView site(int filmid){
         } else
             return null;
     }
-
 
     @RequestMapping("/findOrderByName")
     public ModelAndView findOrderByName(String  film_name) {

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 41388
@@ -15,6 +16,11 @@
     <link href="../layui/css/layui.css" rel="stylesheet">
     <link href="../css/bootstrap@4.6.min.css" rel="stylesheet">
     <link href="../css/chooseYy.css" rel="stylesheet">
+    <script type="text/javascript">
+        function buy(cinema_id) {
+            location.href="${pageContext.request.contextPath}/order/site?film_id=${film.film_id}&&cinema_id="+cinema_id;
+        }
+    </script>
 </head>
 <body>
 
@@ -50,39 +56,37 @@
     </div>
 </nav>
 
-
-
 <!-- 巨幕 -->
 <div class="banner2" style="margin-top: -100px">
     <div class="wrapper clearfix">
         <div class="celeInfo-left">
             <div class="avatar-shadow">
                 <!-- 在这里插入图片 -->
-                <img src="">
+                <img style="width: 260px;height: 320px;" src="../images/${film.picture}">
             </div>
         </div>
-
         <div class="celeInfo-right clearfix">
             <div class="movie-brief-container">
 
-                <h1 class="Choosename">电影名电影名电影名</h1>
+                <h1 class="Choosename">${film.film_name}</h1>
                 <ul>
 
                     <li class="ellipsis">
                         <ul>
 
-                            <li class="text-link"> 类别  </a>
-                            <li class="text-link"> 类别  </a>
-
+                            <li class="text-link"> 类别：
+                                <c:forEach items="${film.categories}" var="category">
+                                    ${category.category_name}&nbsp;&nbsp;
+                                </c:forEach>
+                            </li>
+                            <li class="text-link">价格：${film.price}  </li>
                         </ul>
                     </li>
                     <li class="ellipsis">
-                        导演           导演作品
+                        导演：${film.film_director}
                     </li>
                 </ul>
             </div>
-
-
             <div class="movie-stats-container">
                 <div class="movie-index">
                     <p class="movie-index-title">电影评分</p>
@@ -91,7 +95,6 @@
                                 <!-- 评分 -->
 								<div id="test9" style="font-size: 14px"></div>
                             </span>
-
                     </div>
                 </div>
             </div>
@@ -106,42 +109,23 @@
         <!-- 列表 -->
         <div class="cinemas-list">
             <h2 class="cinemas-list-header">影院列表</h2>
-
             <ul>
                 <!--在这里插入循环-->
-                <li class="cinema-cell">
-                    <div class="cinema-info">
-                        <a  class="cinema-name" >电影名电影名电影名</a>
-                        <p class="cinema-address">电影地址电影地址电影地址电影地址电影地址电影地址</p>
-
-                    </div>
-
-                    <div class="buy-btn">
-                        <a >选座购票</a>
-                    </div>
-                </li>
-
-                <li class="cinema-cell">
-                    <div class="cinema-info">
-                        <a  class="cinema-name" >电影名电影名电影名</a>
-                        <p class="cinema-address">电影地址电影地址电影地址电影地址电影地址电影地址</p>
-
-                    </div>
-
-                    <div class="buy-btn">
-                        <a >选座购票</a>
-                    </div>
-                </li>
-
-
+                <c:forEach items="${cinemaList}" var="cinema">
+                    <li class="cinema-cell">
+                        <div class="cinema-info">
+                            <a  class="cinema-name" >${cinema.cinema_name}</a>
+                            <p class="cinema-address">${cinema.cinema_address}</p>
+                        </div>
+                        <div class="buy-btn">
+                            <a onclick="buy(${cinema.cinema_id})" href="#">选座购票</a>
+                        </div>
+                    </li>
+                </c:forEach>
             </ul>
-
-
         </div>
     </div>
 </div>
-
-
 <script src="../layui/layui.js"></script>
 <script src="../js/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script>
@@ -152,19 +136,12 @@
         //只读
         rate.render({
             elem: '#test9'
-            ,value: 3.5
+            ,value: ${film.score}
             ,readonly: true
             ,half:true
             ,text: true
         });
-
-
-
     });
-
-
 </script>
-
-
 </body>
 </html>

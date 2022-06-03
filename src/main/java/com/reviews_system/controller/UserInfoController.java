@@ -25,20 +25,13 @@ public class UserInfoController {
         String id=(String) httpSession.getAttribute("userid");
         int userid=Integer.parseInt(id);
         User user=userInfoService.selectById(userid);
-        List<Comment> commentList=userInfoService.selectCommentByUserID(1);
+        List<Comment> commentList=userInfoService.selectCommentByUserID(userid);
         List<String> filmList = new ArrayList<String>();
-        System.out.println(user);
-        System.out.println("11111111111111111111111");
-        for (Comment c:commentList
-             ) {
-            System.out.println(c);
-            System.out.println(c.getFilm_id());
+        for (Comment c:commentList) {
             String film_name=userInfoService.findFilmNameById(c.getFilm_id());
-            System.out.println(film_name);
             filmList.add(film_name);
         }
-        for (String f:filmList
-             ) {
+        for (String f:filmList) {
             System.out.println(f);
         }
         ModelAndView modelAndView=new ModelAndView();
@@ -46,7 +39,6 @@ public class UserInfoController {
         modelAndView.addObject("commentList",commentList);
         modelAndView.addObject("filmList",filmList);
         modelAndView.setViewName("userinfo");
-
         return modelAndView;
     }
 

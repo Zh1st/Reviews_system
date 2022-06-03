@@ -2,7 +2,9 @@ package com.reviews_system.controller;
 
 import com.reviews_system.domain.Category;
 import com.reviews_system.domain.Cinema;
+import com.reviews_system.domain.Film;
 import com.reviews_system.service.CinemaService;
+import com.reviews_system.service.FilmService;
 import entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import java.util.List;
 public class CinemaController {
     @Autowired
     private CinemaService cinemaService;
+    @Autowired
+    private FilmService filmService;
 
     //    分页查询
     static int count=0;
@@ -139,4 +143,16 @@ public class CinemaController {
         else
             return null;
     }
+
+    @RequestMapping("/weblist")
+    public ModelAndView weblist(int film_id){
+        ModelAndView modelAndView=new ModelAndView();
+        List<Cinema> cinemaList=cinemaService.findAll();
+        Film film=filmService.selectById(film_id);
+        modelAndView.addObject("film",film);
+        modelAndView.addObject("cinemaList",cinemaList);
+        modelAndView.setViewName("choose");
+        return modelAndView;
+    }
+
 }

@@ -132,7 +132,8 @@
     <form action="${pageContext.request.contextPath}/order/save" method="get">
         <div class="centent">
                 <%--    ${sites}--%>
-                <input type="hidden" value="${filmid}" name="film_id"/>
+                <input type="hidden" value="${film.film_id}" name="film_id"/>
+                <input type="hidden" value="${cinema.cinema_id}" name="cinema_id"/>
                 <input type="hidden"  name="time"/>
                 <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
                 <center>
@@ -155,7 +156,7 @@
                             String flag1 = "checked";
                             String disable = "d";
                         %>
-                        <%--            做判断是否是已选中座位，是的话flag= checked不是的话flag= check--%>
+                        <%--做判断是否是已选中座位，是的话flag= checked不是的话flag= check--%>
                         <c:set var="isDoing" value="0"/>
                         <c:forEach items="${sites}" var="site" varStatus="i">
                             <c:set value="<%=c%>" var="siteq"/>
@@ -188,13 +189,17 @@
 
         </div>
         <div class="right_film">
-            <img src="../images/f5dcf8c1-d61a-4095-b038-b9b13dcb5013.webp"/>
-            <div class="film_title"><label >神奇动物在哪里fff</label></div>
-            <div class="film_catrgory"><label>类型：犯罪 悬疑</label></div>
-            <div class="film_time"><label>时长：134分钟</label></div>
-            <div class="film_cinema"><label>影院：中山奇幻电影院</label></div>
-            <div class="film_screen"><label>场次：2022-06-03</label></div>
-            <div class="film_screen"><label>票价：￥35/张</label></div>
+            <img src="../images/${film.picture}"/>
+            <div class="film_title"><label >${film.film_name}</label></div>
+            <div class="film_catrgory"><label>类型：
+                <c:forEach items="${film.categories}" var="categort">
+                    ${categort.category_name}&nbsp;&nbsp;
+                </c:forEach>
+            </label></div>
+            <div class="film_time"><label>时长：${film.film_time}</label></div>
+            <div class="film_cinema"><label>影院：${cinema.cinema_name}</label></div>
+            <div class="film_screen"><label>场次：${time}</label></div>
+            <div class="film_screen"><label>票价：￥${film.price}/张</label></div>
             <hr style="width: 450px;height:5px;border:none;border-top:2px dotted whitesmoke;">
             <div class="buy_film">
                 <input type="submit" value="购票" onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='whitesmoke'"></input>
