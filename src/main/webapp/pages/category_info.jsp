@@ -33,6 +33,19 @@
 			location.href="${pageContext.request.contextPath}/order/site?filmid="+filmid;
 			// }
 		}
+		function tofilm(filmid){
+			location.href="${pageContext.request.contextPath}/film/filmDetails?filmid="+filmid;
+		}
+        function nextpage(id) {
+            var str="next";
+            var a="category_id="+id+"&&methods="+str;
+            location.href="${pageContext.request.contextPath}/category/weblist?"+a;
+        };
+        function uppage(id) {
+            var str="up";
+			var a="category_id="+id+"&&methods="+str;
+			location.href="${pageContext.request.contextPath}/category/weblist?"+a;
+        };
 	</script>
 	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-func.js"></script>
@@ -98,14 +111,11 @@
 		<div id="content">
 
 			<!-- Box -->
-			<div class="box">
+			<div class="box" >
 				<c:forEach items="${filmList}" var="film">
-				<div class="movie">
+				<div class="movie"style="margin-right: 90px">
 					<div class="movie-image" style="margin-top:40px;">
-						<a href="${pageContext.request.contextPath}/pages/film-info.jsp">
-							<span class="play">
-								<span class="name">${film.film_name}</span>
-							</span>
+						<a onclick="tofilm(${film.film_id})">
 							<img src="../images/${film.picture}" alt="movie" >
 							<span class="name2">${film.film_name}</span>
 						</a>
@@ -117,7 +127,11 @@
 			</div>
 			<!-- end Box -->
 		</div>
-
+        <div align="center"style="margin-top:80px; margin-left:350px;position: absolute">
+            <button class="layui-btn" onclick="uppage(${category_id})">上一页</button>
+            当前第${pagenum}页，总共${pagetotal}页
+            <button class="layui-btn" onclick="nextpage(${category_id})">下一页</button>
+        </div>
 		
 
 </div>

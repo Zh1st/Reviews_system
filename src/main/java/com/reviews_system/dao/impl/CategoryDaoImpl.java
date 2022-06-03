@@ -83,4 +83,15 @@ public class CategoryDaoImpl implements CategoryDao {
         List<Category>categoryList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Category>(Category.class),id);
         return categoryList;
     }
+    @Override
+    public int selectFilmCount(int category_id) {
+        int i= jdbcTemplate.queryForObject("select count(*) from film,film_category where film.film_id=film_category.film_id and film_category.category_id=?",(Integer.class),category_id);
+        return i;
+    }
+    @Override
+    public List<Film> listByPage(Integer start, Integer end,int category_id) {
+        String sql="select * from film,film_category where film.film_id=film_category.film_id and film_category.category_id="+category_id+" limit "+start+","+end;
+        List<Film> filmList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Film>(Film.class));
+        return filmList;
+    }
 }

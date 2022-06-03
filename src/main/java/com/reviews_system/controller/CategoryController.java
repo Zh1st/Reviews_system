@@ -100,14 +100,48 @@ public class CategoryController {
         else
             return null;
     }
+    static int film_count=0;
     @RequestMapping("/weblist")
-    public ModelAndView weblist(int category_id){
+    public ModelAndView weblist(int category_id,String methods){
+        int size=10;
+        int total=categoryService.selectFilmCount(category_id);
+        int page=0;
+        if(methods==null)
+        {
+            methods="one";
+        }
+
+        if(total%size!=0)
+        {
+            page=total/size;
+            page++;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&film_count<page)
+        {
+            film_count++;
+        }
+        else if(methods.equals("up")&&film_count!=0)
+        {
+            film_count--;
+        }
+        else
+        {
+            film_count=0;
+        }
+        int start=size*film_count;
         ModelAndView modelAndView=new ModelAndView();
+//        List<Film>filmList=filmService.findAll();
+        List<Film>filmList=categoryService.listByPage(start,size,category_id);
+        modelAndView.addObject("category_id",category_id);
+        modelAndView.addObject("filmList",filmList);
+        modelAndView.addObject("pagenum",film_count+1);
+        modelAndView.addObject("pagetotal",page);
         List<Category>categoryList=categoryService.list();
         modelAndView.addObject("categoryList",categoryList);
-        List<Film>filmList=categoryService.findFilm(category_id);
-        modelAndView.addObject("filmList",filmList);
-        System.out.println(filmList);
         modelAndView.setViewName("category_info");
         return modelAndView;
     }
