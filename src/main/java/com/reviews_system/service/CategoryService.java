@@ -8,7 +8,8 @@ import entity.PageResult;
 import java.util.List;
 
 public interface CategoryService {
-
+    public Integer selectFilmCount(int category_id);
+    List<Film> listByPage(Integer start, Integer end,int category_id);
     List<Category> list();
 
     Integer save(Category category);

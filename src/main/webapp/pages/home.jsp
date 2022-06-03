@@ -129,7 +129,7 @@
                 <h5>
                     影片分类&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
                     (&nbsp;
-                    <a href="${pageContext.request.contextPath}/category/weblist?category_id=1" class="time_a">更多</a>
+                    <a href="${pageContext.request.contextPath}/category/weblist?category_id=1&&methods=one" class="time_a">更多</a>
                     &nbsp;)
                 </h5>
             </div>

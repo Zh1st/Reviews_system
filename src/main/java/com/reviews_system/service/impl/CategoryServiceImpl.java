@@ -18,6 +18,26 @@ public class CategoryServiceImpl implements CategoryService {
     public void setCategoryDao(CategoryDao categoryDao) {
         this.categoryDao = categoryDao;
     }
+
+    @Override
+    public Integer selectFilmCount(int category_id) {
+        int i=categoryDao.selectFilmCount(category_id);
+        return i;
+    }
+    @Override
+    public List<Film> listByPage(Integer start, Integer end,int category_id) {
+        List<Film>filmList=categoryDao.listByPage(start,end,category_id);
+        for (Film film:filmList)
+        {
+//            获得user的id
+            int id=film.getFilm_id();
+//          将film_id作为参数查询当前film_id对应的类型集合数据
+            List<Category>categoryList=categoryDao.findRoleById(id);
+            film.setCategories(categoryList);
+        }
+        return filmList;
+    }
+
     @Override
     public List<Category> list() {
         List<Category> categoryList=categoryDao.findAll();
