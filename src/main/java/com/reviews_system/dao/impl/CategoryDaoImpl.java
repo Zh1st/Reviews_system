@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.reviews_system.dao.CategoryDao;
 import com.reviews_system.domain.Category;
 import com.reviews_system.domain.Film;
+import com.reviews_system.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -93,5 +94,19 @@ public class CategoryDaoImpl implements CategoryDao {
         String sql="select * from film,film_category where film.film_id=film_category.film_id and film_category.category_id="+category_id+" limit "+start+","+end;
         List<Film> filmList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Film>(Film.class));
         return filmList;
+    }
+
+    @Override
+    public Integer selectUserCount() {
+        String sql="select count(*) from category";
+        int i= jdbcTemplate.queryForObject(sql,Integer.class);
+        return i;
+    }
+
+    @Override
+    public List<Category> listByPage(Integer start, Integer end) {
+        String sql = "select * from category limit "+start+","+end;
+        List<Category> categoryList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Category>(Category.class));
+        return categoryList;
     }
 }

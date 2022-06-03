@@ -23,6 +23,7 @@ public interface CategoryDao {
     Page<Category> search(Category category);
 
     List<Film> findFilm(int category_id);
+
     List<Category> selectByName(String category_name);
 
     int delByIds(int[]ids);
@@ -32,5 +33,13 @@ public interface CategoryDao {
     int selectFilmCount(int category_id);
 
     List<Film> listByPage(Integer start, Integer end,int category_id);
+
+    public Integer selectUserCount();
+
+    public List<Category> listByPage(Integer start,Integer end);
+
+
+
+
 
 }

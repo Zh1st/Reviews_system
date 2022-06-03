@@ -1,8 +1,8 @@
 package com.reviews_system.service;
 
 import com.reviews_system.domain.Category;
-import com.reviews_system.domain.Film;
 import com.reviews_system.domain.User;
+import com.reviews_system.domain.Film;
 import entity.PageResult;
 
 import java.util.List;
@@ -25,5 +25,10 @@ public interface CategoryService {
     List<Category> selectByName(String category_name);
 
     int delByIds(int[]ids);
+
     List<Film> findFilm(int category_id);
+
+    public Integer selectUserCount();
+
+    public List<Category> listByPage(Integer start,Integer end);
 }

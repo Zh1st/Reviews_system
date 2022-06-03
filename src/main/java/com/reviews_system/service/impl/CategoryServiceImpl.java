@@ -1,11 +1,8 @@
 package com.reviews_system.service.impl;
 
 import com.reviews_system.dao.CategoryDao;
-import com.reviews_system.dao.UserDao;
-import com.reviews_system.dao.impl.CategoryDaoImpl;
 import com.reviews_system.domain.Category;
 import com.reviews_system.domain.Film;
-import com.reviews_system.domain.User;
 import com.reviews_system.service.CategoryService;
 import entity.PageResult;
 
@@ -42,11 +39,6 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> list() {
         List<Category> categoryList=categoryDao.findAll();
         return categoryList;
-    }
-    @Override
-    public List<Film> findFilm(int category_id){
-        List<Film> filmList=categoryDao.findFilm(category_id);
-        return filmList;
     }
 
     @Override
@@ -86,6 +78,23 @@ public class CategoryServiceImpl implements CategoryService {
     public int delByIds(int[] ids) {
         int i=categoryDao.delByIds(ids);
         return i;
+    }
+
+    @Override
+    public List<Film> findFilm(int category_id){
+        List<Film> filmList=categoryDao.findFilm(category_id);
+        return filmList;
+    }
+
+    @Override
+    public Integer selectUserCount() {
+        return categoryDao.selectUserCount();
+    }
+
+    @Override
+    public List<Category> listByPage(Integer start, Integer end) {
+        List<Category>categoryList=categoryDao.listByPage(start,end);
+        return categoryList;
     }
 
 
