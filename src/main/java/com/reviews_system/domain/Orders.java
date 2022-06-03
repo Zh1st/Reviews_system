@@ -8,6 +8,15 @@ public class Orders {
     private int film_id;
     private int site_id;
     private String time;
+    private int cinema_id;
+
+    public int getCinema_id() {
+        return cinema_id;
+    }
+
+    public void setCinema_id(int cinema_id) {
+        this.cinema_id = cinema_id;
+    }
 
     @Override
     public String toString() {
@@ -17,15 +26,8 @@ public class Orders {
                 ", film_id=" + film_id +
                 ", site_id=" + site_id +
                 ", time='" + time + '\'' +
+                ", cinema_id=" + cinema_id +
                 '}';
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public int getOrder_id() {
@@ -58,5 +60,13 @@ public class Orders {
 
     public void setSite_id(int site_id) {
         this.site_id = site_id;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

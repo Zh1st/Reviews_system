@@ -1,6 +1,7 @@
 package com.reviews_system.dao.impl;
 
 import com.reviews_system.dao.CinemaDao;
+import com.reviews_system.domain.Category;
 import com.reviews_system.domain.Cinema;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -59,5 +60,19 @@ public class CinemaDaoImpl implements CinemaDao {
             i+=j;
         }
         return i;
+    }
+
+    @Override
+    public Integer selectCinemaCount() {
+        String sql="select count(*) from cinema";
+        int i= jdbcTemplate.queryForObject(sql,Integer.class);
+        return i;
+    }
+
+    @Override
+    public List<Cinema> listByPage(Integer start, Integer end) {
+        String sql = "select * from cinema limit "+start+","+end;
+        List<Cinema> cinemaList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Cinema>(Cinema.class));
+        return cinemaList;
     }
 }

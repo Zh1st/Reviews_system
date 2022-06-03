@@ -18,4 +18,8 @@ public interface CinemaService {
     List<Cinema> selectByName(String cinema_name);
 
     int delByIds(int[]ids);
+
+    public Integer selectCinemaCount();
+
+    public List<Cinema> listByPage(Integer start,Integer end);
 }

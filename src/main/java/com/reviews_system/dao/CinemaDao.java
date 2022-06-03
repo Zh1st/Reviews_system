@@ -21,4 +21,7 @@ public interface CinemaDao {
 
     int delByIds(int[]ids);
 
+    public Integer selectCinemaCount();
+
+    public List<Cinema> listByPage(Integer start,Integer end);
 }

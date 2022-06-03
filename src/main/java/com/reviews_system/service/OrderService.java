@@ -24,4 +24,9 @@ public interface OrderService {
     List<Orders> findOrderByName(String film_name);
 
     List<Orders> findOrderByUserId(int user_id);
+
+
+    public Integer selectOrdersCount();
+
+    public List<Orders> listByPage(Integer start, Integer end);
 }

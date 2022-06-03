@@ -1,10 +1,7 @@
 package com.reviews_system.dao.impl;
 
 import com.reviews_system.dao.OrderDao;
-import com.reviews_system.domain.Category;
-import com.reviews_system.domain.Film;
-import com.reviews_system.domain.Orders;
-import com.reviews_system.domain.User;
+import com.reviews_system.domain.*;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -25,11 +22,12 @@ public class OrderDaolmpl implements OrderDao {
         Date   curDate   =   new   Date(System.currentTimeMillis());//获取当前时间
         String   time   =   formatter.format(curDate);
         for (int site_id:site_ids) {
-            Integer i = jdbcTemplate.update("insert into orders values (?,?,?,?,?)", null
+            Integer i = jdbcTemplate.update("insert into orders values (?,?,?,?,?,?)", null
                     ,orders.getUser_id()
                     ,orders.getFilm_id()
                     ,site_id
-                    ,time);
+                    ,time
+                    ,orders.getCinema_id());
         }
 
         return 0;
@@ -84,6 +82,10 @@ public class OrderDaolmpl implements OrderDao {
         return userName;
     }
 
+    @Override
+    public String findCinemaNameById(int user_id) {
+        return null;
+    }
 
 
     @Override
@@ -97,6 +99,20 @@ public class OrderDaolmpl implements OrderDao {
     public List<Orders> findOrderByUserId(int user_id) {
         String sql="select * from orders where user_id=?";
         List<Orders> ordersList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Orders>(Orders.class),user_id);
+        return ordersList;
+    }
+
+    @Override
+    public Integer selectOrdersCount() {
+        String sql="select count(*) from orders";
+        int i= jdbcTemplate.queryForObject(sql,Integer.class);
+        return i;
+    }
+
+    @Override
+    public List<Orders> listByPage(Integer start, Integer end) {
+        String sql = "select * from orders limit "+start+","+end;
+        List<Orders> ordersList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Orders>(Orders.class));
         return ordersList;
     }
 }

@@ -1,5 +1,6 @@
 package com.reviews_system.dao;
 
+import com.reviews_system.domain.Cinema;
 import com.reviews_system.domain.Orders;
 
 import java.util.List;
@@ -19,7 +20,13 @@ public interface OrderDao {
 
     String findUserNameById(int user_id);
 
+    String findCinemaNameById(int user_id);
+
     List<Orders> findOrderByName(String film_name);
 
     List<Orders> findOrderByUserId(int user_id);
+
+    public Integer selectOrdersCount();
+
+    public List<Orders> listByPage(Integer start, Integer end);
 }

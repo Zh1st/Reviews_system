@@ -48,4 +48,14 @@ public class CinemaServiceImpl implements CinemaService {
     public int delByIds(int[] ids) {
         return cinemaDao.delByIds(ids);
     }
+
+    @Override
+    public Integer selectCinemaCount() {
+        return cinemaDao.selectCinemaCount();
+    }
+
+    @Override
+    public List<Cinema> listByPage(Integer start, Integer end) {
+        return cinemaDao.listByPage(start,end);
+    }
 }

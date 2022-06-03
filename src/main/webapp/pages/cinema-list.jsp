@@ -134,6 +134,16 @@
             console.log(chk_value)
             location.href = "${pageContext.request.contextPath}/cinema/delByIds/" + chk_value;
         }
+
+        function nextpage() {
+            var str="next";
+            location.href="${pageContext.request.contextPath}/cinema/list?methods="+str;
+        }
+
+        function uppage() {
+            var str="up";
+            location.href="${pageContext.request.contextPath}/cinema/list?methods="+str;
+        }
     </script>
 </head>
 
@@ -276,6 +286,11 @@
                 <!-- /.box-body -->
             </div>
         </section>
+    <div align="center">
+        <button class="layui-btn" onclick="uppage()">上一页</button>
+        当前第${pagenum}页，总共${pagetotal}页
+        <button class="layui-btn" onclick="nextpage()">下一页</button>
+    </div>
         <!-- 正文区域 /-->
     </div>
     <!-- @@close -->

@@ -2,6 +2,7 @@ package com.reviews_system.controller;
 
 import com.reviews_system.domain.Category;
 import com.reviews_system.domain.Film;
+import com.reviews_system.domain.User;
 import com.reviews_system.service.CategoryService;
 import com.reviews_system.service.PageService;
 import entity.Result;
@@ -22,14 +23,57 @@ public class CategoryController {
     @Autowired
     PageService classifyService;
 
+
+    //    分页查询
+    static int count=0;
     @RequestMapping("/list")
-    public ModelAndView list(){
+    public ModelAndView list(String methods){
+        if(methods==null)
+        {
+            methods="one";
+        }
+        int size=10;
+        int total=categoryService.selectUserCount();
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size;
+            page++;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&count<page)
+        {
+            count++;
+        }
+        else if(methods.equals("up")&&count!=0)
+        {
+            count--;
+        }
+        else
+        {
+            count=0;
+        }
+        int start=size*count;
         ModelAndView modelAndView=new ModelAndView();
-        List<Category> categoryList=categoryService.list();
+        List<Category>categoryList=categoryService.listByPage(start,size);
         modelAndView.addObject("categoryList",categoryList);
+        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagetotal",page);
         modelAndView.setViewName("category-list");
         return modelAndView;
     }
+
+//    @RequestMapping("/list")
+//    public ModelAndView list(){
+//        ModelAndView modelAndView=new ModelAndView();
+//        List<Category> categoryList=categoryService.list();
+//        modelAndView.addObject("categoryList",categoryList);
+//        modelAndView.setViewName("category-list");
+//        return modelAndView;
+//    }
 
     //    根据name查询
     @RequestMapping("/selectByName")

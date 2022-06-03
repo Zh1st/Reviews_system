@@ -19,14 +19,56 @@ public class CinemaController {
     @Autowired
     private CinemaService cinemaService;
 
+    //    分页查询
+    static int count=0;
     @RequestMapping("/list")
-    public ModelAndView list(){
+    public ModelAndView list(String methods){
+        if(methods==null)
+        {
+            methods="one";
+        }
+        int size=10;
+        int total=cinemaService.selectCinemaCount();
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size;
+            page++;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&count<page)
+        {
+            count++;
+        }
+        else if(methods.equals("up")&&count!=0)
+        {
+            count--;
+        }
+        else
+        {
+            count=0;
+        }
+        int start=size*count;
         ModelAndView modelAndView=new ModelAndView();
-        List<Cinema> cinemaList=cinemaService.findAll();
+        List<Cinema>cinemaList=cinemaService.listByPage(start,size);
         modelAndView.addObject("cinemaList",cinemaList);
+        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagetotal",page);
         modelAndView.setViewName("cinema-list");
         return modelAndView;
     }
+
+//    @RequestMapping("/list")
+//    public ModelAndView list(){
+//        ModelAndView modelAndView=new ModelAndView();
+//        List<Cinema> cinemaList=cinemaService.findAll();
+//        modelAndView.addObject("cinemaList",cinemaList);
+//        modelAndView.setViewName("cinema-list");
+//        return modelAndView;
+//    }
 
     //    根据name查询
     @RequestMapping("/selectByName")

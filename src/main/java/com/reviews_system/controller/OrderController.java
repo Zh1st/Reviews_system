@@ -1,12 +1,14 @@
 package com.reviews_system.controller;
 
 import com.reviews_system.domain.Category;
+import com.reviews_system.domain.Cinema;
 import com.reviews_system.domain.Comment;
 import com.reviews_system.domain.Orders;
 import com.reviews_system.service.CommentService;
 import com.reviews_system.service.OrderService;
 import com.reviews_system.service.PageService;
 import com.reviews_system.service.UserInfoService;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,11 +63,41 @@ public ModelAndView site(int filmid){
         return "redirect:/film/weblist";
     }
 
-    //查询所有订单
+    //    分页查询
+    static int count=0;
     @RequestMapping("/list")
-    public ModelAndView list() {
-        ModelAndView modelAndView = new ModelAndView();
-        List<Orders> ordersList = orderService.findAll();
+    public ModelAndView list(String methods){
+        if(methods==null)
+        {
+            methods="one";
+        }
+        int size=10;
+        int total=orderService.selectOrdersCount();
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size;
+            page++;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&count<page)
+        {
+            count++;
+        }
+        else if(methods.equals("up")&&count!=0)
+        {
+            count--;
+        }
+        else
+        {
+            count=0;
+        }
+        int start=size*count;
+        ModelAndView modelAndView=new ModelAndView();
+        List<Orders>ordersList=orderService.listByPage(start,size);
         List<String> filmList = new ArrayList<String>();
         List<String> userList = new ArrayList<String>();
         for (Orders o:ordersList
@@ -78,9 +110,34 @@ public ModelAndView site(int filmid){
         modelAndView.addObject("ordersList", ordersList);
         modelAndView.addObject("filmList", filmList);
         modelAndView.addObject("userList", userList);
+        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagetotal",page);
         modelAndView.setViewName("orders-list");
         return modelAndView;
     }
+
+//    //查询所有订单
+//    @RequestMapping("/list")
+//    public ModelAndView list() {
+//        ModelAndView modelAndView = new ModelAndView();
+//        List<Orders> ordersList = orderService.findAll();
+//        List<String> filmList = new ArrayList<String>();
+//        List<String> userList = new ArrayList<String>();
+//        for (Orders o:ordersList
+//        ) {
+//            String film_name=userInfoService.findFilmNameById(o.getFilm_id());
+//            filmList.add(film_name);
+//            String user_name=orderService.findUserNameById(o.getUser_id());
+//            userList.add(user_name);
+//        }
+//        modelAndView.addObject("ordersList", ordersList);
+//        modelAndView.addObject("filmList", filmList);
+//        modelAndView.addObject("userList", userList);
+//        System.out.println(11111);
+//        modelAndView.setViewName("orders-list");
+//        System.out.println(22222);
+//        return modelAndView;
+//    }
 
 
     //    刷新

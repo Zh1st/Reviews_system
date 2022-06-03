@@ -73,4 +73,14 @@ public class OrderServiceImpl implements OrderService {
         List<Orders> ordersList=orderDao.findOrderByUserId(user_id);
         return ordersList;
     }
+
+    @Override
+    public Integer selectOrdersCount() {
+        return orderDao.selectOrdersCount();
+    }
+
+    @Override
+    public List<Orders> listByPage(Integer start, Integer end) {
+        return orderDao.listByPage(start,end);
+    }
 }
