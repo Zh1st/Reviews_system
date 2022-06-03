@@ -53,15 +53,21 @@
 
 <div class="row" style="margin-top: 30px;">
     <div class="col"></div>
-    <div class="jianju">订单id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电影名
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间
-    </div>
+<%--    <div class="jianju">订单id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电影名--%>
+<%--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
+<%--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
+<%--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
+<%--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间--%>
+<%--    </div>--%>
     <c:if test="${ordersList.size()-1>0}">
+
         <div class="beijing">
+
             <ul class="comment-group">
+                <p style="font-family: 幼圆">订单号</p>
+                <p style="margin-left: 90px;margin-top: -40px;font-family: 幼圆">电影名</p>
+                <p style="margin-left: 520px;margin-top: -40px;font-family: 幼圆">下单时间</p>
+                <hr>
                 <c:forEach begin="0" end="${ordersList.size()-1}" var="i">
                     <li>
                         <div class="user-info">
@@ -69,7 +75,7 @@
                             <span class="username">${filmList[i]}</span>
                             <span class="create-time">${ordersList[i].time}</span>
                         </div>
-                        <p class="comment-content">${ordersList[i].site_id}</p>
+                        <p class="comment-content">座位号：${ordersList[i].site_id}</p>
                     </li>
                 </c:forEach>
             </ul>
