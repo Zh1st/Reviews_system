@@ -59,76 +59,149 @@
             background: #0f74a8;
         }
         .centent{
+            float: left;
             width:50%;
             height: 50%;
-            margin-left: 70px;
+            margin-left: 210px;
         }
         .cententbody{
-            border: 3px #ffed12 solid;
+        }
+        .right_film{
+            float: left;
+            width: 20%;
+            height: 645px;
+            margin-right: 70px;
+            background-color: lightgrey;
+        }
+        .right_film img{
+            margin-left: 30px;
+            margin-top: 20px;
+            border: 4px solid white;
+            width: 230px;
+            height: 290px;
+        }
+        .film_title{
+            position: relative;
+            margin-left: 30px;
+            margin-top: 20px;
+            font-size: 25px;
+            width: 200px;
+            /* 强制不换行 */
+            white-space: nowrap;
+            /* 文字用省略号代替超出的部分 */
+            text-overflow: ellipsis;
+            /* 匀速溢出内容，隐藏 */
+            overflow: hidden;
+        }
+        .film_catrgory{
+            position: relative;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        .film_time{
+            position: relative;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        .film_cinema{
+            position: relative;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        .film_screen{
+            position: relative;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        .buy_film{
+            position: relative;
+            margin-top: 30px;
+            align-items: center;
+        }
+        .buy_film input{
+            width: 100px;
+            height: 40px;
+            border: 0px;
+            background-color: whitesmoke;
+            border-radius: 20px;
+            margin-left: 30px;
         }
     </style>
 </head>
 <body>
-<div class="centent">
     <form action="${pageContext.request.contextPath}/order/save" method="get">
-        <%--    ${sites}--%>
-        <input type="hidden" value="${filmid}" name="film_id"/>
-        <input type="hidden"  name="time"/>
-        <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
-        <center>
-            <div class="cententbody">
-            <div class="left">大门</div>
-            <div class="right">大门</div>
-            <div class="dapi">电影大屏幕</div>
-            <%
-                for (int x = 0; x < 6; x++){
-            %>
-            <%--        显示第几列--%>
-            <%--        <%=x%>--%>
-            <%
-                for (int y = 0; y < 10; y++){
-            %>
-            <div style="display: inline-block;">
-                <%
-                    int c = x*10+y+1;
-                    String flag = "check";
-                    String flag1 = "checked";
-                    String disable = "d";
-                %>
-                <%--            做判断是否是已选中座位，是的话flag= checked不是的话flag= check--%>
-                <c:set var="isDoing" value="0"/>
-                <c:forEach items="${sites}" var="site" varStatus="i">
-                    <c:set value="<%=c%>" var="siteq"/>
-                    <c:if test="${siteq==site.site_id}">
+        <div class="centent">
+                <%--    ${sites}--%>
+                <input type="hidden" value="${filmid}" name="film_id"/>
+                <input type="hidden"  name="time"/>
+                <input type="hidden" value="<%=session.getAttribute("userid")%>"name="user_id"/>
+                <center>
+                    <div class="cententbody">
+                    <div class="left">大门</div>
+                    <div class="right">大门</div>
+                    <div class="dapi">电影大屏幕</div>
+                    <%
+                        for (int x = 0; x < 6; x++){
+                    %>
+                    <%--        显示第几列--%>
+                    <%--        <%=x%>--%>
+                    <%
+                        for (int y = 0; y < 10; y++){
+                    %>
+                    <div style="display: inline-block;">
                         <%
-                            flag = "checked";
-                            disable = "disabled";
+                            int c = x*10+y+1;
+                            String flag = "check";
+                            String flag1 = "checked";
+                            String disable = "d";
                         %>
-                        <%--                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids" checked disabled/>--%>
-                    </c:if>
-                    <c:set var="flag" value="<%=flag%>"/>
-                    <c:set var="disable" value="<%=disable%>"/>
-                    <c:if test="${flag==flag1}">
-                        <c:set var="isDoing" value="1"/>
-                    </c:if>
-                </c:forEach>
-                <input type="checkbox" id="site_ids" class="site" value="<%=c%>"  name="site_ids" ${flag}  ${disable}/>
-                <br>
-                <%=c%>
+                        <%--            做判断是否是已选中座位，是的话flag= checked不是的话flag= check--%>
+                        <c:set var="isDoing" value="0"/>
+                        <c:forEach items="${sites}" var="site" varStatus="i">
+                            <c:set value="<%=c%>" var="siteq"/>
+                            <c:if test="${siteq==site.site_id}">
+                                <%
+                                    flag = "checked";
+                                    disable = "disabled";
+                                %>
+                                <%--                    <input type="checkbox" id="site_id" class="site" value="<%=c%>" name="site_ids" checked disabled/>--%>
+                            </c:if>
+                            <c:set var="flag" value="<%=flag%>"/>
+                            <c:set var="disable" value="<%=disable%>"/>
+                            <c:if test="${flag==flag1}">
+                                <c:set var="isDoing" value="1"/>
+                            </c:if>
+                        </c:forEach>
+                        <input type="checkbox" id="site_ids" class="site" value="<%=c%>"  name="site_ids" ${flag}  ${disable}/>
+                        <br>
+                        <%=c%>
+                    </div>
+                    <%
+                        }
+                    %>
+                    <br/>
+                    <%
+                        }
+                    %>
+                </center>
             </div>
-            <%
-                }
-            %>
-            <br/>
-            <%
-                }
-            %>
-            <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:150px;height:35px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-right: 150px "/>
-                <input type="submit" value="购买" onclick="show()" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-left: 150px "/>
-        </center>
-    </div>
+
+        </div>
+        <div class="right_film">
+            <img src="../images/f5dcf8c1-d61a-4095-b038-b9b13dcb5013.webp"/>
+            <div class="film_title"><label >神奇动物在哪里fff</label></div>
+            <div class="film_catrgory"><label>类型：犯罪 悬疑</label></div>
+            <div class="film_time"><label>时长：134分钟</label></div>
+            <div class="film_cinema"><label>影院：中山奇幻电影院</label></div>
+            <div class="film_screen"><label>场次：2022-06-03</label></div>
+            <div class="film_screen"><label>票价：￥35/张</label></div>
+            <hr style="width: 450px;height:5px;border:none;border-top:2px dotted whitesmoke;">
+            <div class="buy_film">
+                <input type="submit" value="购票" onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='whitesmoke'"></input>
+                <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='whitesmoke'"></input>
+            </div>
+        </div>
     </form>
-</div>
 <script>
     function show() {
         if(confirm("确定购买")){
