@@ -71,26 +71,26 @@
 <%--    <img class="tu" src="{{ url_for('static',filename='images/cool-background.png')}}"></a>--%>
 </div>
 
-
+<c:if test="${commentList.size()-1>0}">
 <div class="row" style="margin-top: 30px;">
     <div class="col"></div>
     <div class="beijing" >
         <ul class="comment-group" >
 
+                <!--			在这插入循环-->
+                <c:forEach begin="0" end="${commentList.size()-1}" var="i">
+                    <li >
+                        <div class="user-info" >
+                            <span class="username">${filmList[i]}</span>
+                        </div>
+                        <p class="comment-content">${commentList[i].comment_content}</p>
+                    </li>
+                </c:forEach>
 
-            <!--			在这插入循环-->
-            <c:forEach begin="0" end="${commentList.size()-1}" var="i">
-            <li >
-                <div class="user-info" >
-                    <span class="username">${filmList[i]}</span>
-                </div>
-                <p class="comment-content">${commentList[i].comment_content}</p>
-            </li>
-            </c:forEach>
         </ul>
     </div>
     <div class="col"></div>
 </div>
-
+</c:if>
 </body>
 </html>

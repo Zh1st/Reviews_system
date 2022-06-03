@@ -27,8 +27,9 @@
     </nav>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div style="width: 100%;position:absolute;display: flex;align-items: center;justify-content: center;z-index: 0;left: 0px;">
-            <ul class="navbar-nav mr-auto" style="width: max-content; font-size: 26px; margin-left: 640px;font-family:'幼圆'">
-                <li class="nav-item " >
+            <ul class="navbar-nav mr-auto"
+                style="width: max-content; font-size: 26px; margin-left: 640px;font-family:'幼圆'">
+                <li class="nav-item ">
                     <a class="nav-link" href="#"
                        style="margin-left: 20px;">主页</a>
                 </li>
@@ -56,24 +57,24 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间</div>
-    <div class="beijing">
-        <ul class="comment-group">
-
-                        <c:forEach begin="0" end="${ordersList.size()-1}" var="i">
-                        <li>
-                            <div class="user-info">
-                                <span class="avatar">${ordersList[i].order_id}</span>
-                                <span class="username">${filmList[i]}</span>
-                                <span class="create-time">${ordersList[i].time}</span>
-                            </div>
-                            <p class="comment-content">${ordersList[i].site_id}</p>
-
-                        </li>
-                        </c:forEach>
-
-        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间
     </div>
+    <c:if test="${ordersList.size()-1>0}">
+        <div class="beijing">
+            <ul class="comment-group">
+                <c:forEach begin="0" end="${ordersList.size()-1}" var="i">
+                    <li>
+                        <div class="user-info">
+                            <span class="avatar">${ordersList[i].order_id}</span>
+                            <span class="username">${filmList[i]}</span>
+                            <span class="create-time">${ordersList[i].time}</span>
+                        </div>
+                        <p class="comment-content">${ordersList[i].site_id}</p>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
     <div class="col"></div>
 </div>
 </body>

@@ -43,9 +43,15 @@ public ModelAndView site(int filmid){
     //    添加订单
     @RequestMapping("save")
     public String save(Orders order,int[]site_ids) {
-        int i = orderService.save(order,site_ids);
-        System.out.println(order);
-        return "redirect:/order/orderback";
+        int result = order.getFilm_id();
+//        System.out.println("座位的长度"+site_ids.length);
+        if (site_ids!=null){
+            int i = orderService.save(order,site_ids);
+//        System.out.println(order);
+            return "redirect:/order/orderback";
+        }
+        System.out.println("地址是site?filmid="+result);
+        return "redirect:/order/site?filmid="+result;
     }
 
 
