@@ -71,7 +71,7 @@
 <%--    <img class="tu" src="{{ url_for('static',filename='images/cool-background.png')}}"></a>--%>
 </div>
 
-<c:if test="${commentList.size()-1>0}">
+<c:if test="${commentList.size()-1>=0}">
 <div class="row" style="margin-top: 30px;">
     <div class="col"></div>
     <div class="beijing" >

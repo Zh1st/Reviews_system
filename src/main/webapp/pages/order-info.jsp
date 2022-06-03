@@ -58,7 +58,7 @@
 <%--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
 <%--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间--%>
 <%--    </div>--%>
-    <c:if test="${ordersList.size()-1>0}">
+    <c:if test="${ordersList.size()-1>=0}">
         <div class="beijing">
             <ul class="comment-group">
                 <p style="font-family: 幼圆">订单号</p>
