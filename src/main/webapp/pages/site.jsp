@@ -112,7 +112,7 @@
                         <c:set var="isDoing" value="1"/>
                     </c:if>
                 </c:forEach>
-                <input type="checkbox" id="site_ids" class="site" value="<%=c%>"  name="site_ids" ${flag}  ${disable}/>
+                <input type="checkbox" onclick="show()" id="site_ids" class="site" value="<%=c%>"  name="site_ids" ${flag}  ${disable}/>
                 <br>
                 <%=c%>
             </div>
@@ -124,16 +124,17 @@
                 }
             %>
             <input type="submit" formaction="${pageContext.request.contextPath}/order/orderback" value="返回" style="width:150px;height:35px;background-color:ghostwhite;border-color:#1dff30;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-right: 150px "/>
-                <input type="submit" value="购买" onclick="show()" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-left: 150px "/>
+                <input type="submit" id="bug" value="购买" onclick="bug1()" style="width:150px;height:35px;background-color:ghostwhite;border-color:#ff590a;border-width:3px;font-size: 20px;position:relative;bottom: 0px;margin-left: 150px;display:none" />
         </center>
     </div>
     </form>
 </div>
 <script>
     function show() {
-        if(confirm("确定购买")){
-            alert("购买成功")
-        }
+        document.getElementById("bug").style.display="inline-block";
+    }
+    function bug1(){
+        alert("提交订单成功")
     }
 </script>
 </body>
