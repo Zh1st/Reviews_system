@@ -59,9 +59,7 @@
 <%--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间--%>
 <%--    </div>--%>
     <c:if test="${ordersList.size()-1>0}">
-
         <div class="beijing">
-
             <ul class="comment-group">
                 <p style="font-family: 幼圆">订单号</p>
                 <p style="margin-left: 90px;margin-top: -40px;font-family: 幼圆">电影名</p>

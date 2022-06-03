@@ -27,6 +27,7 @@
             <mvc:mapping path="/**"/>
 <!--            配置哪些资源排除拦截操作-->
             <mvc:exclude-mapping path="/admin/login"/>
+            <mvc:exclude-mapping path="/user/login"/>
             <bean class="com.reviews_system.interceptor.PrivilegeInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>

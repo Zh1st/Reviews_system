@@ -42,8 +42,6 @@ public ModelAndView site(int film_id,int cinema_id){
     String createTime = dateFormat.format(date);
     modelAndView.addObject("time",createTime);
     List<Orders> sites=orderService.selectOrder(film_id,cinema_id);
-    System.out.println("座位是"+sites);
-    System.out.println(sites);
     modelAndView.addObject("sites", sites);
     modelAndView.setViewName("site");
     return modelAndView;
@@ -52,15 +50,17 @@ public ModelAndView site(int film_id,int cinema_id){
     //    添加订单
     @RequestMapping("save")
     public String save(Orders order,int[]site_ids) {
-        int result = order.getFilm_id();
+        int film_id = order.getFilm_id();
+        int cinema_id=order.getCinema_id();
 //        System.out.println("座位的长度"+site_ids.length);
+        System.out.println(site_ids);
         if (site_ids!=null){
             int i = orderService.save(order,site_ids);
 //        System.out.println(order);
             return "redirect:/order/orderback";
         }
-        System.out.println("地址是site?filmid="+result);
-        return "redirect:/order/site?filmid="+result;
+        System.out.println("地址是site?filmid="+film_id);
+        return "redirect:/order/site?film_id="+film_id+"&&cinema_id="+cinema_id;
     }
 
 

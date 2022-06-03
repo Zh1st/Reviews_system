@@ -27,7 +27,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 
     @Override
     public List<Comment> selectCommentByUserID(int user_id) {
-        String sql="select * from comment where user_id=?";
+        String sql="select * from comment where user_id=? ORDER BY comment_time DESC";
         List<Comment>commentList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Comment>(Comment.class),user_id);
         return commentList;
     }

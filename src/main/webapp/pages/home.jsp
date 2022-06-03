@@ -138,28 +138,6 @@
                     </c:forEach>
                 </ul>
             </div>
-            <div class="movie_hot">
-                <h5>
-                    近期热门&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
-                    (&nbsp;
-                    <a href="#" class="time_a">更多</a>
-                    &nbsp;)
-                </h5>
-            </div>
-            <div class="hotMovie">
-                <ol start="1">
-                    <li><a href="#">小戏骨：红楼梦之刘姥姥进大观园</a></li>
-                    <li><a href="#">极寒之城</a></li>
-                    <li><a href="#">猩球崛起3：终极之战</a></li>
-                    <li><a href="#">杀破狼·贪狼</a></li>
-                    <li><a href="#">大护法</a></li>
-                    <li><a href="#">小丑回魂</a></li>
-                    <li><a href="#">猎凶风河谷</a></li>
-                    <li><a href="#">双面情人</a></li>
-                    <li><a href="#">美国行动</a></li>
-                    <li><a href="#">辣手保姆</a></li>
-                </ol>
-            </div>
         </div>
     </div>
 </div>

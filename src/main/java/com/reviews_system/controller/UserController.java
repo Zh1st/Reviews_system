@@ -151,7 +151,7 @@ public class UserController {
             System.out.println(info);
             return "redirect:/film/weblist";
         }
-        return "redirect:/fail.jsp";
+        return "redirect:/userLAR.jsp";
     }
 
     // 注册
