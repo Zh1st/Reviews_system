@@ -29,4 +29,8 @@ public interface CategoryDao {
 
     List<Category>findRoleById(int id);
 
+    int selectFilmCount(int category_id);
+
+    List<Film> listByPage(Integer start, Integer end,int category_id);
+
 }
