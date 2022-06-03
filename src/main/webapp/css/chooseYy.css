@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* CSS Document */
+
+.Choosename{
+	width: 900px;
+	margin-top: 0;
+	font-size: 26px;
+	line-height: 32px;
+	font-weight: 700;
+	margin-bottom: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 64px;
+}
+
+.ellipsis{
+	margin: 12px 0;
+	line-height: 100%;
+	padding: 0;
+	list-style: none;
+	color: #fff;
+	font-size: 14px;
+}
+
+.text-link{
+	color: inherit;
+	text-decoration: none;
+	background-color: transparent;
+	line-height: 100%;
+	list-style: none;
+	font-size: 14px;
+}
+
+.movie-stats-container{
+	position: absolute;
+	top: 158px;
+	left: 342px;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+		
+}
+
+.movie-index{
+	margin-bottom: 16px;
+  	color: #fff;
+	padding: 0;
+}
+
+.movie-index-title{
+	font-size: 12px;
+	margin-bottom: 8px;
+	margin: 0;
+  	margin-bottom: 0px;
+	padding: 0;
+	list-style: none;
+	line-height: 1;
+}
+
+.movie-index-content score normal-scor{
+	overflow: hidden;
+	
+}
+
+.movie-index-content score normal-score{
+	font-size: 30px;
+	color: #ffc600;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+}
+
+.main{
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.main-inner main-buyticket{
+	width: 1200px;
+  	margin: 0 auto 0 auto;
+	box-sizing: border-box;
+}
+
+.cinemas-list{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.cinemas-list-header{
+	font-size: 18px;
+	color: #333;
+	border-left: 4px solid #f03d37;
+	padding-left: 6px;
+	line-height: 18px;
+	margin: 0;
+}
+
+.cinema-cell{
+	display: block;
+	padding: 20px 0;
+	border-bottom: 1px dashed #e5e5e5;
+}
+
+.cinema-info{
+	display: inline-block;
+	max-width: 80%;
+}
+
+.cinema-name{
+	display: inline-block;
+	font-size: 16px;
+	line-height: 18px;
+	color: #333;
+	text-decoration: none;
+	margin-bottom: 10px;
+	background-color: transparent;
+}
+
+.cinema-address{
+	font-size: 14px;
+	line-height: 14px;
+	color: #999;
+}
+
+.buy-btn{
+	float: right;
+width: 80px;
+height: 45px;
+line-height: 45px;
+margin-left: 36px;
+}
