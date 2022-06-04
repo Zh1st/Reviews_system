@@ -37,16 +37,17 @@ public class CategoryController {
         int page=0;
         if(total%size!=0)
         {
-            page=total/size;
-            page++;
+            page=total/size+1;
         }
         else
         {
             page=total/size;
         }
-        if(methods.equals("next")&&count<page)
+        if(methods.equals("next")&&count<page-1)
         {
             count++;
+        }else if(methods.equals("next")&&count==page-1){
+            count=page-1;
         }
         else if(methods.equals("up")&&count!=0)
         {

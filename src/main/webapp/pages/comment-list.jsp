@@ -16,8 +16,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>影评网站后台管理系统</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <meta name="description" content="影评网站后台管理系统">
+    <meta name="keywords" content="影评网站后台管理系统">
 
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -153,42 +153,6 @@
     <!-- 导航侧栏 /-->
     <!-- 内容区域 -->
     <div class="content-wrapper">
-<%--        &lt;%&ndash;		添加&ndash;%&gt;--%>
-<%--        <div id="adddiv" style="display: none">--%>
-<%--            <h2 style="text-align: center;">添加用户</h2>--%>
-<%--            <form id="addform" style="align-content: center" class="layui-form" action="${pageContext.request.contextPath}/user/save" method="post">--%>
-<%--                <div class="layui-form-item">--%>
-<%--                    <label class="layui-form-label">用户名</label>--%>
-<%--                    <div class="layui-input-block">--%>
-<%--                        <input type="text" name="user_name" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="layui-form-item">--%>
-<%--                    <label class="layui-form-label">密码</label>--%>
-<%--                    <div class="layui-input-block">--%>
-<%--                        <input type="password" name="user_password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="layui-form-item">--%>
-<%--                    <label class="layui-form-label">联系电话</label>--%>
-<%--                    <div class="layui-input-block">--%>
-<%--                        <input type="text" name="user_phone" lay-verify="required" placeholder="请输入电话" autocomplete="off" class="layui-input">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="layui-form-item">--%>
-<%--                    <label class="layui-form-label">邮箱</label>--%>
-<%--                    <div class="layui-input-block">--%>
-<%--                        <input type="text" name="user_email"  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="layui-form-item" style="align-content: center">--%>
-<%--                    <div class="layui-input-block" >--%>
-<%--                        <button type="submit" class="layui-btn">立即提交</button>--%>
-<%--                        <button type="reset" onclick="addUser()" class="layui-btn layui-btn-primary">关闭</button>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </form>--%>
-<%--        </div>--%>
 
         <!-- 内容头部 -->
         <section class="content-header">
@@ -303,7 +267,7 @@
 
 </div>
 
-<!-- 编辑用户的窗口 -->
+<!-- 编辑评论的窗口 -->
 <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -322,19 +286,19 @@
                         </tr>
                         <tr>
                             <td>评论内容</td>
-                            <td><input class="form-control" required placeholder="评论内容" name="comment_content" id="comment_content"></td>
+                            <td><input required class="form-control" required placeholder="评论内容" name="comment_content" id="comment_content"></td>
                         </tr>
                         <tr>
                             <td>观看状态</td>
-                            <td><input class="form-control" placeholder="观看状态" name="watch" id="watch"></td>
+                            <td><input required class="form-control" placeholder="观看状态" name="watch" id="watch"></td>
                         </tr>
                         <tr>
                             <td>电影id</td>
-                            <td><input class="form-control" placeholder="电影id" name="film_id" id="film_id" ></td>
+                            <td><input required class="form-control" placeholder="电影id" name="film_id" id="film_id" ></td>
                         </tr>
                         <tr>
                             <td>用户id</td>
-                            <td><input class="form-control" placeholder="用户id" name="user_id" id="user_id" ></td>
+                            <td><input required class="form-control" placeholder="用户id" name="user_id" id="user_id" ></td>
                         </tr>
                     </table>
                     <div class="modal-footer">
@@ -349,7 +313,7 @@
     </div>
 </div>
 
-<!-- 添加用户的窗口 -->
+<!-- 添加评论的窗口 -->
 <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -366,19 +330,19 @@
                         </tr>
                         <tr>
                             <td>评论内容</td>
-                            <td><input class="form-control" required placeholder="评论内容" name="comment_content"></td>
+                            <td><input required class="form-control" required placeholder="评论内容" name="comment_content"></td>
                         </tr>
                         <tr>
                             <td>观看状态</td>
-                            <td><input class="form-control" placeholder="观看状态" name="watch"></td>
+                            <td><input required class="form-control" placeholder="观看状态" name="watch"></td>
                         </tr>
                         <tr>
                             <td>电影id</td>
-                            <td><input class="form-control" placeholder="电影id" name="film_id"></td>
+                            <td><input required class="form-control" placeholder="电影id" name="film_id"></td>
                         </tr>
                         <tr>
                             <td>用户id</td>
-                            <td><input class="form-control" placeholder="用户id" name="user_id"></td>
+                            <td><input required class="form-control" placeholder="用户id" name="user_id"></td>
                         </tr>
                     </table>
                     <div class="modal-footer">

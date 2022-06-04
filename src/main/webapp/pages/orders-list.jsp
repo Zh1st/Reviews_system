@@ -23,8 +23,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>影评网站后台管理系统</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <meta name="description" content="影评网站后台管理系统">
+    <meta name="keywords" content="影评网站后台管理系统">
 
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -132,11 +132,10 @@
     <!-- 导航侧栏 /-->
     <!-- 内容区域 -->
     <div class="content-wrapper">
-
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                类型管理 <small>全部类型</small>
+                订单管理 <small>全部订单</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a></i> 首页</a></li>
@@ -179,7 +178,7 @@
                         <div class="box-tools pull-right">
                             <div style="display: flex" class="has-feedback">
                                 <input id="findOrderByName" style="height: 40px" type="text" class="form-control input-sm"
-                                       placeholder="根据类型模糊查询"/>
+                                       placeholder="根据电影名称模糊查询"/>
                                 <button style="height: 40px" type="button" class="layui-btn" onclick="findOrderByName()">
                                     查询
                                 </button>

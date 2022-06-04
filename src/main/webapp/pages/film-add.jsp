@@ -7,9 +7,9 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>数据 - AdminLTE2</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <title>影评网站后台管理系统</title>
+    <meta name="description" content="影评网站后台管理系统">
+    <meta name="keywords" content="影评网站后台管理系统">
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta
@@ -100,15 +100,15 @@
                     <div class="row data-type">
                         <div class="col-md-2 title">电影名称</div>
                         <div class="col-md-9 data">
-                            <input type="text" class="form-control" name="film_name" placeholder="电影名称" value="">
+                            <input required type="text" class="form-control" name="film_name" placeholder="电影名称" value="">
                         </div>
                         <div class="col-md-2 title">简介</div>
                         <div class="col-md-9">
-                            <textarea placeholder="请输入内容" class="layui-textarea" name="brief_introduction"></textarea>
+                            <textarea required placeholder="请输入内容" class="layui-textarea" name="brief_introduction"></textarea>
                         </div>
                         <div class="col-md-2 title">价格</div>
                         <div class="col-md-9 data">
-                            <input type="text" class="form-control" name="price" placeholder="电影价格 ">
+                            <input required type="text" class="form-control" name="price" placeholder="电影价格 ">
                         </div>
                         <div class="col-md-2 title">影片类型</div>
                         <div class="col-md-9 data">
@@ -118,15 +118,15 @@
                         </div>
                         <div class="col-md-2 title">评分</div>
                         <div class="col-md-9 data">
-                            <input type="text" class="form-control" name="score" placeholder="电影评分 ">
+                            <input required type="text" class="form-control" name="score" placeholder="电影评分 ">
                         </div>
                         <div class="col-md-2 title">时长</div>
                         <div class="col-md-9 data">
-                            <input type="text" class="form-control" name="film_time" placeholder="电影时长 ">
+                            <input required type="text" class="form-control" name="film_time" placeholder="电影时长 ">
                         </div>
                         <div class="col-md-2 title">导演</div>
                         <div class="col-md-9 data">
-                            <input type="text" class="form-control" name="film_director" placeholder="电影导演 ">
+                            <input required type="text" class="form-control" name="film_director" placeholder="电影导演 ">
                         </div>
                         <div style="" class="col-md-2 title">图片</div>
                         <div style="height: 200px" class="col-md-10 data">

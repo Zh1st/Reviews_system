@@ -16,8 +16,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>影评网站后台管理系统</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <meta name="description" content="影评网站后台管理系统">
+    <meta name="keywords" content="影评网站后台管理系统">
 
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -298,12 +298,12 @@
                     <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="admin_name"
+                            <td><input required class="form-control" required placeholder="请输入用户名" name="admin_name"
                                        id="admin_name"></td>
                         </tr>
                         <tr>
                             <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="admin_password"
+                            <td><input required class="form-control" required placeholder="请输入密码" name="admin_password"
                                        id="admin_password"></td>
                         </tr>
                     </table>
@@ -334,11 +334,11 @@
                     <table id="addTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>用户名</td>
-                            <td><input class="form-control" required placeholder="请输入用户名" name="admin_name"></td>
+                            <td><input required class="form-control" required placeholder="请输入用户名" name="admin_name"></td>
                         </tr>
                         <tr>
                             <td>密码</td>
-                            <td><input class="form-control" required placeholder="请输入密码" name="admin_password"></td>
+                            <td><input required class="form-control" required placeholder="请输入密码" name="admin_password"></td>
                         </tr>
                     </table>
                     <div class="modal-footer">

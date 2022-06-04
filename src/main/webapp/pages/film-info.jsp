@@ -10,12 +10,19 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>示例演示</title>
+    <title>电影详情</title>
 
     <link href="../css/bootstrap@4.6.min.css" rel="stylesheet">
     <link href="../css/style2.css" rel="stylesheet" type="text/css">
     <link href="../layui/css/layui.css" rel="stylesheet">
     <link href="../css/information.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        function tosite(film_id){
+            // if(confirm("购买成功")){
+            location.href="${pageContext.request.contextPath}/cinema/weblist?film_id="+film_id;
+            // }
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CDE4DA;height: 65px;">
@@ -86,6 +93,11 @@
     </div>
     <!--当前评分-->
     <div id="test9" style="position: absolute;margin-left: 200px;margin-top: -180px;"></div>
+    <div style="position: relative;margin-left: 550px; margin-top: -60px;">
+        <button onmouseover="this.style.backgroundColor='orangered'"; onmouseout="this.style.backgroundColor='lightslategray'" style="margin-left:13px;width: 150px;height: 40px;text-align: center;font-size: 20px;background-color:lightslategray;-webkit-border-radius: 10px;border: 0px;" onclick="tosite(${film.film_id})">
+            选座购票
+        </button>
+    </div>
 </div>
 
 
@@ -100,10 +112,10 @@
                 <li>
                     <div class="user-info">
                         <c:if test="${comment.watch==1}">
-                            <span class="username" style="color: black;">${comment.user_name}</span>
+                            <span class="username" style="color: orange;font-size: 20px;">${comment.user_name}</span>
                         </c:if>
                         <c:if test="${comment.watch!=1}">
-                            <span class="username" style="color: gray;">${comment.user_name}</span>
+                            <span class="username" style="color: gray;font-size: 20px;">${comment.user_name}</span>
                         </c:if>
                         <span class="create-time">${comment.comment_time}</span>
                     </div>
@@ -126,12 +138,12 @@
         <p style="margin-left: 22px;margin-top: 10px; font-family:'思源黑体 CN Light';font-size: 16px">给个评价吧：</p>
         <div id="test6" style="margin-left: 20px;"></div>
         <from style="margin-left: 50px;margin-top: 5px;">
-            <label><input type="radio" name="watch" value="1">看过</label>
+            <label><input type="radio" name="watch" value="1" checked>看过</label>
             <label><input type="radio" name="watch" value="0">没看过</label>
         </from>
         <hr style="border: 5px solid red;"/>
         <p style="margin-left: 22px;font-family: '黑体';color: gray">简短评论:</p>
-        <textarea rows="4" cols="72" placeholder="点此评论" class="pltank" name="comment_content"></textarea>
+        <textarea rows="4" cols="72" required placeholder="点此评论" class="pltank" name="comment_content"></textarea>
         <div class="pltanbot">
             <button  type="submit" class="btn btn-outline-secondary btn-sm" style="float:right;margin-top: 2px;margin-right:5px;">确认</button>
         </div>

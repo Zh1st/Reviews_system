@@ -73,7 +73,6 @@
 
                     <li class="ellipsis">
                         <ul>
-
                             <li class="text-link"> 类别：
                                 <c:forEach items="${film.categories}" var="category">
                                     ${category.category_name}&nbsp;&nbsp;

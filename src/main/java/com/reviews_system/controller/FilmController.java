@@ -39,21 +39,22 @@ public class FilmController {
         {
             methods="one";
         }
-        int size=3;
+        int size=5;
         int total=filmService.selectFilmCount();
         int page=0;
         if(total%size!=0)
         {
-            page=total/size;
-            page++;
+            page=total/size+1;
         }
         else
         {
             page=total/size;
         }
-        if(methods.equals("next")&&count<page)
+        if(methods.equals("next")&&count<page-1)
         {
             count++;
+        }else if(methods.equals("next")&&count==page-1){
+            count=page-1;
         }
         else if(methods.equals("up")&&count!=0)
         {
@@ -215,5 +216,11 @@ public class FilmController {
         modelAndView.addObject("film",film);
         modelAndView.setViewName("film-info");
         return modelAndView;
+    }
+
+    //    刷新
+    @RequestMapping("/refresh")
+    public String refresh(){
+        return "redirect:/film/list";
     }
 }
