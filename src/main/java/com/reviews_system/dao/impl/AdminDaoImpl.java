@@ -3,6 +3,7 @@ package com.reviews_system.dao.impl;
 import com.github.pagehelper.Page;
 import com.reviews_system.dao.AdminDao;
 import com.reviews_system.domain.Admin;
+import com.reviews_system.domain.Category;
 import com.reviews_system.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -74,5 +75,18 @@ public class AdminDaoImpl implements AdminDao {
             i+=j;
         }
         return i;
+    }
+    @Override
+    public Integer selectAdminCount() {
+        String sql="select count(*) from admin";
+        int i= jdbcTemplate.queryForObject(sql,Integer.class);
+        return i;
+    }
+
+    @Override
+    public List<Admin> listByPage(Integer start, Integer end) {
+        String sql = "select * from admin limit "+start+","+end;
+        List<Admin> adminList =jdbcTemplate.query(sql,new BeanPropertyRowMapper<Admin>(Admin.class));
+        return adminList;
     }
 }
