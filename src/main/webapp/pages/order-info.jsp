@@ -63,6 +63,7 @@
             <ul class="comment-group">
                 <p style="font-family: 幼圆">订单号</p>
                 <p style="margin-left: 90px;margin-top: -40px;font-family: 幼圆">电影名</p>
+                <p style="margin-left: 90px;margin-top: -40px;font-family: 幼圆">影院</p>
                 <p style="margin-left: 520px;margin-top: -40px;font-family: 幼圆">下单时间</p>
                 <hr>
                 <c:forEach begin="0" end="${ordersList.size()-1}" var="i">
@@ -70,7 +71,9 @@
                         <div class="user-info">
                             <span class="avatar">${ordersList[i].order_id}</span>
                             <span class="username">${filmList[i]}</span>
+                            <span class="create-time">${CinemaList[i]}</span>
                             <span class="create-time">${ordersList[i].time}</span>
+
                         </div>
                         <p class="comment-content">座位号：${ordersList[i].site_id}</p>
                     </li>

@@ -83,16 +83,22 @@ public ModelAndView site(int film_id,int cinema_id){
         int page=0;
         if(total%size!=0)
         {
-            page=total/size;
-            page++;
+            page=total/size+1;
         }
         else
         {
             page=total/size;
         }
-        if(methods.equals("next")&&count<page)
+
+        if(methods.equals("next")&&count<page-1)
         {
             count++;
+        }else if(methods.equals("next")&&count==page-1){
+            count=page-1;
+        }
+        else if(methods.equals("up")&&count!=0)
+        {
+            count--;
         }
         else if(methods.equals("up")&&count!=0)
         {
@@ -202,13 +208,17 @@ public ModelAndView site(int film_id,int cinema_id){
         ModelAndView modelAndView = new ModelAndView();
         List<Orders> ordersList=orderService.findOrderByUserId(userid);
         List<String> filmList = new ArrayList<String>();
+        List<String> CinemaList = new ArrayList<String>();
         for (Orders o:ordersList
         ) {
             String filmName=userInfoService.findFilmNameById(o.getFilm_id());
             filmList.add(filmName);
+            String cinemaName=cinemaService.findById(o.getCinema_id()).getCinema_name();
+            CinemaList.add(cinemaName);
         }
         modelAndView.addObject("ordersList", ordersList);
         modelAndView.addObject("filmList", filmList);
+        modelAndView.addObject("CinemaList", CinemaList);
         modelAndView.setViewName("order-info");
         return modelAndView;
     }
