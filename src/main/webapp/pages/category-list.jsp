@@ -16,8 +16,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>影评网站后台管理系统</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <meta name="description" content="影评网站后台管理系统">
+    <meta name="keywords" content="影评网站后台管理系统">
 
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -158,7 +158,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">类型名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="category_name" required lay-verify="required" placeholder="请输入标题"
+                        <input required type="text" name="category_name" required lay-verify="required" placeholder="请输入标题"
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
@@ -213,13 +213,6 @@
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
                                             <button type="button" onclick="delByIds()"
-
-
-
-
-
-
-
                                                     class="layui-btn layui-btn-normal">批量删除
                                             </button>
                                         </div>
@@ -311,7 +304,7 @@
                     <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>类型名</td>
-                            <td><input class="form-control" required placeholder="请输入类型名" name="category_name"
+                            <td><input required class="form-control" required placeholder="请输入类型名" name="category_name"
                                        id="category_name"></td>
                         </tr>
                     </table>

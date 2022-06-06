@@ -35,7 +35,7 @@ public class CommentController {
         {
             methods="one";
         }
-        int size=2;
+        int size=10;
         int total=commentService.selectUserCount();
         int page=0;
         if(total%size!=0)
@@ -139,7 +139,7 @@ public class CommentController {
             return null;
     }
 
-//    用户添加评论
+    //    用户添加评论
     @RequestMapping("/addComment")
     public String addComment(Comment comment,HttpSession session)
     {

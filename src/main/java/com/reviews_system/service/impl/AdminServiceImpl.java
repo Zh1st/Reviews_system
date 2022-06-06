@@ -2,6 +2,7 @@ package com.reviews_system.service.impl;
 
 import com.reviews_system.dao.AdminDao;
 import com.reviews_system.domain.Admin;
+import com.reviews_system.domain.Category;
 import com.reviews_system.domain.User;
 import com.reviews_system.service.AdminService;
 import entity.PageResult;
@@ -70,5 +71,16 @@ public class AdminServiceImpl implements AdminService {
     public int delByIds(int[] ids) {
         int i=adminDao.delByIds(ids);
         return i;
+    }
+
+    @Override
+    public Integer selectAdminCount() {
+        int i=adminDao.selectAdminCount();
+        return i;
+    }
+    @Override
+    public List<Admin> listByPage(Integer start, Integer end) {
+        List<Admin>adminList=adminDao.listByPage(start,end);
+        return adminList;
     }
 }

@@ -28,15 +28,44 @@ public class AdminController {
         }
         return "redirect:/login.jsp";
     }
-    //    查询所有
+    static int count=0;
     @RequestMapping("/list")
-    public ModelAndView list(){
+    public ModelAndView list(String methods){
+        if(methods==null)
+        {
+            methods="one";
+        }
+        int size=5;
+        int total=adminService.selectAdminCount();
+        int page=0;
+        if(total%size!=0)
+        {
+            page=total/size+1;
+        }
+        else
+        {
+            page=total/size;
+        }
+        if(methods.equals("next")&&count<page-1)
+        {
+            count++;
+        }else if(methods.equals("next")&&count==page-1){
+            count=page-1;
+        }
+        else if(methods.equals("up")&&count!=0)
+        {
+            count--;
+        }
+        else
+        {
+            count=0;
+        }
+        int start=size*count;
         ModelAndView modelAndView=new ModelAndView();
-        List<Admin>adminList=adminService.list();
+        List<Admin>adminList=adminService.listByPage(start,size);
         modelAndView.addObject("adminList",adminList);
-        int i=adminList.size();
-        System.out.println(i);
-        modelAndView.addObject("total",i);
+        modelAndView.addObject("pagenum",count+1);
+        modelAndView.addObject("pagetotal",page);
         modelAndView.setViewName("admin-list");
         return modelAndView;
     }

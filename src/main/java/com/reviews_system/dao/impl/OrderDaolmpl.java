@@ -97,7 +97,7 @@ public class OrderDaolmpl implements OrderDao {
 
     @Override
     public List<Orders> findOrderByUserId(int user_id) {
-        String sql="select * from orders where user_id=? ORDER BY time DESC";
+        String sql="select * from orders where user_id=? ORDER BY order_id DESC";
         List<Orders> ordersList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<Orders>(Orders.class),user_id);
         return ordersList;
     }

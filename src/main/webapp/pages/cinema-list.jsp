@@ -22,8 +22,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>影评网站后台管理系统</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <meta name="description" content="影评网站后台管理系统">
+    <meta name="keywords" content="影评网站后台管理系统">
 
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,7 +97,6 @@
                 })
             }
         }
-
         function addOrEdit() {
             //获取id
             var id = $("#cinema_id").val();
@@ -114,7 +113,6 @@
                 })
             }
         }
-
         function selectByName() {
             var name = $("#selectByName").val();
             if (name == null) {
@@ -157,27 +155,6 @@
     <!-- 导航侧栏 /-->
     <!-- 内容区域 -->
     <div class="content-wrapper">
-<%--        &lt;%&ndash;		添加&ndash;%&gt;--%>
-<%--        <div id="adddiv" style="display: none">--%>
-<%--            <h2 style="text-align: center;">添加影院</h2>--%>
-<%--            <form id="addform" style="align-content: center" class="layui-form"--%>
-<%--                  action="${pageContext.request.contextPath}/category/save" method="post">--%>
-<%--                <div class="layui-form-item">--%>
-<%--                    <label class="layui-form-label">影院名</label>--%>
-<%--                    <div class="layui-input-block">--%>
-<%--                        <input type="text" name="category_name" required lay-verify="required" placeholder="请输入影院名"--%>
-<%--                               autocomplete="off" class="layui-input">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="layui-form-item" style="align-content: center">--%>
-<%--                    <div class="layui-input-block">--%>
-<%--                        <button type="submit" class="layui-btn">立即提交</button>--%>
-<%--                        <button type="reset" onclick="delCinema()" class="layui-btn layui-btn-primary">关闭</button>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
@@ -233,7 +210,7 @@
                         <div class="box-tools pull-right">
                             <div style="display: flex" class="has-feedback">
                                 <input id="selectByName" style="height: 40px" type="text" class="form-control input-sm"
-                                       placeholder="根据类型模糊查询"/>
+                                       placeholder="根据地址模糊查询"/>
                                 <button style="height: 40px" type="button" class="layui-btn" onclick="selectByName()">
                                     查询
                                 </button>

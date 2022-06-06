@@ -16,8 +16,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>影评网站后台管理系统</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <meta name="description" content="影评网站后台管理系统">
+    <meta name="keywords" content="影评网站后台管理系统">
 
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -135,8 +135,8 @@
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a
-                        href="${pageContext.request.contextPath}/user/findAll.do">用户管理</a></li>
-                <li class="active">全部用户</li>
+                        href="${pageContext.request.contextPath}/user/findAll.do">影片管理</a></li>
+                <li class="active">全部影片</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -158,7 +158,7 @@
                                             <a type="button" class="layui-btn layui-btn-normal" href="${pageContext.request.contextPath}/film/saveUI">新建</a>
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
-                                            <button data-type="auto" class="layui-btn layui-btn-normal"><a style="color: white" href="${pageContext.request.contextPath}/user/refresh">刷新</a></button>
+                                            <button data-type="auto" class="layui-btn layui-btn-normal"><a style="color: white" href="${pageContext.request.contextPath}/film/refresh">刷新</a></button>
                                         </div>
                                         <div class="layui-btn-container" style="float: left">
                                             <button type="button" onclick="delByIds()" class="layui-btn layui-btn-normal">新建</button>

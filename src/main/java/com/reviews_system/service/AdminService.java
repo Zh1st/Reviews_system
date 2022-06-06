@@ -1,6 +1,7 @@
 package com.reviews_system.service;
 
 import com.reviews_system.domain.Admin;
+import com.reviews_system.domain.Category;
 import entity.PageResult;
 
 import java.util.List;
@@ -23,4 +24,8 @@ public interface AdminService {
     List<Admin> selectByName(String admin_name);
 
     int delByIds(int[]ids);
+
+    Integer selectAdminCount();
+
+    List<Admin> listByPage(Integer start, Integer end);
 }
